@@ -516,6 +516,9 @@ body {
     .about h2, .families h2 {
         font-size: 24px;
     }
+    
+}
+
     /* ===== PAGE HEADER ===== */
 .page-header {
     position: relative;
