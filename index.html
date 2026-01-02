@@ -5,140 +5,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aldridge University</title>
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
     <!-- Навигация -->
     <nav class="navbar">
-        <div class="nav-top">
-            <div class="logo" data-en="Aldridge University" data-ru="Университет Олдридж">Aldridge University</div>
-            <button class="menu-toggle" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
+        <a href="index.html" class="logo">Aldridge University</a>
+
+        <div class="nav-center">
+            <button class="nav-toggle" onclick="toggleNav()">
+                <i class="fas fa-bars"></i>
+                <span data-en="Menu" data-ru="Меню">Menu</span>
             </button>
-            <div class="language-switch">
+        </div>
+
+        <div class="nav-right">
+            <div class="lang-switch">
                 <button onclick="setLanguage('en')" id="btn-en" class="active">EN</button>
+                <span>/</span>
                 <button onclick="setLanguage('ru')" id="btn-ru">RU</button>
             </div>
         </div>
 
-        <ul class="nav-links" id="navLinks">
-            <li><a href="index.html" data-en="Home" data-ru="Главная">Home</a></li>
-            <li><a href="history.html" data-en="History" data-ru="История">History</a></li>
-            <li><a href="admissions.html" data-en="Admissions" data-ru="Приём">Admissions</a></li>
-            <li><a href="faculties.html" data-en="Faculties" data-ru="Факультеты">Faculties</a></li>
-            <li><a href="clubs.html" data-en="Clubs" data-ru="Клубы">Clubs</a></li>
-            <li><a href="staff.html" data-en="Staff" data-ru="Преподаватели">Staff</a></li>
-            <li><a href="students.html" data-en="Students" data-ru="Студенты">Students</a></li>
-            <li><a href="families.html" data-en="Families" data-ru="Семьи">Families</a></li>
-            <li><a href="map.html" data-en="Map" data-ru="Карта">Map</a></li>
-            <li><a href="forum.html" data-en="Forum" data-ru="Форум">Forum</a></li>
-            <li><a href="calendar.html" data-en="Calendar" data-ru="Календарь">Calendar</a></li>
-        </ul>
+        <!-- Выпадающее меню -->
+        <div class="nav-dropdown" id="navDropdown">
+            <div class="dropdown-grid">
+                <a href="index.html"><i class="fas fa-home"></i><span data-en="Home" data-ru="Главная">Home</span></a>
+                <a href="history.html"><i class="fas fa-landmark"></i><span data-en="History" data-ru="История">History</span></a>
+                <a href="admissions.html"><i class="fas fa-key"></i><span data-en="Admissions" data-ru="Приём">Admissions</span></a>
+                <a href="faculties.html"><i class="fas fa-graduation-cap"></i><span data-en="Faculties" data-ru="Факультеты">Faculties</span></a>
+                <a href="clubs.html"><i class="fas fa-users"></i><span data-en="Clubs" data-ru="Клубы">Clubs</span></a>
+                <a href="staff.html"><i class="fas fa-chalkboard-teacher"></i><span data-en="Staff" data-ru="Преподаватели">Staff</span></a>
+                <a href="students.html"><i class="fas fa-user-graduate"></i><span data-en="Students" data-ru="Студенты">Students</span></a>
+                <a href="families.html"><i class="fas fa-crown"></i><span data-en="Families" data-ru="Семьи">Families</span></a>
+                <a href="map.html"><i class="fas fa-map"></i><span data-en="Map" data-ru="Карта">Map</span></a>
+                <a href="forum.html"><i class="fas fa-comments"></i><span data-en="Forum" data-ru="Форум">Forum</span></a>
+                <a href="calendar.html"><i class="fas fa-calendar"></i><span data-en="Calendar" data-ru="Календарь">Calendar</span></a>
+            </div>
+        </div>
     </nav>
 
-    <!-- Декоративная линия -->
-    <div class="deco-line">
-        <span class="deco-diamond">◆</span>
-    </div>
-
-    <!-- Главный баннер -->
+    <!-- Hero -->
     <header class="hero">
-        <div class="hero-frame">
-            <div class="hero-content">
-                <div class="deco-top">✦</div>
-                <h1 data-en="Aldridge University" data-ru="Университет Олдридж">Aldridge University</h1>
-                <p class="motto">"In Umbra, Florimus"</p>
-                <p class="motto-translation" data-en="In shadow, we flourish" data-ru="В тени мы процветаем">In shadow, we flourish</p>
-                <div class="deco-separator">
-                    <span>◈</span>
-                </div>
-                <p class="tagline" data-en="Established 1847 • New York" data-ru="Основан в 1847 • Нью-Йорк">Established 1847 • New York</p>
-                <div class="deco-bottom">✦</div>
-            </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-subtitle" data-en="Est. 1847 · New York" data-ru="Осн. 1847 · Нью-Йорк">Est. 1847 · New York</p>
+            <h1 data-en="Aldridge University" data-ru="Университет Олдридж">Aldridge University</h1>
+            <p class="hero-motto">"In Umbra, Florimus"</p>
+            <p class="hero-translation" data-en="In shadow, we flourish" data-ru="В тени мы процветаем">In shadow, we flourish</p>
         </div>
     </header>
 
-    <!-- Приветствие -->
-    <section class="welcome">
-        <div class="section-frame">
-            <h2 data-en="Welcome" data-ru="Добро пожаловать">Welcome</h2>
-            <div class="welcome-text">
-                <p data-en="Aldridge University is an exclusive institution for the chosen few. For nearly two centuries, we have shaped future leaders, guardians of tradition, and those who understand the true price of power."
-                   data-ru="Aldridge University — закрытое учебное заведение для избранных. На протяжении почти двух столетий мы формируем будущих лидеров, хранителей традиций и тех, кто понимает истинную цену власти.">
-                    Aldridge University is an exclusive institution for the chosen few. For nearly two centuries, we have shaped future leaders, guardians of tradition, and those who understand the true price of power.
-                </p>
-                <p data-en="Our walls remember generations of great families. Our corridors hold secrets that will never leave this campus."
-                   data-ru="Наши стены помнят поколения великих семей. Наши коридоры хранят секреты, которые никогда не покинут этот кампус.">
-                    Our walls remember generations of great families. Our corridors hold secrets that will never leave this campus.
-                </p>
-            </div>
+    <!-- О нас -->
+    <section class="about">
+        <div class="about-content">
+            <h2 data-en="An Institution Unlike Any Other" data-ru="Учреждение, не похожее ни на одно другое">An Institution Unlike Any Other</h2>
+            <p data-en="For nearly two centuries, Aldridge has shaped leaders who understand that true power lies not in the light, but in the shadows. Our walls hold secrets. Our halls forge legacies."
+               data-ru="Почти два столетия Олдридж формирует лидеров, которые понимают, что истинная власть кроется не в свете, а в тени. Наши стены хранят тайны. Наши залы куют наследие.">
+                For nearly two centuries, Aldridge has shaped leaders who understand that true power lies not in the light, but in the shadows. Our walls hold secrets. Our halls forge legacies.
+            </p>
         </div>
     </section>
 
-    <!-- Декоративная линия -->
-    <div class="deco-line">
-        <span class="deco-diamond">◆</span>
-    </div>
-
-    <!-- Три семьи -->
-    <section class="families-preview">
-        <h2 data-en="Board of Trustees" data-ru="Попечительский совет">Board of Trustees</h2>
-        <div class="family-cards">
-            <a href="families.html#winthrop" class="family-card">
-                <div class="card-corner tl"></div>
-                <div class="card-corner tr"></div>
-                <div class="card-corner bl"></div>
-                <div class="card-corner br"></div>
-                <h3 data-en="Winthrop" data-ru="Уинтроп">Winthrop</h3>
-                <div class="card-divider">―</div>
-                <p data-en="Connections. Money. Control." data-ru="Связи. Деньги. Контроль.">Connections. Money. Control.</p>
+    <!-- Семьи -->
+    <section class="families">
+        <h2 data-en="The Founding Houses" data-ru="Семьи-основатели">The Founding Houses</h2>
+        <div class="families-grid">
+            <a href="families.html#winthrop" class="family-card winthrop">
+                <span class="family-name" data-en="Winthrop" data-ru="Уинтроп">Winthrop</span>
+                <span class="family-desc" data-en="Power & Influence" data-ru="Власть и Влияние">Power & Influence</span>
             </a>
-            <a href="families.html#stjohn" class="family-card">
-                <div class="card-corner tl"></div>
-                <div class="card-corner tr"></div>
-                <div class="card-corner bl"></div>
-                <div class="card-corner br"></div>
-                <h3 data-en="St. John" data-ru="Сент-Джон">St. John</h3>
-                <div class="card-divider">―</div>
-                <p data-en="Medicine. Science. Solutions." data-ru="Медицина. Наука. Решения.">Medicine. Science. Solutions.</p>
+            <a href="families.html#stjohn" class="family-card stjohn">
+                <span class="family-name" data-en="St. John" data-ru="Сент-Джон">St. John</span>
+                <span class="family-desc" data-en="Medicine & Secrets" data-ru="Медицина и Тайны">Medicine & Secrets</span>
             </a>
-            <a href="families.html#harcourt" class="family-card">
-                <div class="card-corner tl"></div>
-                <div class="card-corner tr"></div>
-                <div class="card-corner bl"></div>
-                <div class="card-corner br"></div>
-                <h3 data-en="Harcourt" data-ru="Харкорт">Harcourt</h3>
-                <div class="card-divider">―</div>
-                <p data-en="Loyalty. Action. Results." data-ru="Преданность. Действие. Результат.">Loyalty. Action. Results.</p>
+            <a href="families.html#harcourt" class="family-card harcourt">
+                <span class="family-name" data-en="Harcourt" data-ru="Харкорт">Harcourt</span>
+                <span class="family-desc" data-en="Loyalty & Action" data-ru="Верность и Действие">Loyalty & Action</span>
             </a>
         </div>
     </section>
 
-    <!-- Подвал -->
+    <!-- Footer -->
     <footer class="footer">
-        <div class="footer-deco">◆ ◇ ◆</div>
-        <p class="footer-motto">"In Umbra, Florimus"</p>
-        <p data-en="© 2024 Aldridge University. All rights reserved."
-           data-ru="© 2024 Университет Олдридж. Все права защищены.">
-            © 2024 Aldridge University. All rights reserved.
-        </p>
-        <div class="contacts">
-            <a href="ТВОЯ_ССЫЛКА_НА_ТГ" target="_blank">Telegram</a>
-            <span>◈</span>
-            <a href="ТВОЯ_ССЫЛКА_НА_JANITOR" target="_blank">JanitorAI</a>
+        <div class="footer-top">
+            <span class="footer-logo" data-en="Aldridge University" data-ru="Университет Олдридж">Aldridge University</span>
+            <p class="footer-motto">"In Umbra, Florimus"</p>
         </div>
-        <div class="footer-deco-bottom">◆ ◇ ◆</div>
+        <div class="footer-links">
+            <a href="ТВОЯ_ССЫЛКА_ТГ" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="ТВОЯ_ССЫЛКА_JANITOR" target="_blank"><i class="fas fa-robot"></i></a>
+        </div>
+        <p class="footer-copy" data-en="© 2024 Aldridge University" data-ru="© 2024 Университет Олдридж">© 2024 Aldridge University</p>
     </footer>
 
-    <!-- Скрипты -->
     <script>
-        // Переключение языка
         function setLanguage(lang) {
-            const elements = document.querySelectorAll('[data-en]');
-            elements.forEach(el => {
+            document.querySelectorAll('[data-en]').forEach(el => {
                 el.textContent = el.getAttribute('data-' + lang);
             });
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
@@ -146,17 +111,18 @@
             localStorage.setItem('language', lang);
         }
 
-        // Переключение меню
-        function toggleMenu() {
-            document.getElementById('navLinks').classList.toggle('open');
-            document.querySelector('.menu-toggle').classList.toggle('active');
+        function toggleNav() {
+            document.getElementById('navDropdown').classList.toggle('open');
         }
 
-        // При загрузке
-        window.onload = function() {
-            const savedLang = localStorage.getItem('language') || 'en';
-            setLanguage(savedLang);
-        }
+        // Закрыть меню при клике вне
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-toggle') && !e.target.closest('.nav-dropdown')) {
+                document.getElementById('navDropdown').classList.remove('open');
+            }
+        });
+
+        window.onload = () => setLanguage(localStorage.getItem('language') || 'en');
     </script>
 
 </body>
