@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculties — Aldridge University</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Кастомный курсор -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Навигация -->
+    <nav class="navbar">
+        <a href="index.html" class="logo" data-en="Aldridge University" data-ru="Университет Олдридж">Aldridge University</a>
+
+        <div class="nav-right">
+            <div class="menu-container">
+                <button class="menu-btn" onclick="toggleMenu()">
+                    <span data-en="Menu" data-ru="Меню">Menu</span>
+                </button>
+                <ul class="menu-list" id="menuList">
+                    <li><a href="index.html" data-en="Home" data-ru="Главная">Home</a></li>
+                    <li><a href="history.html" data-en="History" data-ru="История">History</a></li>
+                    <li><a href="admissions.html" data-en="Admissions" data-ru="Приём">Admissions</a></li>
+                    <li><a href="faculties.html" data-en="Faculties" data-ru="Факультеты">Faculties</a></li>
+                    <li><a href="clubs.html" data-en="Clubs" data-ru="Клубы">Clubs</a></li>
+                    <li><a href="staff.html" data-en="Staff" data-ru="Преподаватели">Staff</a></li>
+                    <li><a href="students.html" data-en="Students" data-ru="Студенты">Students</a></li>
+                    <li><a href="families.html" data-en="Families" data-ru="Семьи">Families</a></li>
+                    <li><a href="map.html" data-en="Map" data-ru="Карта">Map</a></li>
+                    <li><a href="forum.html" data-en="Forum" data-ru="Форум">Forum</a></li>
+                    <li><a href="calendar.html" data-en="Calendar" data-ru="Календарь">Calendar</a></li>
+                </ul>
+            </div>
+
+            <div class="lang-switch">
+                <button onclick="setLanguage('en')" id="btn-en" class="active">EN</button>
+                <span>/</span>
+                <button onclick="setLanguage('ru')" id="btn-ru">RU</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-header-bg" style="background-image: url('images/faculties-bg.jpg');"></div>
+        <div class="page-header-content">
+            <h1 data-en="Faculties" data-ru="Факультеты">Faculties</h1>
+            <p data-en="Six paths. One destination." data-ru="Шесть путей. Одно направление.">Six paths. One destination.</p>
+        </div>
+    </header>
+
+    <!-- Path Builder -->
+    <section class="path-builder">
+        <h2 data-en="Build Your Path" data-ru="Построй свой путь">Build Your Path</h2>
+        <p class="builder-subtitle" data-en="Select a major to see available minors and total credit requirements" data-ru="Выбери основную специальность, чтобы увидеть доступные дополнительные и общие требования по кредитам">Select a major to see available minors and total credit requirements</p>
+
+        <div class="builder-container">
+            <!-- Major Selection -->
+            <div class="builder-column">
+                <h3 data-en="Major" data-ru="Основная">Major</h3>
+                <p class="column-credits" data-en="160-200 credits" data-ru="160-200 кредитов">160-200 credits</p>
+                <div class="builder-options" id="majorOptions">
+                    <button class="builder-option" data-faculty="law" onclick="selectMajor('law')">
+                        <span class="option-icon">⚖</span>
+                        <span class="option-name" data-en="Law" data-ru="Право">Law</span>
+                    </button>
+                    <button class="builder-option" data-faculty="business" onclick="selectMajor('business')">
+                        <span class="option-icon">◆</span>
+                        <span class="option-name" data-en="Business & Finance" data-ru="Бизнес и Финансы">Business & Finance</span>
+                    </button>
+                    <button class="builder-option" data-faculty="politics" onclick="selectMajor('politics')">
+                        <span class="option-icon">♔</span>
+                        <span class="option-name" data-en="Political Science" data-ru="Политология">Political Science</span>
+                    </button>
+                    <button class="builder-option" data-faculty="arts" onclick="selectMajor('arts')">
+                        <span class="option-icon">❖</span>
+                        <span class="option-name" data-en="Fine Arts" data-ru="Искусство">Fine Arts</span>
+                    </button>
+                    <button class="builder-option" data-faculty="philosophy" onclick="selectMajor('philosophy')">
+                        <span class="option-icon">◇</span>
+                        <span class="option-name" data-en="Philosophy & Literature" data-ru="Философия и Литература">Philosophy & Literature</span>
+                    </button>
+                    <button class="builder-option" data-faculty="medicine" onclick="selectMajor('medicine')">
+                        <span class="option-icon">✚</span>
+                        <span class="option-name" data-en="Medicine" data-ru="Медицина">Medicine</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Connector -->
+            <div class="builder-connector">
+                <div class="connector-line"></div>
+                <div class="connector-plus">+</div>
+                <div class="connector-line"></div>
+            </div>
+
+            <!-- Minor Selection -->
+            <div class="builder-column">
+                <h3 data-en="Minor" data-ru="Дополнительная">Minor</h3>
+                <p class="column-credits" data-en="40-60 credits" data-ru="40-60 кредитов">40-60 credits</p>
+                <div class="builder-options" id="minorOptions">
+                    <div class="minor-placeholder" data-en="Select a major first" data-ru="Сначала выбери основную">Select a major first</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result -->
+        <div class="builder-result" id="builderResult">
+            <div class="result-hidden" data-en="Select your path above" data-ru="Выбери свой путь выше">Select your path above</div>
+        </div>
+    </section>
+
+    <!-- Faculty Grid -->
+    <section class="faculty-section">
+        <h2 data-en="Explore Programs" data-ru="Изучить программы">Explore Programs</h2>
+
+        <div class="faculty-grid">
+            <!-- LAW -->
+            <div class="faculty-card" onclick="openFaculty('law')">
+                <div class="faculty-card-inner">
+                    <div class="faculty-icon">⚖</div>
+                    <h3 data-en="Law" data-ru="Право">Law</h3>
+                    <p data-en="Justice is a matter of perspective" data-ru="Справедливость — вопрос перспективы">Justice is a matter of perspective</p>
+                    <span class="faculty-tag" data-en="View Program" data-ru="Смотреть программу">View Program</span>
+                </div>
+            </div>
+
+            <!-- BUSINESS -->
+            <div class="faculty-card" onclick="openFaculty('business')">
+                <div class="faculty-card-inner">
+                    <div class="faculty-icon">◆</div>
+                    <h3 data-en="Business & Finance" data-ru="Бизнес и Финансы">Business & Finance</h3>
+                    <p data-en="Money flows where power directs" data-ru="Деньги текут туда, куда направляет власть">Money flows where power directs</p>
+                    <span class="faculty-tag" data-en="View Program" data-ru="Смотреть программу">View Program</span>
+                </div>
+            </div>
+
+            <!-- POLITICAL SCIENCE -->
+            <div class="faculty-card" onclick="openFaculty('politics')">
+                <div class="faculty-card-inner">
+                    <div class="faculty-icon">♔</div>
+                    <h3 data-en="Political Science" data-ru="Политология">Political Science</h3>
+                    <p data-en="The art of invisible influence" data-ru="Искусство невидимого влияния">The art of invisible influence</p>
+                    <span class="faculty-tag" data-en="View Program" data-ru="Смотреть программу">View Program</span>
+                </div>
+            </div>
+
+            <!-- ARTS -->
+            <div class="faculty-card" onclick="openFaculty('arts')">
+                <div class="faculty-card-inner">
+                    <div class="faculty-icon">❖</div>
+                    <h3 data-en="Fine Arts" data-ru="Искусство">Fine Arts</h3>
+                    <p data-en="Beauty as currency, taste as power" data-ru="Красота как валюта, вкус как власть">Beauty as currency, taste as power</p>
+                    <span class="faculty-tag" data-en="View Program" data-ru="Смотреть программу">View Program</span>
+                </div>
+            </div>
+
+            <!-- PHILOSOPHY -->
+            <div class="faculty-card" onclick="openFaculty('philosophy')">
+                <div class="faculty-card-inner">
+                    <div class="faculty-icon">◇</div>
+                    <h3 data-en="Philosophy & Literature" data-ru="Философия и Литература">Philosophy & Literature</h3>
+                    <p data-en="Words shape reality" data-ru="Слова формируют реальность">Words shape reality</p>
+                    <span class="faculty-tag" data-en="View Program" data-ru="Смотреть программу">View Program</span>
+                </div>
+            </div>
+
+            <!-- MEDICINE -->
+            <div class="faculty-card" onclick="openFaculty('medicine')">
+                <div class="faculty-card-inner">
+                    <div class="faculty-icon">✚</div>
+                    <h3 data-en="Medicine" data-ru="Медицина">Medicine</h3>
+                    <p data-en="To heal is to hold power over life" data-ru="Исцелять — значит властвовать над жизнью">To heal is to hold power over life</p>
+                    <span class="faculty-tag" data-en="View Program" data-ru="Смотреть программу">View Program</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Faculty Modal -->
+    <div class="faculty-modal" id="facultyModal">
+        <div class="modal-overlay" onclick="closeFaculty()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeFaculty()">✕</button>
+            <div class="modal-header" id="modalHeader"></div>
+            <div class="modal-tabs">
+                <button class="tab-btn active" onclick="switchTab('overview')" data-en="Overview" data-ru="Обзор">Overview</button>
+                <button class="tab-btn" onclick="switchTab('curriculum')" data-en="Curriculum" data-ru="Программа">Curriculum</button>
+                <button class="tab-btn" onclick="switchTab('requirements')" data-en="Requirements" data-ru="Требования">Requirements</button>
+                <button class="tab-btn" onclick="switchTab('careers')" data-en="Careers" data-ru="Карьера">Careers</button>
+            </div>
+            <div class="tab-content" id="tabContent"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-logo" data-en="Aldridge University" data-ru="Университет Олдридж">Aldridge University</p>
+        <div class="footer-links">
+            <a href="ТВОЯ_ССЫЛКА_ТГ" target="_blank">Telegram</a>
+            <span>·</span>
+            <a href="ТВОЯ_ССЫЛКА_JANITOR" target="_blank">JanitorAI</a>
+        </div>
+        <p class="footer-copy">© 2024</p>
+    </footer>
+
+    <script>
+        // ===== ДАННЫЕ ФАКУЛЬТЕТОВ =====
+        const facultyData = {
+            law: {
+                icon: '⚖',
+                name: { en: 'School of Law', ru: 'Школа Права' },
+                tagline: { en: 'Justice is a matter of perspective', ru: 'Справедливость — вопрос перспективы' },
+                degree: { en: 'Bachelor of Laws (LL.B.) / Juris Doctor (J.D.)', ru: 'Бакалавр права (LL.B.) / Доктор права (J.D.)' },
+                duration: { en: '4 years (LL.B.) / 3 years (J.D.)', ru: '4 года (LL.B.) / 3 года (J.D.)' },
+                majorCredits: 180,
+                minorCredits: 50,
+                seats: '45',
+                minorAvailable: true,
+                availableMinors: ['politics', 'philosophy', 'business'],
+                canBeMinorFor: ['politics', 'philosophy', 'business'],
+                overview: {
+                    en: 'The Aldridge School of Law does not produce lawyers. It produces architects of legal reality — individuals who understand that law is not about justice, but about leverage. Our graduates do not argue cases; they design outcomes.',
+                    ru: 'Школа права Олдриджа не выпускает юристов. Она создаёт архитекторов правовой реальности — людей, понимающих, что право — это не о справедливости, а о рычагах влияния. Наши выпускники не ведут дела; они проектируют результаты.'
+                },
+                courses: [
+                    { name: { en: 'Constitutional Interpretation', ru: 'Конституционная интерпретация' }, hours: 60, desc: { en: 'Finding flexibility in rigid frameworks', ru: 'Поиск гибкости в жёстких рамках' }},
+                    { name: { en: 'Corporate Law & Asset Protection', ru: 'Корпоративное право и защита активов' }, hours: 80, desc: { en: 'Structures that shield, entities that obscure', ru: 'Структуры, которые защищают, сущности, которые скрывают' }},
+                    { name: { en: 'Criminal Defense Strategies', ru: 'Стратегии уголовной защиты' }, hours: 70, desc: { en: 'Reasonable doubt as an art form', ru: 'Обоснованное сомнение как искусство' }},
+                    { name: { en: 'Contract Negotiation', ru: 'Переговоры по контрактам' }, hours: 55, desc: { en: 'The power of fine print', ru: 'Сила мелкого шрифта' }},
+                    { name: { en: 'Evidence & Discretion', ru: 'Доказательства и благоразумие' }, hours: 65, desc: { en: 'What is presented, what is withheld', ru: 'Что представлено, что утаено' }},
+                    { name: { en: 'Private Seminar: Family Legal Affairs', ru: 'Частный семинар: Семейные правовые дела' }, hours: 40, desc: { en: 'By invitation only. Content classified.', ru: 'Только по приглашению. Содержание засекречено.' }}
+                ],
+                materials: [
+                    { en: 'Aldridge Legal Codex (provided)', ru: 'Правовой кодекс Олдриджа (предоставляется)' },
+                    { en: 'Personal laptop (encrypted)', ru: 'Личный ноутбук (зашифрованный)' },
+                    { en: 'Professional attire for court simulations', ru: 'Деловая одежда для судебных симуляций' },
+                    { en: 'Signed confidentiality agreement', ru: 'Подписанное соглашение о конфиденциальности' }
+                ],
+                careers: [
+                    { en: 'Family Legal Counsel', ru: 'Семейный юридический советник' },
+                    { en: 'Corporate Attorney', ru: 'Корпоративный адвокат' },
+                    { en: 'Political Advisor', ru: 'Политический советник' },
+                    { en: 'Private Practice (select clientele)', ru: 'Частная практика (избранная клиентура)' },
+                    { en: '"Conflict Resolution Specialist"', ru: '«Специалист по разрешению конфликтов»' }
+                ]
+            },
+            business: {
+                icon: '◆',
+                name: { en: 'School of Business & Finance', ru: 'Школа Бизнеса и Финансов' },
+                tagline: { en: 'Money flows where power directs', ru: 'Деньги текут туда, куда направляет власть' },
+                degree: { en: 'Bachelor of Business Administration (B.B.A.) / MBA', ru: 'Бакалавр делового администрирования (B.B.A.) / MBA' },
+                duration: { en: '4 years (B.B.A.) / 2 years (MBA)', ru: '4 года (B.B.A.) / 2 года (MBA)' },
+                majorCredits: 180,
+                minorCredits: 50,
+                seats: '50',
+                minorAvailable: true,
+                availableMinors: ['law', 'politics', 'arts'],
+                canBeMinorFor: ['law', 'politics', 'arts', 'philosophy'],
+                overview: {
+                    en: 'At Aldridge, we do not teach business — we teach empire. Our curriculum focuses on wealth that endures across generations, structures that survive scrutiny, and transactions that leave no trace. Discretion is not taught; it is required.',
+                    ru: 'В Олдридже мы не учим бизнесу — мы учим строить империи. Наша программа фокусируется на богатстве, которое сохраняется поколениями, структурах, выдерживающих проверки, и сделках, не оставляющих следов. Благоразумие не преподаётся; оно требуется.'
+                },
+                courses: [
+                    { name: { en: 'International Finance & Offshore Structures', ru: 'Международные финансы и офшорные структуры' }, hours: 75, desc: { en: 'Geography as financial strategy', ru: 'География как финансовая стратегия' }},
+                    { name: { en: 'Asset Management & Wealth Preservation', ru: 'Управление активами и сохранение богатства' }, hours: 70, desc: { en: 'Protecting what matters across generations', ru: 'Защита того, что важно, через поколения' }},
+                    { name: { en: 'Mergers, Acquisitions & Hostile Takeovers', ru: 'Слияния, поглощения и враждебные захваты' }, hours: 65, desc: { en: 'Expansion by any means', ru: 'Расширение любыми средствами' }},
+                    { name: { en: 'Financial Compliance & Creative Accounting', ru: 'Финансовое соответствие и креативный учёт' }, hours: 60, desc: { en: 'The space between legal and illegal', ru: 'Пространство между легальным и нелегальным' }},
+                    { name: { en: 'Negotiation & Leverage', ru: 'Переговоры и рычаги влияния' }, hours: 50, desc: { en: 'Everyone has a price', ru: 'У каждого есть цена' }},
+                    { name: { en: 'Private Seminar: Family Portfolio Management', ru: 'Частный семинар: Управление семейным портфелем' }, hours: 40, desc: { en: 'By invitation only. Content classified.', ru: 'Только по приглашению. Содержание засекречено.' }}
+                ],
+                materials: [
+                    { en: 'Financial calculator (approved models only)', ru: 'Финансовый калькулятор (только одобренные модели)' },
+                    { en: 'Bloomberg Terminal access (provided)', ru: 'Доступ к Bloomberg Terminal (предоставляется)' },
+                    { en: 'Personal encrypted device', ru: 'Личное зашифрованное устройство' },
+                    { en: 'Signed non-disclosure agreement', ru: 'Подписанное соглашение о неразглашении' }
+                ],
+                careers: [
+                    { en: 'Family Office Director', ru: 'Директор семейного офиса' },
+                    { en: 'Investment Banking (Private Clients)', ru: 'Инвестиционный банкинг (частные клиенты)' },
+                    { en: 'Venture Capital Partner', ru: 'Партнёр венчурного капитала' },
+                    { en: 'Chief Financial Officer', ru: 'Финансовый директор' },
+                    { en: '"Financial Consultant" (freelance)', ru: '«Финансовый консультант» (фриланс)' }
+                ]
+            },
+            politics: {
+                icon: '♔',
+                name: { en: 'School of Political Science', ru: 'Школа Политологии' },
+                tagline: { en: 'The art of invisible influence', ru: 'Искусство невидимого влияния' },
+                degree: { en: 'Bachelor of Arts in Political Science / Master of Public Policy', ru: 'Бакалавр политологии / Магистр государственной политики' },
+                duration: { en: '4 years (B.A.) / 2 years (M.P.P.)', ru: '4 года (B.A.) / 2 года (M.P.P.)' },
+                majorCredits: 170,
+                minorCredits: 45,
+                seats: '35',
+                minorAvailable: true,
+                availableMinors: ['law', 'philosophy', 'business'],
+                canBeMinorFor: ['law', 'business', 'philosophy'],
+                overview: {
+                    en: 'Politics is not about elections — it is about access. The Aldridge School of Political Science trains students to operate in the spaces between public policy and private interest, where real decisions are made far from cameras and voting booths.',
+                    ru: 'Политика — это не о выборах, а о доступе. Школа политологии Олдриджа обучает студентов работать в пространстве между государственной политикой и частными интересами, где реальные решения принимаются вдали от камер и избирательных участков.'
+                },
+                courses: [
+                    { name: { en: 'Power Structures & Shadow Governance', ru: 'Структуры власти и теневое управление' }, hours: 65, desc: { en: 'Who really makes decisions', ru: 'Кто на самом деле принимает решения' }},
+                    { name: { en: 'Lobbying & Legislative Influence', ru: 'Лоббирование и законодательное влияние' }, hours: 70, desc: { en: 'Shaping law before it is written', ru: 'Формирование закона до его написания' }},
+                    { name: { en: 'Media Control & Narrative Management', ru: 'Контроль СМИ и управление нарративом' }, hours: 55, desc: { en: 'Truth is what is repeated', ru: 'Правда — это то, что повторяется' }},
+                    { name: { en: 'International Relations & Quiet Diplomacy', ru: 'Международные отношения и тихая дипломатия' }, hours: 60, desc: { en: 'Agreements made outside treaties', ru: 'Соглашения вне договоров' }},
+                    { name: { en: 'Crisis Management & Information Control', ru: 'Кризисное управление и контроль информации' }, hours: 50, desc: { en: 'Containing damage, controlling narrative', ru: 'Сдерживание ущерба, контроль нарратива' }},
+                    { name: { en: 'Private Seminar: Family Political Strategy', ru: 'Частный семинар: Семейная политическая стратегия' }, hours: 40, desc: { en: 'By invitation only. Content classified.', ru: 'Только по приглашению. Содержание засекречено.' }}
+                ],
+                materials: [
+                    { en: 'Secure communication device (provided)', ru: 'Защищённое устройство связи (предоставляется)' },
+                    { en: 'Aldridge Political Archives access', ru: 'Доступ к политическим архивам Олдриджа' },
+                    { en: 'Professional wardrobe allowance', ru: 'Бюджет на профессиональный гардероб' },
+                    { en: 'Signed loyalty declaration', ru: 'Подписанная декларация лояльности' }
+                ],
+                careers: [
+                    { en: 'Political Strategist', ru: 'Политический стратег' },
+                    { en: 'Senior Policy Advisor', ru: 'Старший советник по политике' },
+                    { en: 'Lobbyist (Private Sector)', ru: 'Лоббист (частный сектор)' },
+                    { en: 'Campaign Manager', ru: 'Руководитель кампании' },
+                    { en: '"Government Relations Consultant"', ru: '«Консультант по связям с правительством»' }
+                ]
+            },
+            arts: {
+                icon: '❖',
+                name: { en: 'School of Fine Arts', ru: 'Школа Искусств' },
+                tagline: { en: 'Beauty as currency, taste as power', ru: 'Красота как валюта, вкус как власть' },
+                degree: { en: 'Bachelor of Fine Arts (B.F.A.) / Master of Fine Arts (M.F.A.)', ru: 'Бакалавр изящных искусств (B.F.A.) / Магистр изящных искусств (M.F.A.)' },
+                duration: { en: '4 years (B.F.A.) / 2 years (M.F.A.)', ru: '4 года (B.F.A.) / 2 года (M.F.A.)' },
+                majorCredits: 160,
+                minorCredits: 40,
+                seats: '25',
+                minorAvailable: true,
+                availableMinors: ['philosophy', 'business'],
+                canBeMinorFor: ['philosophy', 'business'],
+                overview: {
+                    en: 'Art at Aldridge is not about expression — it is about valuation. Our students learn to navigate the intersection of aesthetics and economics, where a painting can launder millions and a sculpture can seal alliances. Culture is capital.',
+                    ru: 'Искусство в Олдридже — это не о самовыражении, а об оценке. Наши студенты учатся ориентироваться на пересечении эстетики и экономики, где картина может отмыть миллионы, а скульптура — скрепить союзы. Культура — это капитал.'
+                },
+                courses: [
+                    { name: { en: 'Art History & Provenance Studies', ru: 'История искусства и исследование провенанса' }, hours: 70, desc: { en: 'The story behind the piece', ru: 'История за произведением' }},
+                    { name: { en: 'Art Market Economics', ru: 'Экономика арт-рынка' }, hours: 60, desc: { en: 'Value creation and manipulation', ru: 'Создание и манипуляция стоимостью' }},
+                    { name: { en: 'Collection Management & Acquisition', ru: 'Управление коллекциями и приобретение' }, hours: 55, desc: { en: 'Building legacies in canvas and stone', ru: 'Создание наследия в холсте и камне' }},
+                    { name: { en: 'Authentication & Forgery Detection', ru: 'Аутентификация и обнаружение подделок' }, hours: 50, desc: { en: 'Knowing the real from the replica', ru: 'Отличить оригинал от копии' }},
+                    { name: { en: 'Cultural Philanthropy & Social Capital', ru: 'Культурная филантропия и социальный капитал' }, hours: 45, desc: { en: 'Giving as strategy', ru: 'Благотворительность как стратегия' }},
+                    { name: { en: 'Private Seminar: Family Collection Curation', ru: 'Частный семинар: Курирование семейной коллекции' }, hours: 40, desc: { en: 'By invitation only. Content classified.', ru: 'Только по приглашению. Содержание засекречено.' }}
+                ],
+                materials: [
+                    { en: 'Art history reference library (provided)', ru: 'Справочная библиотека по истории искусства (предоставляется)' },
+                    { en: 'Gallery and auction house access passes', ru: 'Пропуска в галереи и аукционные дома' },
+                    { en: 'Professional portfolio case', ru: 'Профессиональный портфолио-кейс' },
+                    { en: 'Signed discretion agreement', ru: 'Подписанное соглашение о конфиденциальности' }
+                ],
+                careers: [
+                    { en: 'Private Collection Curator', ru: 'Куратор частной коллекции' },
+                    { en: 'Art Investment Advisor', ru: 'Советник по инвестициям в искусство' },
+                    { en: 'Auction House Specialist', ru: 'Специалист аукционного дома' },
+                    { en: 'Gallery Director', ru: 'Директор галереи' },
+                    { en: '"Cultural Asset Manager"', ru: '«Управляющий культурными активами»' }
+                ]
+            },
+            philosophy: {
+                icon: '◇',
+                name: { en: 'School of Philosophy & Literature', ru: 'Школа Философии и Литературы' },
+                tagline: { en: 'Words shape reality', ru: 'Слова формируют реальность' },
+                degree: { en: 'Bachelor of Arts (B.A.) / Master of Arts (M.A.)', ru: 'Бакалавр гуманитарных наук (B.A.) / Магистр гуманитарных наук (M.A.)' },
+                duration: { en: '4 years (B.A.) / 2 years (M.A.)', ru: '4 года (B.A.) / 2 года (M.A.)' },
+                majorCredits: 160,
+                minorCredits: 45,
+                seats: '30',
+                minorAvailable: true,
+                availableMinors: ['law', 'politics', 'arts'],
+                canBeMinorFor: ['law', 'politics', 'arts'],
+                overview: {
+                    en: 'Philosophy at Aldridge is not contemplation — it is weaponization. We teach students to construct arguments that cannot be defeated, narratives that cannot be questioned, and justifications for actions that cannot be spoken of in public.',
+                    ru: 'Философия в Олдридже — это не созерцание, а оружие. Мы учим студентов строить аргументы, которые невозможно опровергнуть, нарративы, которые невозможно оспорить, и обоснования действий, о которых нельзя говорить публично.'
+                },
+                courses: [
+                    { name: { en: 'Ethics & Moral Flexibility', ru: 'Этика и моральная гибкость' }, hours: 60, desc: { en: 'Right and wrong as constructs', ru: 'Правильное и неправильное как конструкты' }},
+                    { name: { en: 'Rhetoric & Persuasion', ru: 'Риторика и убеждение' }, hours: 65, desc: { en: 'The architecture of agreement', ru: 'Архитектура согласия' }},
+                    { name: { en: 'Classical Literature & Power Narratives', ru: 'Классическая литература и нарративы власти' }, hours: 55, desc: { en: 'Stories that shaped empires', ru: 'Истории, формировавшие империи' }},
+                    { name: { en: 'Logic & Strategic Reasoning', ru: 'Логика и стратегическое мышление' }, hours: 50, desc: { en: 'Thinking three moves ahead', ru: 'Думать на три хода вперёд' }},
+                    { name: { en: 'Written Communication & Discretion', ru: 'Письменная коммуникация и благоразумие' }, hours: 45, desc: { en: 'What to write, what to never write', ru: 'Что писать, чего никогда не писать' }},
+                    { name: { en: 'Private Seminar: Family Doctrine', ru: 'Частный семинар: Семейная доктрина' }, hours: 40, desc: { en: 'By invitation only. Content classified.', ru: 'Только по приглашению. Содержание засекречено.' }}
+                ],
+                materials: [
+                    { en: 'Aldridge Classical Library access', ru: 'Доступ к классической библиотеке Олдриджа' },
+                    { en: 'Personal journal (encrypted)', ru: 'Личный дневник (зашифрованный)' },
+                    { en: 'Writing instruments (provided)', ru: 'Письменные принадлежности (предоставляются)' },
+                    { en: 'Signed intellectual property agreement', ru: 'Подписанное соглашение об интеллектуальной собственности' }
+                ],
+                careers: [
+                    { en: 'Speechwriter', ru: 'Спичрайтер' },
+                    { en: 'Communications Director', ru: 'Директор по коммуникациям' },
+                    { en: 'Think Tank Fellow', ru: 'Сотрудник аналитического центра' },
+                    { en: 'Private Advisor', ru: 'Частный советник' },
+                    { en: '"Narrative Consultant"', ru: '«Консультант по нарративам»' }
+                ]
+            },
+            medicine: {
+                icon: '✚',
+                name: { en: 'School of Medicine', ru: 'Школа Медицины' },
+                tagline: { en: 'To heal is to hold power over life', ru: 'Исцелять — значит властвовать над жизнью' },
+                degree: { en: 'Doctor of Medicine (M.D.)', ru: 'Доктор медицины (M.D.)' },
+                duration: { en: '6 years', ru: '6 лет' },
+                majorCredits: 280,
+                minorCredits: 0,
+                seats: '20',
+                minorAvailable: false,
+                availableMinors: [],
+                canBeMinorFor: [],
+                overview: {
+                    en: 'Medicine at Aldridge serves a dual purpose: to heal those who matter, and to understand the fragility of those who do not. Our graduates become physicians to the elite — trusted with secrets that go far beyond medical records. Due to the intensive nature of this program, no minor is available.',
+                    ru: 'Медицина в Олдридже служит двойной цели: исцелять тех, кто важен, и понимать хрупкость тех, кто нет. Наши выпускники становятся врачами элиты — им доверяют секреты, выходящие далеко за рамки медицинских карт. Из-за интенсивности программы дополнительная специальность недоступна.'
+                },
+                courses: [
+                    { name: { en: 'Anatomy & Physiology', ru: 'Анатомия и физиология' }, hours: 120, desc: { en: 'Understanding the human machine', ru: 'Понимание человеческой машины' }},
+                    { name: { en: 'Pharmacology & Toxicology', ru: 'Фармакология и токсикология' }, hours: 100, desc: { en: 'What heals, what harms, what is undetectable', ru: 'Что лечит, что вредит, что необнаружимо' }},
+                    { name: { en: 'Emergency Medicine & Trauma', ru: 'Экстренная медицина и травматология' }, hours: 90, desc: { en: 'When seconds determine outcomes', ru: 'Когда секунды определяют исход' }},
+                    { name: { en: 'Psychiatry & Behavioral Control', ru: 'Психиатрия и контроль поведения' }, hours: 70, desc: { en: 'The mind as territory', ru: 'Разум как территория' }},
+                    { name: { en: 'Medical Ethics & Confidentiality', ru: 'Медицинская этика и конфиденциальность' }, hours: 50, desc: { en: 'What is never spoken of', ru: 'О чём никогда не говорят' }},
+                    { name: { en: 'Private Seminar: Family Medical Services', ru: 'Частный семинар: Семейные медицинские услуги' }, hours: 60, desc: { en: 'By invitation only. Content classified.', ru: 'Только по приглашению. Содержание засекречено.' }}
+                ],
+                materials: [
+                    { en: 'Medical equipment kit (provided)', ru: 'Набор медицинского оборудования (предоставляется)' },
+                    { en: 'Aldridge Medical Library access', ru: 'Доступ к медицинской библиотеке Олдриджа' },
+                    { en: 'Laboratory coat and scrubs', ru: 'Лабораторный халат и хирургическая форма' },
+                    { en: 'Signed Hippocratic Oath (modified)', ru: 'Подписанная клятва Гиппократа (модифицированная)' }
+                ],
+                careers: [
+                    { en: 'Private Physician (Family Retainer)', ru: 'Личный врач (семейный консультант)' },
+                    { en: 'Surgeon', ru: 'Хирург' },
+                    { en: 'Psychiatrist', ru: 'Психиатр' },
+                    { en: 'Medical Examiner', ru: 'Судмедэксперт' },
+                    { en: '"Health Consultant" (private clients)', ru: '«Консультант по здоровью» (частные клиенты)' }
+                ]
+            }
+        };
+
+        const facultyNames = {
+            law: { en: 'Law', ru: 'Право' },
+            business: { en: 'Business & Finance', ru: 'Бизнес и Финансы' },
+            politics: { en: 'Political Science', ru: 'Политология' },
+            arts: { en: 'Fine Arts', ru: 'Искусство' },
+            philosophy: { en: 'Philosophy & Literature', ru: 'Философия и Литература' },
+            medicine: { en: 'Medicine', ru: 'Медицина' }
+        };
+
+        const facultyIcons = {
+            law: '⚖',
+            business: '◆',
+            politics: '♔',
+            arts: '❖',
+            philosophy: '◇',
+            medicine: '✚'
+        };
+
+        let currentLang = 'en';
+        let selectedMajor = null;
+        let selectedMinor = null;
+
+        // ===== ЯЗЫК =====
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-en]').forEach(el => {
+                el.textContent = el.getAttribute('data-' + lang);
+            });
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-ru').classList.toggle('active', lang === 'ru');
+            localStorage.setItem('language', lang);
+
+            // Обновить builder если есть выбор
+            if (selectedMajor) {
+                updateMinorOptions();
+                updateResult();
+            }
+
+            // Обновить модальное окно
+            const modal = document.getElementById('facultyModal');
+            if (modal.classList.contains('open')) {
+                const currentFaculty = modal.dataset.faculty;
+                if (currentFaculty) updateModalContent(currentFaculty);
+            }
+        }
+
+        // ===== МЕНЮ =====
+        function toggleMenu() {
+            document.getElementById('menuList').classList.toggle('open');
+        }
+
+        // ===== PATH BUILDER =====
+        function selectMajor(majorId) {
+            // Убрать предыдущий выбор
+            document.querySelectorAll('#majorOptions .builder-option').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+
+            // Выбрать новый
+            const btn = document.querySelector(`#majorOptions [data-faculty="${majorId}"]`);
+            btn.classList.add('selected');
+
+            selectedMajor = majorId;
+            selectedMinor = null;
+
+            updateMinorOptions();
+            updateResult();
+        }
+
+        function selectMinor(minorId) {
+            // Убрать предыдущий выбор
+            document.querySelectorAll('#minorOptions .builder-option').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+
+            // Выбрать новый
+            if (minorId) {
+                const btn = document.querySelector(`#minorOptions [data-faculty="${minorId}"]`);
+                if (btn) btn.classList.add('selected');
+            }
+
+            selectedMinor = minorId;
+            updateResult();
+        }
+
+        function updateMinorOptions() {
+            const container = document.getElementById('minorOptions');
+            const majorData = facultyData[selectedMajor];
+
+            if (!majorData.minorAvailable) {
+                container.innerHTML = `
+                    <div class="minor-unavailable">
+                        <span class="unavailable-icon">✕</span>
+                        <span data-en="Minor not available for this program" data-ru="Дополнительная специальность недоступна для этой программы">
+                            ${currentLang === 'en' ? 'Minor not available for this program' : 'Дополнительная специальность недоступна для этой программы'}
+                        </span>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = `
+                <button class="builder-option minor-none" onclick="selectMinor(null)">
+                    <span class="option-icon">—</span>
+                    <span class="option-name" data-en="No Minor" data-ru="Без дополнительной">${currentLang === 'en' ? 'No Minor' : 'Без дополнительной'}</span>
+                </button>
+            `;
+
+            majorData.availableMinors.forEach(minorId => {
+                html += `
+                    <button class="builder-option available" data-faculty="${minorId}" onclick="selectMinor('${minorId}')">
+                        <span class="option-icon">${facultyIcons[minorId]}</span>
+                        <span class="option-name">${facultyNames[minorId][currentLang]}</span>
+                    </button>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function updateResult() {
+            const container = document.getElementById('builderResult');
+
+            if (!selectedMajor) {
+                container.innerHTML = `<div class="result-hidden" data-en="Select your path above" data-ru="Выбери свой путь выше">${currentLang === 'en' ? 'Select your path above' : 'Выбери свой путь выше'}</div>`;
+                return;
+            }
+
+            const majorData = facultyData[selectedMajor];
+            let totalCredits = majorData.majorCredits;
+            let minorText = currentLang === 'en' ? 'No Minor' : 'Без дополнительной';
+            let minorCreditsText = '';
+
+            if (selectedMinor) {
+                const minorData = facultyData[selectedMinor];
+                totalCredits += minorData.minorCredits;
+                minorText = facultyNames[selectedMinor][currentLang];
+                minorCreditsText = `(${minorData.minorCredits} ${currentLang === 'en' ? 'credits' : 'кредитов'})`;
+            }
+
+            container.innerHTML = `
+                <div class="result-content">
+                    <div class="result-path">
+                        <div class="result-major">
+                            <span class="result-label">${currentLang === 'en' ? 'Major' : 'Основная'}</span>
+                            <span class="result-value">${facultyNames[selectedMajor][currentLang]}</span>
+                            <span class="result-credits">${majorData.majorCredits} ${currentLang === 'en' ? 'credits' : 'кредитов'}</span>
+                        </div>
+                        <div class="result-plus">+</div>
+                        <div class="result-minor">
+                            <span class="result-label">${currentLang === 'en' ? 'Minor' : 'Дополнительная'}</span>
+                            <span class="result-value">${minorText}</span>
+                            <span class="result-credits">${minorCreditsText || '—'}</span>
+                        </div>
+                    </div>
+                    <div class="result-total">
+                        <span class="total-label">${currentLang === 'en' ? 'Total Credits Required' : 'Всего требуется кредитов'}</span>
+                        <span class="total-value">${totalCredits}</span>
+                    </div>
+                    <div class="result-duration">
+                        <span>${majorData.duration[currentLang]}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ===== МОДАЛЬНОЕ ОКНО =====
+        function openFaculty(facultyId) {
+            const modal = document.getElementById('facultyModal');
+            modal.dataset.faculty = facultyId;
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            updateModalContent(facultyId);
+            switchTab('overview');
+        }
+
+        function closeFaculty() {
+            const modal = document.getElementById('facultyModal');
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function updateModalContent(facultyId) {
+            const data = facultyData[facultyId];
+            const header = document.getElementById('modalHeader');
+
+            let minorInfo = '';
+            if (data.minorAvailable) {
+                const minorNames = data.availableMinors.map(id => facultyNames[id][currentLang]).join(', ');
+                minorInfo = `
+                    <div class="modal-minor-info">
+                        <span class="minor-label">${currentLang === 'en' ? 'Available Minors:' : 'Доступные дополнительные:'}</span>
+                        <span class="minor-list">${minorNames}</span>
+                    </div>
+                `;
+            } else {
+                minorInfo = `
+                    <div class="modal-minor-info unavailable">
+                        <span>${currentLang === 'en' ? 'Minor not available for this program' : 'Дополнительная специальность недоступна'}</span>
+                    </div>
+                `;
+            }
+
+            header.innerHTML = `
+                <div class="modal-icon">${data.icon}</div>
+                <h2>${data.name[currentLang]}</h2>
+                <p class="modal-tagline">${data.tagline[currentLang]}</p>
+                <div class="modal-stats">
+                    <div class="stat">
+                        <span class="stat-value">${data.duration[currentLang]}</span>
+                        <span class="stat-label">${currentLang === 'en' ? 'Duration' : 'Длительность'}</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">${data.majorCredits}</span>
+                        <span class="stat-label">${currentLang === 'en' ? 'Major Credits' : 'Кредитов (осн.)'}</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">${data.seats}</span>
+                        <span class="stat-label">${currentLang === 'en' ? 'Seats' : 'Мест'}</span>
+                    </div>
+                </div>
+                ${minorInfo}
+            `;
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const modal = document.getElementById('facultyModal');
+            const facultyId = modal.dataset.faculty;
+            const data = facultyData[facultyId];
+            const content = document.getElementById('tabContent');
+
+            if (tabId === 'overview') {
+                content.innerHTML = `
+                    <div class="tab-overview">
+                        <h3>${currentLang === 'en' ? 'About the Program' : 'О программе'}</h3>
+                        <p>${data.overview[currentLang]}</p>
+                        <div class="degree-info">
+                            <span class="degree-label">${currentLang === 'en' ? 'Degree Awarded' : 'Присваиваемая степень'}</span>
+                            <span class="degree-value">${data.degree[currentLang]}</span>
+                        </div>
+                    </div>
+                `;
+            } else if (tabId === 'curriculum') {
+                let coursesHtml = data.courses.map((course, index) => `
+                    <div class="course-item" onclick="toggleCourse(${index})">
+                        <div class="course-header">
+                            <span class="course-name">${course.name[currentLang]}</span>
+                            <span class="course-hours">${course.hours} ${currentLang === 'en' ? 'hrs' : 'ч'}</span>
+                        </div>
+                        <div class="course-desc" id="course-${index}">
+                            <p>${course.desc[currentLang]}</p>
+                        </div>
+                    </div>
+                `).join('');
+
+                content.innerHTML = `
+                    <div class="tab-curriculum">
+                        <h3>${currentLang === 'en' ? 'Core Courses' : 'Основные курсы'}</h3>
+                        <p class="curriculum-note">${currentLang === 'en' ? 'Click on a course to view details' : 'Нажмите на курс для подробностей'}</p>
+                        <div class="courses-list">${coursesHtml}</div>
+                    </div>
+                `;
+            } else if (tabId === 'requirements') {
+                let materialsHtml = data.materials.map(mat => `<li>${mat[currentLang]}</li>`).join('');
+
+                content.innerHTML = `
+                    <div class="tab-requirements">
+                        <h3>${currentLang === 'en' ? 'Required Materials' : 'Необходимые материалы'}</h3>
+                        <ul class="materials-list">${materialsHtml}</ul>
+                        <div class="requirements-note">
+                            <p>${currentLang === 'en'
+                                ? 'Additional materials may be required for specific courses. Students will be notified privately.'
+                                : 'Для отдельных курсов могут потребоваться дополнительные материалы. Студенты будут уведомлены лично.'}</p>
+                        </div>
+                    </div>
+                `;
+            } else if (tabId === 'careers') {
+                let careersHtml = data.careers.map(career => `
+                    <div class="career-item"><span>${career[currentLang]}</span></div>
+                `).join('');
+
+                content.innerHTML = `
+                    <div class="tab-careers">
+                        <h3>${currentLang === 'en' ? 'Career Paths' : 'Карьерные пути'}</h3>
+                        <p class="careers-intro">${currentLang === 'en'
+                            ? 'Our graduates find positions in organizations that value discretion and competence.'
+                            : 'Наши выпускники находят должности в организациях, ценящих благоразумие и компетентность.'}</p>
+                        <div class="careers-list">${careersHtml}</div>
+                    </div>
+                `;
+            }
+        }
+
+        function toggleCourse(index) {
+            document.getElementById(`course-${index}`).classList.toggle('open');
+        }
+
+        // ===== СОБЫТИЯ =====
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.menu-container')) {
+                document.getElementById('menuList').classList.remove('open');
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeFaculty();
+        });
+
+        // Курсор
+        const cursor = document.querySelector('.cursor');
+        const follower = document.querySelector('.cursor-follower');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            setTimeout(() => {
+                follower.style.left = e.clientX + 'px';
+                follower.style.top = e.clientY + 'px';
+            }, 80);
+        });
+
+        document.querySelectorAll('a, button, .faculty-card, .course-item, .builder-option').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+                follower.classList.add('hover');
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+                follower.classList.remove('hover');
+            });
+        });
+
+        window.onload = () => setLanguage(localStorage.getItem('language') || 'en');
+    </script>
+
+</body>
+</html>
