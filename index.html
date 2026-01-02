@@ -12,44 +12,38 @@
 
     <!-- Навигация -->
     <nav class="navbar">
-        <a href="index.html" class="logo">Aldridge University</a>
+        <a href="index.html" class="logo" data-en="Aldridge University" data-ru="Университет Олдридж">Aldridge University</a>
 
-        <div class="nav-center">
-            <button class="nav-toggle" onclick="toggleNav()">
+        <!-- Выпадающее меню -->
+        <div class="menu-container">
+            <button class="menu-btn" onclick="toggleMenu()">
                 <i class="fas fa-bars"></i>
                 <span data-en="Menu" data-ru="Меню">Menu</span>
             </button>
+            <ul class="menu-list" id="menuList">
+                <li><a href="index.html" data-en="Home" data-ru="Главная">Home</a></li>
+                <li><a href="history.html" data-en="History" data-ru="История">History</a></li>
+                <li><a href="admissions.html" data-en="Admissions" data-ru="Приём">Admissions</a></li>
+                <li><a href="faculties.html" data-en="Faculties" data-ru="Факультеты">Faculties</a></li>
+                <li><a href="clubs.html" data-en="Clubs" data-ru="Клубы">Clubs</a></li>
+                <li><a href="staff.html" data-en="Staff" data-ru="Преподаватели">Staff</a></li>
+                <li><a href="students.html" data-en="Students" data-ru="Студенты">Students</a></li>
+                <li><a href="families.html" data-en="Families" data-ru="Семьи">Families</a></li>
+                <li><a href="map.html" data-en="Map" data-ru="Карта">Map</a></li>
+                <li><a href="forum.html" data-en="Forum" data-ru="Форум">Forum</a></li>
+                <li><a href="calendar.html" data-en="Calendar" data-ru="Календарь">Calendar</a></li>
+            </ul>
         </div>
 
-        <div class="nav-right">
-            <div class="lang-switch">
-                <button onclick="setLanguage('en')" id="btn-en" class="active">EN</button>
-                <span>/</span>
-                <button onclick="setLanguage('ru')" id="btn-ru">RU</button>
-            </div>
-        </div>
-
-        <!-- Выпадающее меню -->
-        <div class="nav-dropdown" id="navDropdown">
-            <div class="dropdown-grid">
-                <a href="index.html"><i class="fas fa-home"></i><span data-en="Home" data-ru="Главная">Home</span></a>
-                <a href="history.html"><i class="fas fa-landmark"></i><span data-en="History" data-ru="История">History</span></a>
-                <a href="admissions.html"><i class="fas fa-key"></i><span data-en="Admissions" data-ru="Приём">Admissions</span></a>
-                <a href="faculties.html"><i class="fas fa-graduation-cap"></i><span data-en="Faculties" data-ru="Факультеты">Faculties</span></a>
-                <a href="clubs.html"><i class="fas fa-users"></i><span data-en="Clubs" data-ru="Клубы">Clubs</span></a>
-                <a href="staff.html"><i class="fas fa-chalkboard-teacher"></i><span data-en="Staff" data-ru="Преподаватели">Staff</span></a>
-                <a href="students.html"><i class="fas fa-user-graduate"></i><span data-en="Students" data-ru="Студенты">Students</span></a>
-                <a href="families.html"><i class="fas fa-crown"></i><span data-en="Families" data-ru="Семьи">Families</span></a>
-                <a href="map.html"><i class="fas fa-map"></i><span data-en="Map" data-ru="Карта">Map</span></a>
-                <a href="forum.html"><i class="fas fa-comments"></i><span data-en="Forum" data-ru="Форум">Forum</span></a>
-                <a href="calendar.html"><i class="fas fa-calendar"></i><span data-en="Calendar" data-ru="Календарь">Calendar</span></a>
-            </div>
+        <div class="lang-switch">
+            <button onclick="setLanguage('en')" id="btn-en" class="active">EN</button>
+            <span>/</span>
+            <button onclick="setLanguage('ru')" id="btn-ru">RU</button>
         </div>
     </nav>
 
     <!-- Hero -->
     <header class="hero">
-        <div class="hero-overlay"></div>
         <div class="hero-content">
             <p class="hero-subtitle" data-en="Est. 1847 · New York" data-ru="Осн. 1847 · Нью-Йорк">Est. 1847 · New York</p>
             <h1 data-en="Aldridge University" data-ru="Университет Олдридж">Aldridge University</h1>
@@ -60,40 +54,45 @@
 
     <!-- О нас -->
     <section class="about">
-        <div class="about-content">
-            <h2 data-en="An Institution Unlike Any Other" data-ru="Учреждение, не похожее ни на одно другое">An Institution Unlike Any Other</h2>
-            <p data-en="For nearly two centuries, Aldridge has shaped leaders who understand that true power lies not in the light, but in the shadows. Our walls hold secrets. Our halls forge legacies."
-               data-ru="Почти два столетия Олдридж формирует лидеров, которые понимают, что истинная власть кроется не в свете, а в тени. Наши стены хранят тайны. Наши залы куют наследие.">
-                For nearly two centuries, Aldridge has shaped leaders who understand that true power lies not in the light, but in the shadows. Our walls hold secrets. Our halls forge legacies.
-            </p>
-        </div>
+        <h2 data-en="An Institution Unlike Any Other" data-ru="Учреждение, не похожее ни на одно другое">An Institution Unlike Any Other</h2>
+        <p data-en="For nearly two centuries, Aldridge has shaped leaders who understand that true power lies not in the light, but in the shadows. Our walls hold secrets. Our halls forge legacies."
+           data-ru="Почти два столетия Олдридж формирует лидеров, которые понимают, что истинная власть кроется не в свете, а в тени. Наши стены хранят тайны. Наши залы куют наследие.">
+            For nearly two centuries, Aldridge has shaped leaders who understand that true power lies not in the light, but in the shadows. Our walls hold secrets. Our halls forge legacies.
+        </p>
     </section>
 
     <!-- Семьи -->
     <section class="families">
         <h2 data-en="The Founding Houses" data-ru="Семьи-основатели">The Founding Houses</h2>
         <div class="families-grid">
-            <a href="families.html#winthrop" class="family-card winthrop">
-                <span class="family-name" data-en="Winthrop" data-ru="Уинтроп">Winthrop</span>
-                <span class="family-desc" data-en="Power & Influence" data-ru="Власть и Влияние">Power & Influence</span>
+            <a href="families.html#winthrop" class="family-card">
+                <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600" alt="Winthrop">
+                <div class="family-info">
+                    <h3 data-en="Winthrop" data-ru="Уинтроп">Winthrop</h3>
+                    <p data-en="Power & Influence" data-ru="Власть и Влияние">Power & Influence</p>
+                </div>
             </a>
-            <a href="families.html#stjohn" class="family-card stjohn">
-                <span class="family-name" data-en="St. John" data-ru="Сент-Джон">St. John</span>
-                <span class="family-desc" data-en="Medicine & Secrets" data-ru="Медицина и Тайны">Medicine & Secrets</span>
+            <a href="families.html#stjohn" class="family-card">
+                <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600" alt="St. John">
+                <div class="family-info">
+                    <h3 data-en="St. John" data-ru="Сент-Джон">St. John</h3>
+                    <p data-en="Medicine & Secrets" data-ru="Медицина и Тайны">Medicine & Secrets</p>
+                </div>
             </a>
-            <a href="families.html#harcourt" class="family-card harcourt">
-                <span class="family-name" data-en="Harcourt" data-ru="Харкорт">Harcourt</span>
-                <span class="family-desc" data-en="Loyalty & Action" data-ru="Верность и Действие">Loyalty & Action</span>
+            <a href="families.html#harcourt" class="family-card">
+                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600" alt="Harcourt">
+                <div class="family-info">
+                    <h3 data-en="Harcourt" data-ru="Харкорт">Harcourt</h3>
+                    <p data-en="Loyalty & Action" data-ru="Верность и Действие">Loyalty & Action</p>
+                </div>
             </a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-top">
-            <span class="footer-logo" data-en="Aldridge University" data-ru="Университет Олдридж">Aldridge University</span>
-            <p class="footer-motto">"In Umbra, Florimus"</p>
-        </div>
+        <p class="footer-logo" data-en="Aldridge University" data-ru="Университет Олдридж">Aldridge University</p>
+        <p class="footer-motto">"In Umbra, Florimus"</p>
         <div class="footer-links">
             <a href="ТВОЯ_ССЫЛКА_ТГ" target="_blank"><i class="fab fa-telegram"></i></a>
             <a href="ТВОЯ_ССЫЛКА_JANITOR" target="_blank"><i class="fas fa-robot"></i></a>
@@ -111,14 +110,13 @@
             localStorage.setItem('language', lang);
         }
 
-        function toggleNav() {
-            document.getElementById('navDropdown').classList.toggle('open');
+        function toggleMenu() {
+            document.getElementById('menuList').classList.toggle('open');
         }
 
-        // Закрыть меню при клике вне
         document.addEventListener('click', (e) => {
-            if (!e.target.closest('.nav-toggle') && !e.target.closest('.nav-dropdown')) {
-                document.getElementById('navDropdown').classList.remove('open');
+            if (!e.target.closest('.menu-container')) {
+                document.getElementById('menuList').classList.remove('open');
             }
         });
 
