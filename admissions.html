@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admissions — Aldridge University</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Кастомный курсор -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Навигация -->
+    <nav class="navbar">
+        <a href="index.html" class="logo" data-en="Aldridge University" data-ru="Университет Олдридж">Aldridge University</a>
+
+        <div class="nav-right">
+            <div class="menu-container">
+                <button class="menu-btn" onclick="toggleMenu()">
+                    <span data-en="Menu" data-ru="Меню">Menu</span>
+                </button>
+                <ul class="menu-list" id="menuList">
+                    <li><a href="index.html" data-en="Home" data-ru="Главная">Home</a></li>
+                    <li><a href="history.html" data-en="History" data-ru="История">History</a></li>
+                    <li><a href="admissions.html" data-en="Admissions" data-ru="Приём">Admissions</a></li>
+                    <li><a href="faculties.html" data-en="Faculties" data-ru="Факультеты">Faculties</a></li>
+                    <li><a href="clubs.html" data-en="Clubs" data-ru="Клубы">Clubs</a></li>
+                    <li><a href="staff.html" data-en="Staff" data-ru="Преподаватели">Staff</a></li>
+                    <li><a href="students.html" data-en="Students" data-ru="Студенты">Students</a></li>
+                    <li><a href="families.html" data-en="Families" data-ru="Семьи">Families</a></li>
+                    <li><a href="map.html" data-en="Map" data-ru="Карта">Map</a></li>
+                    <li><a href="forum.html" data-en="Forum" data-ru="Форум">Forum</a></li>
+                    <li><a href="calendar.html" data-en="Calendar" data-ru="Календарь">Calendar</a></li>
+                </ul>
+            </div>
+
+            <div class="lang-switch">
+                <button onclick="setLanguage('en')" id="btn-en" class="active">EN</button>
+                <span>/</span>
+                <button onclick="setLanguage('ru')" id="btn-ru">RU</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-header-bg" style="background-image: url('images/admissions-bg.jpg');"></div>
+        <div class="page-header-content">
+            <h1 data-en="Admissions" data-ru="Приём">Admissions</h1>
+            <p data-en="We do not seek students. Students find us." data-ru="Мы не ищем студентов. Студенты находят нас.">We do not seek students. Students find us.</p>
+        </div>
+    </header>
+
+    <!-- Intro -->
+    <section class="admissions-intro">
+        <p data-en="Aldridge University is not an institution one simply applies to. Admission is a privilege extended to those who belong — by blood, by bond, or by exceptional circumstance."
+           data-ru="Университет Олдридж — это не учреждение, в которое просто подают заявку. Приём — это привилегия, предоставляемая тем, кто принадлежит — по крови, по связям или по исключительным обстоятельствам.">
+            Aldridge University is not an institution one simply applies to. Admission is a privilege extended to those who belong — by blood, by bond, or by exceptional circumstance.
+        </p>
+    </section>
+
+    <!-- Pathways -->
+    <section class="pathways">
+        <h2 data-en="Pathways to Admission" data-ru="Пути поступления">Pathways to Admission</h2>
+
+        <div class="pathway-cards">
+            <div class="pathway-card">
+                <div class="pathway-icon">I</div>
+                <h3 data-en="Legacy Admission" data-ru="Приём по наследству">Legacy Admission</h3>
+                <p data-en="Children and direct relatives of the founding families — Winthrop, St. John, and Harcourt — receive automatic admission. No application required. No questions asked."
+                   data-ru="Дети и прямые родственники семей-основателей — Уинтроп, Сент-Джон и Харкорт — получают автоматический приём. Заявка не требуется. Вопросов не задают.">
+                    Children and direct relatives of the founding families — Winthrop, St. John, and Harcourt — receive automatic admission. No application required. No questions asked.
+                </p>
+                <span class="pathway-tag" data-en="Guaranteed" data-ru="Гарантировано">Guaranteed</span>
+            </div>
+
+            <div class="pathway-card">
+                <div class="pathway-icon">II</div>
+                <h3 data-en="Referral Admission" data-ru="Приём по рекомендации">Referral Admission</h3>
+                <p data-en="Those with connections to alumni, Board members, or 'friends of the institution' may be considered. A personal recommendation from the right person opens doors that remain closed to others."
+                   data-ru="Те, кто имеет связи с выпускниками, членами Совета или «друзьями учреждения», могут быть рассмотрены. Личная рекомендация от нужного человека открывает двери, закрытые для других.">
+                    Those with connections to alumni, Board members, or 'friends of the institution' may be considered. A personal recommendation from the right person opens doors that remain closed to others.
+                </p>
+                <span class="pathway-tag" data-en="By Invitation" data-ru="По приглашению">By Invitation</span>
+            </div>
+
+            <div class="pathway-card">
+                <div class="pathway-icon">III</div>
+                <h3 data-en="Merit Admission" data-ru="Приём по заслугам">Merit Admission</h3>
+                <p data-en="Rarely, Aldridge opens limited positions for exceptional candidates. These individuals must demonstrate not only academic excellence but... potential usefulness to the institution's interests."
+                   data-ru="Редко Олдридж открывает ограниченные места для исключительных кандидатов. Эти люди должны продемонстрировать не только академическое превосходство, но и... потенциальную полезность для интересов учреждения.">
+                    Rarely, Aldridge opens limited positions for exceptional candidates. These individuals must demonstrate not only academic excellence but... potential usefulness to the institution's interests.
+                </p>
+                <span class="pathway-tag" data-en="Highly Selective" data-ru="Высокий отбор">Highly Selective</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Requirements -->
+    <section class="requirements">
+        <h2 data-en="Requirements" data-ru="Требования">Requirements</h2>
+
+        <div class="requirements-grid">
+            <!-- Standard Tests -->
+            <div class="requirement-block">
+                <h3 data-en="Standardized Testing (USA)" data-ru="Стандартизированные тесты (США)">Standardized Testing (USA)</h3>
+                <p class="requirement-note" data-en="Required for Merit Admission candidates" data-ru="Требуется для кандидатов по заслугам">Required for Merit Admission candidates</p>
+
+                <div class="requirement-list">
+                    <div class="requirement-item">
+                        <span class="req-name">SAT</span>
+                        <span class="req-value" data-en="Minimum 1500 / 1600" data-ru="Минимум 1500 / 1600">Minimum 1500 / 1600</span>
+                    </div>
+                    <div class="requirement-item">
+                        <span class="req-name">ACT</span>
+                        <span class="req-value" data-en="Minimum 34 / 36" data-ru="Минимум 34 / 36">Minimum 34 / 36</span>
+                    </div>
+                    <div class="requirement-item">
+                        <span class="req-name">GPA</span>
+                        <span class="req-value" data-en="Minimum 3.9 / 4.0 (unweighted)" data-ru="Минимум 3.9 / 4.0 (невзвешенный)">Minimum 3.9 / 4.0 (unweighted)</span>
+                    </div>
+                    <div class="requirement-item">
+                        <span class="req-name" data-en="AP Courses" data-ru="Курсы AP">AP Courses</span>
+                        <span class="req-value" data-en="Minimum 5 courses, scores 4-5" data-ru="Минимум 5 курсов, оценки 4-5">Minimum 5 courses, scores 4-5</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aldridge Internal -->
+            <div class="requirement-block">
+                <h3 data-en="The Aldridge Examinations" data-ru="Экзамены Олдриджа">The Aldridge Examinations</h3>
+                <p class="requirement-note" data-en="Required for all non-Legacy candidates" data-ru="Требуется для всех кандидатов не по наследству">Required for all non-Legacy candidates</p>
+
+                <div class="requirement-list">
+                    <div class="requirement-item">
+                        <span class="req-name" data-en="The Aldridge Assessment" data-ru="Оценка Олдриджа">The Aldridge Assessment</span>
+                        <span class="req-desc" data-en="A comprehensive evaluation of critical thinking, ethical flexibility, and decision-making under pressure." data-ru="Комплексная оценка критического мышления, этической гибкости и принятия решений под давлением.">A comprehensive evaluation of critical thinking, ethical flexibility, and decision-making under pressure.</span>
+                    </div>
+                    <div class="requirement-item">
+                        <span class="req-name" data-en="The Lineage Review" data-ru="Проверка родословной">The Lineage Review</span>
+                        <span class="req-desc" data-en="Background verification extending three generations. Family history, associations, and... discretions are examined." data-ru="Проверка биографии на три поколения. Изучается семейная история, связи и... проступки.">Background verification extending three generations. Family history, associations, and... discretions are examined.</span>
+                    </div>
+                    <div class="requirement-item">
+                        <span class="req-name" data-en="The Interview" data-ru="Собеседование">The Interview</span>
+                        <span class="req-desc" data-en="A personal meeting with representatives of the Board. Location and format vary. Preparation is... inadvisable." data-ru="Личная встреча с представителями Совета. Место и формат варьируются. Подготовка... не рекомендуется.">A personal meeting with representatives of the Board. Location and format vary. Preparation is... inadvisable.</span>
+                    </div>
+                    <div class="requirement-item">
+                        <span class="req-name" data-en="The Discretion Evaluation" data-ru="Оценка благоразумия">The Discretion Evaluation</span>
+                        <span class="req-desc" data-en="The nature of this examination is not disclosed to candidates beforehand. Those who pass understand why. Those who fail... do not remember." data-ru="Характер этого экзамена не раскрывается кандидатам заранее. Те, кто проходит, понимают почему. Те, кто не проходит... не помнят.">The nature of this examination is not disclosed to candidates beforehand. Those who pass understand why. Those who fail... do not remember.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Warning -->
+    <section class="admissions-warning">
+        <div class="warning-content">
+            <h3 data-en="A Note to Prospective Students" data-ru="Примечание для будущих студентов">A Note to Prospective Students</h3>
+            <p data-en="If you are reading this and believe you qualify for Merit Admission, you likely do not. Those who belong at Aldridge do not search for us. They are found."
+               data-ru="Если вы читаете это и считаете, что подходите для приёма по заслугам, скорее всего — нет. Те, кто принадлежит Олдриджу, не ищут нас. Их находят.">
+                If you are reading this and believe you qualify for Merit Admission, you likely do not. Those who belong at Aldridge do not search for us. They are found.
+            </p>
+            <p class="warning-motto">"In Umbra, Florimus"</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-logo" data-en="Aldridge University" data-ru="Университет Олдридж">Aldridge University</p>
+        <div class="footer-links">
+            <a href="ТВОЯ_ССЫЛКА_ТГ" target="_blank">Telegram</a>
+            <span>·</span>
+            <a href="ТВОЯ_ССЫЛКА_JANITOR" target="_blank">JanitorAI</a>
+        </div>
+        <p class="footer-copy">© 2024</p>
+    </footer>
+
+    <script>
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-en]').forEach(el => {
+                el.textContent = el.getAttribute('data-' + lang);
+            });
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-ru').classList.toggle('active', lang === 'ru');
+            localStorage.setItem('language', lang);
+        }
+
+        function toggleMenu() {
+            document.getElementById('menuList').classList.toggle('open');
+        }
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.menu-container')) {
+                document.getElementById('menuList').classList.remove('open');
+            }
+        });
+
+        const cursor = document.querySelector('.cursor');
+        const follower = document.querySelector('.cursor-follower');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            setTimeout(() => {
+                follower.style.left = e.clientX + 'px';
+                follower.style.top = e.clientY + 'px';
+            }, 80);
+        });
+
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+                follower.classList.add('hover');
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+                follower.classList.remove('hover');
+            });
+        });
+
+        window.onload = () => setLanguage(localStorage.getItem('language') || 'en');
+    </script>
+
+</body>
+</html>
