@@ -6,44 +6,49 @@
     <title>Aldridge University</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
+
+    <!-- Кастомный курсор -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
 
     <!-- Навигация -->
     <nav class="navbar">
         <a href="index.html" class="logo" data-en="Aldridge University" data-ru="Университет Олдридж">Aldridge University</a>
 
-        <!-- Выпадающее меню -->
-        <div class="menu-container">
-            <button class="menu-btn" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
-                <span data-en="Menu" data-ru="Меню">Menu</span>
-            </button>
-            <ul class="menu-list" id="menuList">
-                <li><a href="index.html" data-en="Home" data-ru="Главная">Home</a></li>
-                <li><a href="history.html" data-en="History" data-ru="История">History</a></li>
-                <li><a href="admissions.html" data-en="Admissions" data-ru="Приём">Admissions</a></li>
-                <li><a href="faculties.html" data-en="Faculties" data-ru="Факультеты">Faculties</a></li>
-                <li><a href="clubs.html" data-en="Clubs" data-ru="Клубы">Clubs</a></li>
-                <li><a href="staff.html" data-en="Staff" data-ru="Преподаватели">Staff</a></li>
-                <li><a href="students.html" data-en="Students" data-ru="Студенты">Students</a></li>
-                <li><a href="families.html" data-en="Families" data-ru="Семьи">Families</a></li>
-                <li><a href="map.html" data-en="Map" data-ru="Карта">Map</a></li>
-                <li><a href="forum.html" data-en="Forum" data-ru="Форум">Forum</a></li>
-                <li><a href="calendar.html" data-en="Calendar" data-ru="Календарь">Calendar</a></li>
-            </ul>
-        </div>
+        <div class="nav-right">
+            <!-- Выпадающее меню -->
+            <div class="menu-container">
+                <button class="menu-btn" onclick="toggleMenu()">
+                    <span data-en="Menu" data-ru="Меню">Menu</span>
+                </button>
+                <ul class="menu-list" id="menuList">
+                    <li><a href="index.html" data-en="Home" data-ru="Главная">Home</a></li>
+                    <li><a href="history.html" data-en="History" data-ru="История">History</a></li>
+                    <li><a href="admissions.html" data-en="Admissions" data-ru="Приём">Admissions</a></li>
+                    <li><a href="faculties.html" data-en="Faculties" data-ru="Факультеты">Faculties</a></li>
+                    <li><a href="clubs.html" data-en="Clubs" data-ru="Клубы">Clubs</a></li>
+                    <li><a href="staff.html" data-en="Staff" data-ru="Преподаватели">Staff</a></li>
+                    <li><a href="students.html" data-en="Students" data-ru="Студенты">Students</a></li>
+                    <li><a href="families.html" data-en="Families" data-ru="Семьи">Families</a></li>
+                    <li><a href="map.html" data-en="Map" data-ru="Карта">Map</a></li>
+                    <li><a href="forum.html" data-en="Forum" data-ru="Форум">Forum</a></li>
+                    <li><a href="calendar.html" data-en="Calendar" data-ru="Календарь">Calendar</a></li>
+                </ul>
+            </div>
 
-        <div class="lang-switch">
-            <button onclick="setLanguage('en')" id="btn-en" class="active">EN</button>
-            <span>/</span>
-            <button onclick="setLanguage('ru')" id="btn-ru">RU</button>
+            <div class="lang-switch">
+                <button onclick="setLanguage('en')" id="btn-en" class="active">EN</button>
+                <span>/</span>
+                <button onclick="setLanguage('ru')" id="btn-ru">RU</button>
+            </div>
         </div>
     </nav>
 
     <!-- Hero -->
     <header class="hero">
+        <div class="hero-bg"></div>
         <div class="hero-content">
             <p class="hero-subtitle" data-en="Est. 1847 · New York" data-ru="Осн. 1847 · Нью-Йорк">Est. 1847 · New York</p>
             <h1 data-en="Aldridge University" data-ru="Университет Олдридж">Aldridge University</h1>
@@ -66,21 +71,24 @@
         <h2 data-en="The Founding Houses" data-ru="Семьи-основатели">The Founding Houses</h2>
         <div class="families-grid">
             <a href="families.html#winthrop" class="family-card">
-                <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600" alt="Winthrop">
+                <img src="images/winthrop.jpg" alt="Winthrop">
+                <div class="family-overlay"></div>
                 <div class="family-info">
                     <h3 data-en="Winthrop" data-ru="Уинтроп">Winthrop</h3>
                     <p data-en="Power & Influence" data-ru="Власть и Влияние">Power & Influence</p>
                 </div>
             </a>
             <a href="families.html#stjohn" class="family-card">
-                <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600" alt="St. John">
+                <img src="images/stjohn.jpg" alt="St. John">
+                <div class="family-overlay"></div>
                 <div class="family-info">
                     <h3 data-en="St. John" data-ru="Сент-Джон">St. John</h3>
                     <p data-en="Medicine & Secrets" data-ru="Медицина и Тайны">Medicine & Secrets</p>
                 </div>
             </a>
             <a href="families.html#harcourt" class="family-card">
-                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600" alt="Harcourt">
+                <img src="images/harcourt.jpg" alt="Harcourt">
+                <div class="family-overlay"></div>
                 <div class="family-info">
                     <h3 data-en="Harcourt" data-ru="Харкорт">Harcourt</h3>
                     <p data-en="Loyalty & Action" data-ru="Верность и Действие">Loyalty & Action</p>
@@ -92,15 +100,16 @@
     <!-- Footer -->
     <footer class="footer">
         <p class="footer-logo" data-en="Aldridge University" data-ru="Университет Олдридж">Aldridge University</p>
-        <p class="footer-motto">"In Umbra, Florimus"</p>
         <div class="footer-links">
-            <a href="ТВОЯ_ССЫЛКА_ТГ" target="_blank"><i class="fab fa-telegram"></i></a>
-            <a href="ТВОЯ_ССЫЛКА_JANITOR" target="_blank"><i class="fas fa-robot"></i></a>
+            <a href="ТВОЯ_ССЫЛКА_ТГ" target="_blank">Telegram</a>
+            <span>·</span>
+            <a href="ТВОЯ_ССЫЛКА_JANITOR" target="_blank">JanitorAI</a>
         </div>
-        <p class="footer-copy" data-en="© 2024 Aldridge University" data-ru="© 2024 Университет Олдридж">© 2024 Aldridge University</p>
+        <p class="footer-copy">© 2024</p>
     </footer>
 
     <script>
+        // Язык
         function setLanguage(lang) {
             document.querySelectorAll('[data-en]').forEach(el => {
                 el.textContent = el.getAttribute('data-' + lang);
@@ -110,6 +119,7 @@
             localStorage.setItem('language', lang);
         }
 
+        // Меню
         function toggleMenu() {
             document.getElementById('menuList').classList.toggle('open');
         }
@@ -118,6 +128,31 @@
             if (!e.target.closest('.menu-container')) {
                 document.getElementById('menuList').classList.remove('open');
             }
+        });
+
+        // Кастомный курсор
+        const cursor = document.querySelector('.cursor');
+        const follower = document.querySelector('.cursor-follower');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+
+            setTimeout(() => {
+                follower.style.left = e.clientX + 'px';
+                follower.style.top = e.clientY + 'px';
+            }, 80);
+        });
+
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+                follower.classList.add('hover');
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+                follower.classList.remove('hover');
+            });
         });
 
         window.onload = () => setLanguage(localStorage.getItem('language') || 'en');
