@@ -5,20 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aldridge University</title>
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Переключатель языка -->
-    <div class="language-switch">
-        <button onclick="setLanguage('en')" id="btn-en" class="active">EN</button>
-        <button onclick="setLanguage('ru')" id="btn-ru">RU</button>
-    </div>
-
     <!-- Навигация -->
     <nav class="navbar">
-        <div class="logo">Aldridge University</div>
-        <ul class="nav-links">
+        <div class="nav-top">
+            <div class="logo" data-en="Aldridge University" data-ru="Университет Олдридж">Aldridge University</div>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="language-switch">
+                <button onclick="setLanguage('en')" id="btn-en" class="active">EN</button>
+                <button onclick="setLanguage('ru')" id="btn-ru">RU</button>
+            </div>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
             <li><a href="index.html" data-en="Home" data-ru="Главная">Home</a></li>
             <li><a href="history.html" data-en="History" data-ru="История">History</a></li>
             <li><a href="admissions.html" data-en="Admissions" data-ru="Приём">Admissions</a></li>
@@ -33,78 +39,120 @@
         </ul>
     </nav>
 
+    <!-- Декоративная линия -->
+    <div class="deco-line">
+        <span class="deco-diamond">◆</span>
+    </div>
+
     <!-- Главный баннер -->
     <header class="hero">
-        <div class="hero-content">
-            <h1>Aldridge University</h1>
-            <p class="motto">"In Umbra, Florimus"</p>
-            <p class="motto-translation" data-en="In shadow, we flourish" data-ru="В тени мы процветаем">In shadow, we flourish</p>
-            <p class="tagline" data-en="Est. 1847 • New York" data-ru="Основан в 1847 • Нью-Йорк">Est. 1847 • New York</p>
+        <div class="hero-frame">
+            <div class="hero-content">
+                <div class="deco-top">✦</div>
+                <h1 data-en="Aldridge University" data-ru="Университет Олдридж">Aldridge University</h1>
+                <p class="motto">"In Umbra, Florimus"</p>
+                <p class="motto-translation" data-en="In shadow, we flourish" data-ru="В тени мы процветаем">In shadow, we flourish</p>
+                <div class="deco-separator">
+                    <span>◈</span>
+                </div>
+                <p class="tagline" data-en="Established 1847 • New York" data-ru="Основан в 1847 • Нью-Йорк">Established 1847 • New York</p>
+                <div class="deco-bottom">✦</div>
+            </div>
         </div>
     </header>
 
     <!-- Приветствие -->
     <section class="welcome">
-        <h2 data-en="Welcome" data-ru="Добро пожаловать">Welcome</h2>
-        <p data-en="Aldridge University is an exclusive institution for the chosen few. For nearly two centuries, we have shaped future leaders, guardians of tradition, and those who understand the true price of power."
-           data-ru="Aldridge University — закрытое учебное заведение для избранных. На протяжении почти двух столетий мы формируем будущих лидеров, хранителей традиций и тех, кто понимает истинную цену власти.">
-            Aldridge University is an exclusive institution for the chosen few. For nearly two centuries, we have shaped future leaders, guardians of tradition, and those who understand the true price of power.
-        </p>
-        <p data-en="Our walls remember generations of great families. Our corridors hold secrets that will never leave this campus."
-           data-ru="Наши стены помнят поколения великих семей. Наши коридоры хранят секреты, которые никогда не покинут этот кампус.">
-            Our walls remember generations of great families. Our corridors hold secrets that will never leave this campus.
-        </p>
+        <div class="section-frame">
+            <h2 data-en="Welcome" data-ru="Добро пожаловать">Welcome</h2>
+            <div class="welcome-text">
+                <p data-en="Aldridge University is an exclusive institution for the chosen few. For nearly two centuries, we have shaped future leaders, guardians of tradition, and those who understand the true price of power."
+                   data-ru="Aldridge University — закрытое учебное заведение для избранных. На протяжении почти двух столетий мы формируем будущих лидеров, хранителей традиций и тех, кто понимает истинную цену власти.">
+                    Aldridge University is an exclusive institution for the chosen few. For nearly two centuries, we have shaped future leaders, guardians of tradition, and those who understand the true price of power.
+                </p>
+                <p data-en="Our walls remember generations of great families. Our corridors hold secrets that will never leave this campus."
+                   data-ru="Наши стены помнят поколения великих семей. Наши коридоры хранят секреты, которые никогда не покинут этот кампус.">
+                    Our walls remember generations of great families. Our corridors hold secrets that will never leave this campus.
+                </p>
+            </div>
+        </div>
     </section>
+
+    <!-- Декоративная линия -->
+    <div class="deco-line">
+        <span class="deco-diamond">◆</span>
+    </div>
 
     <!-- Три семьи -->
     <section class="families-preview">
         <h2 data-en="Board of Trustees" data-ru="Попечительский совет">Board of Trustees</h2>
         <div class="family-cards">
-            <div class="family-card">
-                <h3>Winthrop</h3>
+            <a href="families.html#winthrop" class="family-card">
+                <div class="card-corner tl"></div>
+                <div class="card-corner tr"></div>
+                <div class="card-corner bl"></div>
+                <div class="card-corner br"></div>
+                <h3 data-en="Winthrop" data-ru="Уинтроп">Winthrop</h3>
+                <div class="card-divider">―</div>
                 <p data-en="Connections. Money. Control." data-ru="Связи. Деньги. Контроль.">Connections. Money. Control.</p>
-            </div>
-            <div class="family-card">
-                <h3>St. John</h3>
+            </a>
+            <a href="families.html#stjohn" class="family-card">
+                <div class="card-corner tl"></div>
+                <div class="card-corner tr"></div>
+                <div class="card-corner bl"></div>
+                <div class="card-corner br"></div>
+                <h3 data-en="St. John" data-ru="Сент-Джон">St. John</h3>
+                <div class="card-divider">―</div>
                 <p data-en="Medicine. Science. Solutions." data-ru="Медицина. Наука. Решения.">Medicine. Science. Solutions.</p>
-            </div>
-            <div class="family-card">
-                <h3>Harcourt</h3>
+            </a>
+            <a href="families.html#harcourt" class="family-card">
+                <div class="card-corner tl"></div>
+                <div class="card-corner tr"></div>
+                <div class="card-corner bl"></div>
+                <div class="card-corner br"></div>
+                <h3 data-en="Harcourt" data-ru="Харкорт">Harcourt</h3>
+                <div class="card-divider">―</div>
                 <p data-en="Loyalty. Action. Results." data-ru="Преданность. Действие. Результат.">Loyalty. Action. Results.</p>
-            </div>
+            </a>
         </div>
     </section>
 
     <!-- Подвал -->
     <footer class="footer">
-        <div class="footer-content">
-            <p class="footer-motto">"In Umbra, Florimus"</p>
-            <p data-en="© 2024 Aldridge University. All rights reserved." data-ru="© 2024 Aldridge University. Все права защищены.">© 2024 Aldridge University. All rights reserved.</p>
-            <div class="contacts">
-                <a href="ТВОЯ_ССЫЛКА_НА_ТГ" target="_blank">Telegram</a>
-                <span>•</span>
-                <a href="ТВОЯ_ССЫЛКА_НА_JANITOR" target="_blank">JanitorAI</a>
-            </div>
+        <div class="footer-deco">◆ ◇ ◆</div>
+        <p class="footer-motto">"In Umbra, Florimus"</p>
+        <p data-en="© 2024 Aldridge University. All rights reserved."
+           data-ru="© 2024 Университет Олдридж. Все права защищены.">
+            © 2024 Aldridge University. All rights reserved.
+        </p>
+        <div class="contacts">
+            <a href="ТВОЯ_ССЫЛКА_НА_ТГ" target="_blank">Telegram</a>
+            <span>◈</span>
+            <a href="ТВОЯ_ССЫЛКА_НА_JANITOR" target="_blank">JanitorAI</a>
         </div>
+        <div class="footer-deco-bottom">◆ ◇ ◆</div>
     </footer>
 
-    <!-- Скрипт переключения языка -->
+    <!-- Скрипты -->
     <script>
+        // Переключение языка
         function setLanguage(lang) {
             const elements = document.querySelectorAll('[data-en]');
             elements.forEach(el => {
                 el.textContent = el.getAttribute('data-' + lang);
             });
-
-            // Меняем активную кнопку
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
             document.getElementById('btn-ru').classList.toggle('active', lang === 'ru');
-
-            // Сохраняем выбор
             localStorage.setItem('language', lang);
         }
 
-        // При загрузке страницы проверяем сохранённый язык
+        // Переключение меню
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('open');
+            document.querySelector('.menu-toggle').classList.toggle('active');
+        }
+
+        // При загрузке
         window.onload = function() {
             const savedLang = localStorage.getItem('language') || 'en';
             setLanguage(savedLang);
