@@ -746,3 +746,269 @@ body {
         padding: 30px 25px 100px;
     }
 }
+/* ===== ADMISSIONS INTRO ===== */
+.admissions-intro {
+    padding: 100px 50px;
+    max-width: 850px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.admissions-intro p {
+    font-size: 18px;
+    line-height: 2;
+    color: var(--cream-dim);
+    font-style: italic;
+}
+
+/* ===== PATHWAYS ===== */
+.pathways {
+    padding: 80px 50px 100px;
+    background: var(--bg-light);
+}
+
+.pathways h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+    color: var(--cream);
+    margin-bottom: 60px;
+    letter-spacing: 4px;
+}
+
+.pathway-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pathway-card {
+    background: var(--bg);
+    border: 1px solid rgba(201, 162, 39, 0.15);
+    padding: 50px 40px;
+    width: 340px;
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+.pathway-card:hover {
+    border-color: var(--gold-dim);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.pathway-icon {
+    font-family: 'EB Garamond', serif;
+    font-size: 36px;
+    color: var(--gold);
+    margin-bottom: 25px;
+    opacity: 0.6;
+}
+
+.pathway-card h3 {
+    font-family: 'EB Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.pathway-card p {
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--cream-dim);
+    margin-bottom: 25px;
+}
+
+.pathway-tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold-dim);
+    padding: 8px 16px;
+}
+
+/* ===== REQUIREMENTS ===== */
+.requirements {
+    padding: 100px 50px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.requirements h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+    color: var(--cream);
+    margin-bottom: 60px;
+    letter-spacing: 4px;
+}
+
+.requirements-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+}
+
+.requirement-block {
+    background: var(--bg-light);
+    border: 1px solid rgba(201, 162, 39, 0.1);
+    padding: 45px;
+}
+
+.requirement-block h3 {
+    font-family: 'EB Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--gold);
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.requirement-note {
+    font-size: 12px;
+    color: var(--cream-dim);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+}
+
+.requirement-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.requirement-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.req-name {
+    font-family: 'EB Garamond', serif;
+    font-size: 18px;
+    color: var(--cream);
+    letter-spacing: 1px;
+}
+
+.req-value {
+    font-size: 13px;
+    color: var(--gold-dim);
+    letter-spacing: 1px;
+}
+
+.req-desc {
+    font-size: 13px;
+    color: var(--cream-dim);
+    line-height: 1.8;
+}
+
+/* ===== ADMISSIONS WARNING ===== */
+.admissions-warning {
+    padding: 80px 50px;
+    background: var(--bg-light);
+}
+
+.warning-content {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 60px;
+    border: 1px solid rgba(201, 162, 39, 0.2);
+    position: relative;
+}
+
+.warning-content::before,
+.warning-content::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-color: var(--gold-dim);
+    border-style: solid;
+}
+
+.warning-content::before {
+    top: -1px;
+    left: -1px;
+    border-width: 1px 0 0 1px;
+}
+
+.warning-content::after {
+    bottom: -1px;
+    right: -1px;
+    border-width: 0 1px 1px 0;
+}
+
+.warning-content h3 {
+    font-family: 'EB Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+}
+
+.warning-content p {
+    font-size: 15px;
+    line-height: 2;
+    color: var(--cream-dim);
+}
+
+.warning-motto {
+    font-family: 'EB Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--gold);
+    margin-top: 30px;
+}
+
+/* Admissions Responsive */
+@media (max-width: 900px) {
+    .pathway-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pathway-card {
+        width: 100%;
+        max-width: 450px;
+    }
+
+    .requirements-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .admissions-intro {
+        padding: 60px 25px;
+    }
+
+    .pathways, .requirements {
+        padding: 60px 20px;
+    }
+
+    .pathway-card {
+        padding: 35px 25px;
+    }
+
+    .requirement-block {
+        padding: 30px 20px;
+    }
+
+    .warning-content {
+        padding: 40px 25px;
+    }
+}
