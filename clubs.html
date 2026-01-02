@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clubs — Aldridge University</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Кастомный курсор -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Навигация -->
+    <nav class="navbar">
+        <a href="index.html" class="logo" data-en="Aldridge University" data-ru="Университет Олдридж">Aldridge University</a>
+
+        <div class="nav-right">
+            <div class="menu-container">
+                <button class="menu-btn" onclick="toggleMenu()">
+                    <span data-en="Menu" data-ru="Меню">Menu</span>
+                </button>
+                <ul class="menu-list" id="menuList">
+                    <li><a href="index.html" data-en="Home" data-ru="Главная">Home</a></li>
+                    <li><a href="history.html" data-en="History" data-ru="История">History</a></li>
+                    <li><a href="admissions.html" data-en="Admissions" data-ru="Приём">Admissions</a></li>
+                    <li><a href="faculties.html" data-en="Faculties" data-ru="Факультеты">Faculties</a></li>
+                    <li><a href="clubs.html" data-en="Clubs" data-ru="Клубы">Clubs</a></li>
+                    <li><a href="staff.html" data-en="Staff" data-ru="Преподаватели">Staff</a></li>
+                    <li><a href="students.html" data-en="Students" data-ru="Студенты">Students</a></li>
+                    <li><a href="families.html" data-en="Families" data-ru="Семьи">Families</a></li>
+                    <li><a href="map.html" data-en="Map" data-ru="Карта">Map</a></li>
+                    <li><a href="forum.html" data-en="Forum" data-ru="Форум">Forum</a></li>
+                    <li><a href="calendar.html" data-en="Calendar" data-ru="Календарь">Calendar</a></li>
+                </ul>
+            </div>
+
+            <div class="lang-switch">
+                <button onclick="setLanguage('en')" id="btn-en" class="active">EN</button>
+                <span>/</span>
+                <button onclick="setLanguage('ru')" id="btn-ru">RU</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-header-bg" style="background-image: url('images/clubs-bg.jpg');"></div>
+        <div class="page-header-content">
+            <h1 data-en="Clubs & Societies" data-ru="Клубы и Общества">Clubs & Societies</h1>
+            <p data-en="Where interests align and alliances form" data-ru="Где интересы совпадают, а союзы формируются">Where interests align and alliances form</p>
+        </div>
+    </header>
+
+    <!-- Clubs Intro -->
+    <section class="clubs-intro">
+        <p data-en="At Aldridge, extracurricular activities serve purposes beyond recreation. Every club is a network. Every meeting is an opportunity. Choose wisely where you invest your time — and with whom."
+           data-ru="В Олдридже внеклассная деятельность служит целям, выходящим за рамки отдыха. Каждый клуб — это сеть. Каждая встреча — возможность. Выбирай мудро, куда вкладываешь своё время — и с кем.">
+            At Aldridge, extracurricular activities serve purposes beyond recreation. Every club is a network. Every meeting is an opportunity. Choose wisely where you invest your time — and with whom.
+        </p>
+    </section>
+
+    <!-- Clubs Grid -->
+    <section class="clubs-section">
+        <div class="clubs-grid">
+
+            <!-- Equestrian Club -->
+            <div class="club-card" onclick="openClub('equestrian')">
+                <div class="club-icon">♞</div>
+                <h3 data-en="The Equestrian Society" data-ru="Конное Общество">The Equestrian Society</h3>
+                <p data-en="Grace, control, and the bond between rider and beast" data-ru="Грация, контроль и связь между всадником и зверем">Grace, control, and the bond between rider and beast</p>
+                <span class="club-tag" data-en="Est. 1851" data-ru="Осн. 1851">Est. 1851</span>
+            </div>
+
+            <!-- Golf Club -->
+            <div class="club-card" onclick="openClub('golf')">
+                <div class="club-icon">◎</div>
+                <h3 data-en="The Aldridge Golf Club" data-ru="Гольф-клуб Олдриджа">The Aldridge Golf Club</h3>
+                <p data-en="Where deals are made between swings" data-ru="Где сделки заключаются между ударами">Where deals are made between swings</p>
+                <span class="club-tag" data-en="Est. 1923" data-ru="Осн. 1923">Est. 1923</span>
+            </div>
+
+            <!-- Investment Club -->
+            <div class="club-card" onclick="openClub('investment')">
+                <div class="club-icon">§</div>
+                <h3 data-en="The Investment Society" data-ru="Инвестиционное Общество">The Investment Society</h3>
+                <p data-en="Learning to grow wealth — and where to hide it" data-ru="Учимся приумножать богатство — и где его скрывать">Learning to grow wealth — and where to hide it</p>
+                <span class="club-tag" data-en="Est. 1952" data-ru="Осн. 1952">Est. 1952</span>
+            </div>
+
+            <!-- Hunting Club -->
+            <div class="club-card" onclick="openClub('hunting')">
+                <div class="club-icon">❦</div>
+                <h3 data-en="The Hunt Club" data-ru="Охотничий Клуб">The Hunt Club</h3>
+                <p data-en="Patience. Precision. The thrill of the chase." data-ru="Терпение. Точность. Азарт погони.">Patience. Precision. The thrill of the chase.</p>
+                <span class="club-tag" data-en="Est. 1867" data-ru="Осн. 1867">Est. 1867</span>
+            </div>
+
+            <!-- Fine Arts Society -->
+            <div class="club-card" onclick="openClub('arts')">
+                <div class="club-icon">❖</div>
+                <h3 data-en="The Fine Arts Collective" data-ru="Коллектив Изящных Искусств">The Fine Arts Collective</h3>
+                <p data-en="Curating taste, acquiring value" data-ru="Формируем вкус, приобретаем ценность">Curating taste, acquiring value</p>
+                <span class="club-tag" data-en="Est. 1889" data-ru="Осн. 1889">Est. 1889</span>
+            </div>
+
+            <!-- Shooting Club -->
+            <div class="club-card" onclick="openClub('shooting')">
+                <div class="club-icon">✧</div>
+                <h3 data-en="The Marksman Society" data-ru="Общество Стрелков">The Marksman Society</h3>
+                <p data-en="Steady hands. Clear eyes. No hesitation." data-ru="Твёрдые руки. Ясный взгляд. Никаких колебаний.">Steady hands. Clear eyes. No hesitation.</p>
+                <span class="club-tag" data-en="Est. 1901" data-ru="Осн. 1901">Est. 1901</span>
+            </div>
+
+            <!-- Boxing Club -->
+            <div class="club-card" onclick="openClub('boxing')">
+                <div class="club-icon">◆</div>
+                <h3 data-en="The Boxing Society" data-ru="Боксёрское Общество">The Boxing Society</h3>
+                <p data-en="Discipline through combat. Respect through pain." data-ru="Дисциплина через бой. Уважение через боль.">Discipline through combat. Respect through pain.</p>
+                <span class="club-tag" data-en="Est. 1934" data-ru="Осн. 1934">Est. 1934</span>
+            </div>
+
+            <!-- Charity Committee -->
+            <div class="club-card" onclick="openClub('charity')">
+                <div class="club-icon">✦</div>
+                <h3 data-en="The Philanthropy Committee" data-ru="Комитет Филантропии">The Philanthropy Committee</h3>
+                <p data-en="Generosity as strategy. Giving as power." data-ru="Щедрость как стратегия. Благотворительность как власть.">Generosity as strategy. Giving as power.</p>
+                <span class="club-tag" data-en="Est. 1912" data-ru="Осн. 1912">Est. 1912</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- The Ides -->
+    <section class="ides-section">
+        <div class="ides-border">
+            <div class="ides-content">
+                <div class="ides-symbol">XV</div>
+                <h2 data-en="The Ides" data-ru="The Ides">The Ides</h2>
+                <p class="ides-latin">"Beware the Ides of March"</p>
+
+                <div class="ides-description">
+                    <p data-en="There are societies, and then there is The Ides. Membership is not applied for — it is bestowed. Meetings are not scheduled — they are summoned. What happens within The Ides remains within The Ides."
+                       data-ru="Есть общества, а есть The Ides. Членство не запрашивается — оно даруется. Встречи не назначаются — на них вызывают. Что происходит в The Ides, остаётся в The Ides.">
+                        There are societies, and then there is The Ides. Membership is not applied for — it is bestowed. Meetings are not scheduled — they are summoned. What happens within The Ides remains within The Ides.
+                    </p>
+                    <p class="ides-note" data-en="Exclusively for heirs of founding families and those deemed... essential." data-ru="Исключительно для наследников семей-основателей и тех, кто признан... необходимым.">
+                        Exclusively for heirs of founding families and those deemed... essential.
+                    </p>
+                </div>
+
+                <div class="ides-members">
+                    <h3 data-en="Known Members" data-ru="Известные участники">Known Members</h3>
+                    <p class="members-note" data-en="Those who have been identified. Others remain... unnamed." data-ru="Те, кто был идентифицирован. Остальные остаются... безымянными.">Those who have been identified. Others remain... unnamed.</p>
+
+                    <div class="members-grid">
+                        <!-- Member 1 -->
+                        <a href="ВАШ_ССЫЛКА_НА_БОТА_1" class="member-card" target="_blank">
+                            <div class="member-image">
+                                <img src="images/ides-member-1.jpg" alt="Member">
+                            </div>
+                            <div class="member-info">
+                                <span class="member-name" data-en="[Name Surname]" data-ru="[Имя Фамилия]">[Name Surname]</span>
+                                <span class="member-title" data-en="[Title / Family]" data-ru="[Титул / Семья]">[Title / Family]</span>
+                            </div>
+                        </a>
+
+                        <!-- Member 2 -->
+                        <a href="ВАШ_ССЫЛКА_НА_БОТА_2" class="member-card" target="_blank">
+                            <div class="member-image">
+                                <img src="images/ides-member-2.jpg" alt="Member">
+                            </div>
+                            <div class="member-info">
+                                <span class="member-name" data-en="[Name Surname]" data-ru="[Имя Фамилия]">[Name Surname]</span>
+                                <span class="member-title" data-en="[Title / Family]" data-ru="[Титул / Семья]">[Title / Family]</span>
+                            </div>
+                        </a>
+
+                        <!-- Member 3 -->
+                        <a href="ВАШ_ССЫЛКА_НА_БОТА_3" class="member-card" target="_blank">
+                            <div class="member-image">
+                                <img src="images/ides-member-3.jpg" alt="Member">
+                            </div>
+                            <div class="member-info">
+                                <span class="member-name" data-en="[Name Surname]" data-ru="[Имя Фамилия]">[Name Surname]</span>
+                                <span class="member-title" data-en="[Title / Family]" data-ru="[Титул / Семья]">[Title / Family]</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <p class="members-hidden" data-en="+ others unnamed" data-ru="+ другие, чьи имена скрыты">+ others unnamed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Club Modal -->
+    <div class="club-modal" id="clubModal">
+        <div class="modal-overlay" onclick="closeClub()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeClub()">✕</button>
+            <div class="club-modal-inner" id="clubModalContent">
+                <!-- Заполняется через JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-logo" data-en="Aldridge University" data-ru="Университет Олдридж">Aldridge University</p>
+        <div class="footer-links">
+            <a href="ТВОЯ_ССЫЛКА_ТГ" target="_blank">Telegram</a>
+            <span>·</span>
+            <a href="ТВОЯ_ССЫЛКА_JANITOR" target="_blank">JanitorAI</a>
+        </div>
+        <p class="footer-copy">© 2024</p>
+    </footer>
+
+    <script>
+        // ===== ДАННЫЕ КЛУБОВ =====
+        const clubData = {
+            equestrian: {
+                icon: '♞',
+                name: { en: 'The Equestrian Society', ru: 'Конное Общество' },
+                established: '1851',
+                motto: { en: 'Mastery over beast, mastery over self', ru: 'Власть над зверем, власть над собой' },
+                description: {
+                    en: 'The oldest club at Aldridge, founded when the university still trained young men for war. Today, members learn the art of horsemanship — and the unspoken language of control that comes with it. Our stables house 24 thoroughbreds, each worth more than most family homes.',
+                    ru: 'Старейший клуб Олдриджа, основанный когда университет ещё готовил молодых людей к войне. Сегодня участники изучают искусство верховой езды — и негласный язык контроля, который с ним приходит. В наших конюшнях содержатся 24 чистокровных лошади, каждая из которых стоит дороже большинства семейных домов.'
+                },
+                schedule: { en: 'Wednesdays & Saturdays, 6:00 AM', ru: 'Среда и Суббота, 6:00' },
+                location: { en: 'Aldridge Stables, North Grounds', ru: 'Конюшни Олдриджа, Северная территория' },
+                members: '32',
+                requirements: {
+                    en: 'Prior riding experience required. Personal riding attire. Invitation from current member or faculty advisor.',
+                    ru: 'Требуется опыт верховой езды. Личная экипировка. Приглашение от действующего члена или куратора факультета.'
+                },
+                activities: [
+                    { en: 'Weekly training sessions', ru: 'Еженедельные тренировки' },
+                    { en: 'Inter-university polo matches', ru: 'Межуниверситетские матчи по поло' },
+                    { en: 'Annual Hunt (see: Hunt Club)', ru: 'Ежегодная охота (см. Охотничий клуб)' },
+                    { en: 'Private trail rides', ru: 'Частные конные прогулки' }
+                ]
+            },
+            golf: {
+                icon: '◎',
+                name: { en: 'The Aldridge Golf Club', ru: 'Гольф-клуб Олдриджа' },
+                established: '1923',
+                motto: { en: 'The course is where empires are negotiated', ru: 'На поле ведутся переговоры об империях' },
+                description: {
+                    en: 'Founded during the golden age of American business, when it became clear that more deals were closed on the green than in any boardroom. Our 18-hole private course is closed to the public and open only to members and their carefully selected guests.',
+                    ru: 'Основан в золотой век американского бизнеса, когда стало ясно, что на поле для гольфа заключается больше сделок, чем в любом зале заседаний. Наше частное поле с 18 лунками закрыто для публики и открыто только для членов и их тщательно отобранных гостей.'
+                },
+                schedule: { en: 'Daily, sunrise to sunset', ru: 'Ежедневно, от рассвета до заката' },
+                location: { en: 'Aldridge Golf Course, West Grounds', ru: 'Поле для гольфа Олдриджа, Западная территория' },
+                members: '48',
+                requirements: {
+                    en: 'Handicap verification required. Proper attire enforced. Annual membership fee: $15,000.',
+                    ru: 'Требуется подтверждение гандикапа. Строгий дресс-код. Годовой членский взнос: $15,000.'
+                },
+                activities: [
+                    { en: 'Weekly tournaments', ru: 'Еженедельные турниры' },
+                    { en: 'Business networking events', ru: 'Деловые нетворкинг-мероприятия' },
+                    { en: 'Alumni invitational', ru: 'Приглашение выпускников' },
+                    { en: 'Private lessons with PGA professionals', ru: 'Частные уроки с профессионалами PGA' }
+                ]
+            },
+            investment: {
+                icon: '§',
+                name: { en: 'The Investment Society', ru: 'Инвестиционное Общество' },
+                established: '1952',
+                motto: { en: 'Money is a tool. Learn to wield it.', ru: 'Деньги — инструмент. Научись им владеть.' },
+                description: {
+                    en: 'Managing a real portfolio of $2.3 million in university-allocated funds, members learn investment strategies that are not taught in classrooms. Guest speakers include hedge fund managers, venture capitalists, and occasionally... individuals whose names do not appear in official records.',
+                    ru: 'Управляя реальным портфелем в $2.3 миллиона из фондов университета, участники изучают инвестиционные стратегии, которым не учат в аудиториях. Среди приглашённых спикеров — управляющие хедж-фондами, венчурные капиталисты и иногда... лица, чьи имена не фигурируют в официальных документах.'
+                },
+                schedule: { en: 'Thursdays, 7:00 PM', ru: 'Четверг, 19:00' },
+                location: { en: 'Winthrop Hall, Room 401 (restricted access)', ru: 'Уинтроп Холл, комната 401 (ограниченный доступ)' },
+                members: '24',
+                requirements: {
+                    en: 'Business or Finance major preferred. Signed NDA required. Background check conducted.',
+                    ru: 'Предпочтительно специальность Бизнес или Финансы. Требуется подписание NDA. Проводится проверка биографии.'
+                },
+                activities: [
+                    { en: 'Live market analysis sessions', ru: 'Сессии анализа рынка в реальном времени' },
+                    { en: 'Portfolio management competitions', ru: 'Соревнования по управлению портфелем' },
+                    { en: 'Guest speaker series (confidential)', ru: 'Серия приглашённых спикеров (конфиденциально)' },
+                    { en: 'Annual Wall Street trip', ru: 'Ежегодная поездка на Уолл-стрит' }
+                ]
+            },
+            hunting: {
+                icon: '❦',
+                name: { en: 'The Hunt Club', ru: 'Охотничий Клуб' },
+                established: '1867',
+                motto: { en: 'The prey does not choose the hunter', ru: 'Добыча не выбирает охотника' },
+                description: {
+                    en: 'What began as deer hunting on the university\'s vast private lands has evolved into something more refined. Members learn tracking, patience, and the particular calm required before taking a life. The annual Winter Hunt remains the most anticipated — and most secretive — event of the Aldridge social calendar.',
+                    ru: 'То, что началось как охота на оленей на обширных частных землях университета, превратилось в нечто более утончённое. Участники учатся выслеживать, терпению и особому спокойствию, необходимому перед тем, как забрать жизнь. Ежегодная Зимняя Охота остаётся самым ожидаемым — и самым секретным — событием светского календаря Олдриджа.'
+                },
+                schedule: { en: 'Seasonal. Meetings: First Monday of each month.', ru: 'Сезонно. Встречи: первый понедельник каждого месяца.' },
+                location: { en: 'Aldridge Forest Reserve (12,000 acres)', ru: 'Лесной заповедник Олдриджа (4,800 гектаров)' },
+                members: '28',
+                requirements: {
+                    en: 'Hunting license required. Personal firearms permitted (registered). Participation in Annual Hunt mandatory.',
+                    ru: 'Требуется охотничья лицензия. Личное оружие разрешено (зарегистрированное). Участие в Ежегодной Охоте обязательно.'
+                },
+                activities: [
+                    { en: 'Deer hunting expeditions', ru: 'Охотничьи экспедиции на оленей' },
+                    { en: 'Tracking workshops', ru: 'Мастер-классы по выслеживанию' },
+                    { en: 'The Annual Winter Hunt', ru: 'Ежегодная Зимняя Охота' },
+                    { en: 'Taxidermy appreciation', ru: 'Искусство таксидермии' }
+                ]
+            },
+            arts: {
+                icon: '❖',
+                name: { en: 'The Fine Arts Collective', ru: 'Коллектив Изящных Искусств' },
+                established: '1889',
+                motto: { en: 'Beauty is the ultimate currency', ru: 'Красота — высшая валюта' },
+                description: {
+                    en: 'More than an appreciation society — a training ground for future collectors, dealers, and those who understand that art is the most elegant form of wealth storage. Members gain access to private viewings, auction previews, and the university\'s restricted collection of works too... controversial for public display.',
+                    ru: 'Больше чем общество ценителей — площадка для подготовки будущих коллекционеров, дилеров и тех, кто понимает, что искусство — самая элегантная форма хранения богатства. Участники получают доступ к закрытым просмотрам, превью аукционов и ограниченной коллекции университета — работам, слишком... спорным для публичного показа.'
+                },
+                schedule: { en: 'Tuesdays, 6:00 PM', ru: 'Вторник, 18:00' },
+                location: { en: 'St. John Gallery, East Wing', ru: 'Галерея Сент-Джон, Восточное крыло' },
+                members: '35',
+                requirements: {
+                    en: 'Art History coursework preferred. Demonstrated aesthetic sensibility. Discretion regarding private collection.',
+                    ru: 'Предпочтительны курсы по истории искусства. Продемонстрированное эстетическое чутьё. Конфиденциальность относительно частной коллекции.'
+                },
+                activities: [
+                    { en: 'Private gallery tours', ru: 'Частные экскурсии по галереям' },
+                    { en: 'Auction house visits (Christie\'s, Sotheby\'s)', ru: 'Посещение аукционных домов (Christie\'s, Sotheby\'s)' },
+                    { en: 'Provenance research workshops', ru: 'Мастер-классы по исследованию провенанса' },
+                    { en: 'Acquisition advisory sessions', ru: 'Консультации по приобретению' }
+                ]
+            },
+            shooting: {
+                icon: '✧',
+                name: { en: 'The Marksman Society', ru: 'Общество Стрелков' },
+                established: '1901',
+                motto: { en: 'One shot. One outcome.', ru: 'Один выстрел. Один исход.' },
+                description: {
+                    en: 'Precision is not a skill — it is a philosophy. The Marksman Society trains students in rifle, pistol, and skeet shooting, developing the focus and composure that serves well beyond the range. Our indoor facility includes a 50-meter range and a private armory housing historical and modern firearms.',
+                    ru: 'Точность — не навык, а философия. Общество Стрелков обучает студентов стрельбе из винтовки, пистолета и стендовой стрельбе, развивая концентрацию и самообладание, которые служат далеко за пределами тира. Наш крытый комплекс включает 50-метровый тир и частную оружейную с историческим и современным оружием.'
+                },
+                schedule: { en: 'Mondays & Fridays, 5:00 PM', ru: 'Понедельник и Пятница, 17:00' },
+                location: { en: 'Harcourt Range, Underground Level', ru: 'Тир Харкорт, Подземный уровень' },
+                members: '40',
+                requirements: {
+                    en: 'Safety certification required. Psychological evaluation. Clean disciplinary record.',
+                    ru: 'Требуется сертификат безопасности. Психологическая оценка. Чистая дисциплинарная история.'
+                },
+                activities: [
+                    { en: 'Precision rifle training', ru: 'Тренировки по точной стрельбе' },
+                    { en: 'Competitive shooting events', ru: 'Соревнования по стрельбе' },
+                    { en: 'Historical firearms workshop', ru: 'Мастер-классы по историческому оружию' },
+                    { en: 'Skeet shooting weekends', ru: 'Выходные стендовой стрельбы' }
+                ]
+            },
+            boxing: {
+                icon: '◆',
+                name: { en: 'The Boxing Society', ru: 'Боксёрское Общество' },
+                established: '1934',
+                motto: { en: 'Pain is temporary. Weakness is a choice.', ru: 'Боль временна. Слабость — это выбор.' },
+                description: {
+                    en: 'Founded during an era when gentlemen settled disputes with their fists, The Boxing Society continues to teach the art of controlled violence. Members learn not just technique, but the psychological warfare of the ring — skills that translate remarkably well to boardrooms and negotiations.',
+                    ru: 'Основанное в эпоху, когда джентльмены решали споры кулаками, Боксёрское Общество продолжает обучать искусству контролируемого насилия. Участники изучают не только технику, но и психологическую войну ринга — навыки, которые удивительно хорошо переносятся в залы заседаний и на переговоры.'
+                },
+                schedule: { en: 'Tuesdays & Thursdays, 7:00 PM', ru: 'Вторник и Четверг, 19:00' },
+                location: { en: 'Aldridge Athletic Center, Lower Level', ru: 'Атлетический центр Олдриджа, Нижний уровень' },
+                members: '26',
+                requirements: {
+                    en: 'Physical fitness assessment. Signed liability waiver. Commitment to discretion regarding injuries.',
+                    ru: 'Оценка физической подготовки. Подписанный отказ от ответственности. Обязательство о конфиденциальности относительно травм.'
+                },
+                activities: [
+                    { en: 'Technical training sessions', ru: 'Технические тренировки' },
+                    { en: 'Sparring matches (private)', ru: 'Спарринги (закрытые)' },
+                    { en: 'Inter-society tournaments', ru: 'Межклубные турниры' },
+                    { en: 'Guest trainers (former professionals)', ru: 'Приглашённые тренеры (бывшие профессионалы)' }
+                ]
+            },
+            charity: {
+                icon: '✦',
+                name: { en: 'The Philanthropy Committee', ru: 'Комитет Филантропии' },
+                established: '1912',
+                motto: { en: 'To give is to control the narrative', ru: 'Давать — значит контролировать нарратив' },
+                description: {
+                    en: 'Philanthropy at Aldridge is not about charity — it is about legacy management. The Committee organizes events that raise millions while carefully cultivating the public image of its members and their families. Every gala, every donation, every press release is a strategic move.',
+                    ru: 'Филантропия в Олдридже — это не о благотворительности, а об управлении наследием. Комитет организует мероприятия, собирающие миллионы, тщательно культивируя публичный имидж своих членов и их семей. Каждый гала-вечер, каждое пожертвование, каждый пресс-релиз — стратегический ход.'
+                },
+                schedule: { en: 'Wednesdays, 5:00 PM', ru: 'Среда, 17:00' },
+                location: { en: 'Aldridge Main Hall, Conference Room A', ru: 'Главный зал Олдриджа, Конференц-зал А' },
+                members: '30',
+                requirements: {
+                    en: 'Demonstrated social standing. Event planning experience preferred. Minimum personal or family donation: $10,000 annually.',
+                    ru: 'Подтверждённое социальное положение. Предпочтителен опыт организации мероприятий. Минимальное личное или семейное пожертвование: $10,000 ежегодно.'
+                },
+                activities: [
+                    { en: 'Annual Aldridge Gala', ru: 'Ежегодный Гала-вечер Олдриджа' },
+                    { en: 'Scholarship fund management', ru: 'Управление стипендиальным фондом' },
+                    { en: 'Public relations campaigns', ru: 'PR-кампании' },
+                    { en: 'Donor cultivation events', ru: 'Мероприятия для привлечения доноров' }
+                ]
+            }
+        };
+
+        let currentLang = 'en';
+
+        // ===== ЯЗЫК =====
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-en]').forEach(el => {
+                el.textContent = el.getAttribute('data-' + lang);
+            });
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-ru').classList.toggle('active', lang === 'ru');
+            localStorage.setItem('language', lang);
+        }
+
+        // ===== МЕНЮ =====
+        function toggleMenu() {
+            document.getElementById('menuList').classList.toggle('open');
+        }
+
+        // ===== МОДАЛЬНОЕ ОКНО КЛУБА =====
+        function openClub(clubId) {
+            const modal = document.getElementById('clubModal');
+            const content = document.getElementById('clubModalContent');
+            const data = clubData[clubId];
+
+            let activitiesHtml = data.activities.map(act => `<li>${act[currentLang]}</li>`).join('');
+
+            content.innerHTML = `
+                <div class="club-modal-header">
+                    <div class="club-modal-icon">${data.icon}</div>
+                    <h2>${data.name[currentLang]}</h2>
+                    <p class="club-modal-motto">"${data.motto[currentLang]}"</p>
+                    <span class="club-modal-est">${currentLang === 'en' ? 'Established' : 'Основан'} ${data.established}</span>
+                </div>
+
+                <div class="club-modal-body">
+                    <p class="club-description">${data.description[currentLang]}</p>
+
+                    <div class="club-details">
+                        <div class="club-detail">
+                            <span class="detail-label">${currentLang === 'en' ? 'Schedule' : 'Расписание'}</span>
+                            <span class="detail-value">${data.schedule[currentLang]}</span>
+                        </div>
+                        <div class="club-detail">
+                            <span class="detail-label">${currentLang === 'en' ? 'Location' : 'Место'}</span>
+                            <span class="detail-value">${data.location[currentLang]}</span>
+                        </div>
+                        <div class="club-detail">
+                            <span class="detail-label">${currentLang === 'en' ? 'Members' : 'Участников'}</span>
+                            <span class="detail-value">${data.members}</span>
+                        </div>
+                    </div>
+
+                    <div class="club-requirements">
+                        <h4>${currentLang === 'en' ? 'Requirements' : 'Требования'}</h4>
+                        <p>${data.requirements[currentLang]}</p>
+                    </div>
+
+                    <div class="club-activities">
+                        <h4>${currentLang === 'en' ? 'Activities' : 'Деятельность'}</h4>
+                        <ul>${activitiesHtml}</ul>
+                    </div>
+                </div>
+            `;
+
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeClub() {
+            document.getElementById('clubModal').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // ===== СОБЫТИЯ =====
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.menu-container')) {
+                document.getElementById('menuList').classList.remove('open');
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeClub();
+        });
+
+        // Курсор
+        const cursor = document.querySelector('.cursor');
+        const follower = document.querySelector('.cursor-follower');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            setTimeout(() => {
+                follower.style.left = e.clientX + 'px';
+                follower.style.top = e.clientY + 'px';
+            }, 80);
+        });
+
+        document.querySelectorAll('a, button, .club-card, .member-card').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+                follower.classList.add('hover');
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+                follower.classList.remove('hover');
+            });
+        });
+
+        window.onload = () => setLanguage(localStorage.getItem('language') || 'en');
+    </script>
+
+</body>
+</html>
