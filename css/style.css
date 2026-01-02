@@ -597,8 +597,8 @@ body {
     background: linear-gradient(
         to bottom,
         transparent,
-        var(--gold-dim) 10%,
-        var(--gold-dim) 90%,
+        rgba(201, 162, 39, 0.15) 10%,
+        rgba(201, 162, 39, 0.15) 90%,
         transparent
     );
     transform: translateX(-50%);
