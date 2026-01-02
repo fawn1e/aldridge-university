@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History — Aldridge University</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Кастомный курсор -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Навигация -->
+    <nav class="navbar">
+        <a href="index.html" class="logo" data-en="Aldridge University" data-ru="Университет Олдридж">Aldridge University</a>
+
+        <div class="nav-right">
+            <div class="menu-container">
+                <button class="menu-btn" onclick="toggleMenu()">
+                    <span data-en="Menu" data-ru="Меню">Menu</span>
+                </button>
+                <ul class="menu-list" id="menuList">
+                    <li><a href="index.html" data-en="Home" data-ru="Главная">Home</a></li>
+                    <li><a href="history.html" data-en="History" data-ru="История">History</a></li>
+                    <li><a href="admissions.html" data-en="Admissions" data-ru="Приём">Admissions</a></li>
+                    <li><a href="faculties.html" data-en="Faculties" data-ru="Факультеты">Faculties</a></li>
+                    <li><a href="clubs.html" data-en="Clubs" data-ru="Клубы">Clubs</a></li>
+                    <li><a href="staff.html" data-en="Staff" data-ru="Преподаватели">Staff</a></li>
+                    <li><a href="students.html" data-en="Students" data-ru="Студенты">Students</a></li>
+                    <li><a href="families.html" data-en="Families" data-ru="Семьи">Families</a></li>
+                    <li><a href="map.html" data-en="Map" data-ru="Карта">Map</a></li>
+                    <li><a href="forum.html" data-en="Forum" data-ru="Форум">Forum</a></li>
+                    <li><a href="calendar.html" data-en="Calendar" data-ru="Календарь">Calendar</a></li>
+                </ul>
+            </div>
+
+            <div class="lang-switch">
+                <button onclick="setLanguage('en')" id="btn-en" class="active">EN</button>
+                <span>/</span>
+                <button onclick="setLanguage('ru')" id="btn-ru">RU</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-header-bg" style="background-image: url('images/history-bg.jpg');"></div>
+        <div class="page-header-content">
+            <h1 data-en="Our History" data-ru="Наша История">Our History</h1>
+            <p data-en="Nearly two centuries of tradition, legacy, and secrets" data-ru="Почти два столетия традиций, наследия и тайн">Nearly two centuries of tradition, legacy, and secrets</p>
+        </div>
+    </header>
+
+    <!-- Intro -->
+    <section class="history-intro">
+        <p data-en="The story of Aldridge University is one of ambition, tragedy, and rebirth. What began as one man's vision has become an institution that shapes the most powerful families in America."
+           data-ru="История Университета Олдридж — это история амбиций, трагедии и возрождения. То, что началось как видение одного человека, стало учреждением, формирующим самые влиятельные семьи Америки.">
+            The story of Aldridge University is one of ambition, tragedy, and rebirth. What began as one man's vision has become an institution that shapes the most powerful families in America.
+        </p>
+    </section>
+
+    <!-- Timeline -->
+    <section class="timeline">
+
+        <!-- 1847 -->
+        <div class="timeline-item">
+            <div class="timeline-year">1847</div>
+            <div class="timeline-content">
+                <h3 data-en="The Foundation" data-ru="Основание">The Foundation</h3>
+                <p data-en="Edmund Aldridge, a wealthy industrialist with connections to New York's elite, establishes a private university in the forests outside the city. His vision: an institution for those who understand that true education extends beyond books — into power, influence, and the art of control."
+                   data-ru="Эдмунд Олдридж, богатый промышленник со связями в элите Нью-Йорка, основывает частный университет в лесах за городом. Его видение: учреждение для тех, кто понимает, что истинное образование выходит за рамки книг — в сферу власти, влияния и искусства контроля.">
+                    Edmund Aldridge, a wealthy industrialist with connections to New York's elite, establishes a private university in the forests outside the city. His vision: an institution for those who understand that true education extends beyond books — into power, influence, and the art of control.
+                </p>
+                <p class="timeline-quote">"In Umbra, Florimus" — <span data-en="Edmund Aldridge's personal motto becomes the university's creed." data-ru="Личный девиз Эдмунда Олдриджа становится кредо университета.">Edmund Aldridge's personal motto becomes the university's creed.</span></p>
+            </div>
+        </div>
+
+        <!-- 1852 -->
+        <div class="timeline-item">
+            <div class="timeline-year">1852</div>
+            <div class="timeline-content">
+                <h3 data-en="First Graduates" data-ru="Первые выпускники">First Graduates</h3>
+                <p data-en="The first class of twelve students graduates. Within a decade, they occupy positions in banking, law, and politics across the Eastern Seaboard. The Aldridge network begins to take shape."
+                   data-ru="Первый класс из двенадцати студентов выпускается. В течение десятилетия они занимают должности в банковском деле, юриспруденции и политике по всему Восточному побережью. Сеть Олдриджа начинает формироваться.">
+                    The first class of twelve students graduates. Within a decade, they occupy positions in banking, law, and politics across the Eastern Seaboard. The Aldridge network begins to take shape.
+                </p>
+            </div>
+        </div>
+
+        <!-- 1871 -->
+        <div class="timeline-item">
+            <div class="timeline-year">1871</div>
+            <div class="timeline-content">
+                <h3 data-en="Expansion" data-ru="Расширение">Expansion</h3>
+                <p data-en="Edmund Aldridge's son, Thomas, takes over administration. New buildings rise: the Grand Library, the Medical Wing, the underground tunnels connecting campus structures. Some say certain rooms were built with no official purpose."
+                   data-ru="Сын Эдмунда Олдриджа, Томас, берёт на себя управление. Возводятся новые здания: Большая библиотека, Медицинское крыло, подземные туннели, соединяющие строения кампуса. Говорят, некоторые помещения были построены без официального назначения.">
+                    Edmund Aldridge's son, Thomas, takes over administration. New buildings rise: the Grand Library, the Medical Wing, the underground tunnels connecting campus structures. Some say certain rooms were built with no official purpose.
+                </p>
+            </div>
+        </div>
+
+        <!-- 1892 -->
+        <div class="timeline-item timeline-dark">
+            <div class="timeline-year">1892</div>
+            <div class="timeline-content">
+                <h3 data-en="The Fall" data-ru="Падение">The Fall</h3>
+                <p data-en="Thomas Aldridge dies without heirs. The circumstances remain unclear — officially, a riding accident. The university faces closure. Debts emerge. Secrets threaten to surface."
+                   data-ru="Томас Олдридж умирает без наследников. Обстоятельства остаются неясными — официально несчастный случай на конной прогулке. Университет на грани закрытия. Всплывают долги. Тайны грозят выйти наружу.">
+                    Thomas Aldridge dies without heirs. The circumstances remain unclear — officially, a riding accident. The university faces closure. Debts emerge. Secrets threaten to surface.
+                </p>
+            </div>
+        </div>
+
+        <!-- 1893 -->
+        <div class="timeline-item">
+            <div class="timeline-year">1893</div>
+            <div class="timeline-content">
+                <h3 data-en="The Three Families" data-ru="Три Семьи">The Three Families</h3>
+                <p data-en="Three families step forward to 'save' Aldridge University: the Winthrops, the St. Johns, and the Harcourts. They purchase the institution jointly, establishing the Board of Trustees. Officially, they preserve a cultural legacy. Unofficially, they divide territories, resources, and influence."
+                   data-ru="Три семьи выходят вперёд, чтобы «спасти» Университет Олдридж: Уинтропы, Сент-Джоны и Харкорты. Они совместно выкупают учреждение, учреждая Попечительский совет. Официально они сохраняют культурное наследие. Неофициально — делят территории, ресурсы и влияние.">
+                    Three families step forward to 'save' Aldridge University: the Winthrops, the St. Johns, and the Harcourts. They purchase the institution jointly, establishing the Board of Trustees. Officially, they preserve a cultural legacy. Unofficially, they divide territories, resources, and influence.
+                </p>
+                <p class="timeline-quote" data-en="The alliance was never about education. It was about control." data-ru="Альянс никогда не был об образовании. Он был о контроле.">The alliance was never about education. It was about control.</p>
+            </div>
+        </div>
+
+        <!-- 1920 -->
+        <div class="timeline-item">
+            <div class="timeline-year">1920</div>
+            <div class="timeline-content">
+                <h3 data-en="The Golden Age" data-ru="Золотой Век">The Golden Age</h3>
+                <p data-en="Prohibition transforms America — and Aldridge thrives. The university becomes a meeting ground for those who profit from the shadows. New traditions emerge. Secret societies form. The campus grows wealthy on donations that are never questioned."
+                   data-ru="Сухой закон преображает Америку — и Олдридж процветает. Университет становится местом встречи тех, кто извлекает выгоду из тени. Возникают новые традиции. Формируются тайные общества. Кампус богатеет на пожертвованиях, о которых никто не спрашивает.">
+                    Prohibition transforms America — and Aldridge thrives. The university becomes a meeting ground for those who profit from the shadows. New traditions emerge. Secret societies form. The campus grows wealthy on donations that are never questioned.
+                </p>
+            </div>
+        </div>
+
+        <!-- Today -->
+        <div class="timeline-item timeline-present">
+            <div class="timeline-year" data-en="Today" data-ru="Сегодня">Today</div>
+            <div class="timeline-content">
+                <h3 data-en="The Legacy Continues" data-ru="Наследие Продолжается">The Legacy Continues</h3>
+                <p data-en="Aldridge University remains one of the most exclusive institutions in the country. Admission is by legacy, connection, or — rarely — exceptional talent. The three families maintain their seats on the Board. Their children walk these halls. And the motto still holds true."
+                   data-ru="Университет Олдридж остаётся одним из самых эксклюзивных учебных заведений страны. Поступление возможно по наследству, связям или — редко — исключительному таланту. Три семьи сохраняют свои места в Совете. Их дети ходят по этим залам. И девиз по-прежнему верен.">
+                    Aldridge University remains one of the most exclusive institutions in the country. Admission is by legacy, connection, or — rarely — exceptional talent. The three families maintain their seats on the Board. Their children walk these halls. And the motto still holds true.
+                </p>
+                <p class="timeline-motto">"In Umbra, Florimus"</p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-logo" data-en="Aldridge University" data-ru="Университет Олдридж">Aldridge University</p>
+        <div class="footer-links">
+            <a href="ТВОЯ_ССЫЛКА_ТГ" target="_blank">Telegram</a>
+            <span>·</span>
+            <a href="ТВОЯ_ССЫЛКА_JANITOR" target="_blank">JanitorAI</a>
+        </div>
+        <p class="footer-copy">© 2024</p>
+    </footer>
+
+    <script>
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-en]').forEach(el => {
+                el.textContent = el.getAttribute('data-' + lang);
+            });
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-ru').classList.toggle('active', lang === 'ru');
+            localStorage.setItem('language', lang);
+        }
+
+        function toggleMenu() {
+            document.getElementById('menuList').classList.toggle('open');
+        }
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.menu-container')) {
+                document.getElementById('menuList').classList.remove('open');
+            }
+        });
+
+        const cursor = document.querySelector('.cursor');
+        const follower = document.querySelector('.cursor-follower');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            setTimeout(() => {
+                follower.style.left = e.clientX + 'px';
+                follower.style.top = e.clientY + 'px';
+            }, 80);
+        });
+
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+                follower.classList.add('hover');
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+                follower.classList.remove('hover');
+            });
+        });
+
+        window.onload = () => setLanguage(localStorage.getItem('language') || 'en');
+    </script>
+
+</body>
+</html>
