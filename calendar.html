@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Calendar — Aldridge University</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Кастомный курсор -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Навигация -->
+    <nav class="navbar">
+        <a href="index.html" class="logo" data-en="Aldridge University" data-ru="Университет Олдридж">Aldridge University</a>
+
+        <div class="nav-right">
+            <div class="menu-container">
+                <button class="menu-btn" onclick="toggleMenu()">
+                    <span data-en="Menu" data-ru="Меню">Menu</span>
+                </button>
+                <ul class="menu-list" id="menuList">
+                    <li><a href="index.html" data-en="Home" data-ru="Главная">Home</a></li>
+                    <li><a href="history.html" data-en="History" data-ru="История">History</a></li>
+                    <li><a href="admissions.html" data-en="Admissions" data-ru="Приём">Admissions</a></li>
+                    <li><a href="faculties.html" data-en="Faculties" data-ru="Факультеты">Faculties</a></li>
+                    <li><a href="clubs.html" data-en="Clubs" data-ru="Клубы">Clubs</a></li>
+                    <li><a href="staff.html" data-en="Staff" data-ru="Преподаватели">Staff</a></li>
+                    <li><a href="students.html" data-en="Students" data-ru="Студенты">Students</a></li>
+                    <li><a href="families.html" data-en="Families" data-ru="Семьи">Families</a></li>
+                    <li><a href="map.html" data-en="Map" data-ru="Карта">Map</a></li>
+                    <li><a href="forum.html" data-en="Forum" data-ru="Форум">Forum</a></li>
+                    <li><a href="calendar.html" data-en="Calendar" data-ru="Календарь">Calendar</a></li>
+                </ul>
+            </div>
+
+            <div class="lang-switch">
+                <button onclick="setLanguage('en')" id="btn-en" class="active">EN</button>
+                <span>/</span>
+                <button onclick="setLanguage('ru')" id="btn-ru">RU</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header page-header-small">
+        <div class="page-header-content">
+            <h1 data-en="Academic Calendar" data-ru="Академический Календарь">Academic Calendar</h1>
+            <p data-en="2020 — 2021 Academic Year" data-ru="2020 — 2021 Учебный год">2020 — 2021 Academic Year</p>
+        </div>
+    </header>
+
+    <!-- Calendar Legend -->
+    <section class="calendar-legend">
+        <div class="legend-items">
+            <div class="legend-item">
+                <span class="legend-dot academic"></span>
+                <span data-en="Academic" data-ru="Учебное">Academic</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-dot social"></span>
+                <span data-en="Social" data-ru="Светское">Social</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-dot sport"></span>
+                <span data-en="Athletic" data-ru="Спортивное">Athletic</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-dot club"></span>
+                <span data-en="Clubs" data-ru="Клубы">Clubs</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-dot holiday"></span>
+                <span data-en="Holiday" data-ru="Каникулы">Holiday</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-dot restricted"></span>
+                <span data-en="Restricted" data-ru="Закрытое">Restricted</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendar Container -->
+    <section class="calendar-container">
+        <!-- Month Navigation -->
+        <div class="calendar-nav">
+            <button class="nav-arrow" onclick="changeMonth(-1)">←</button>
+            <h2 id="currentMonth">January 2021</h2>
+            <button class="nav-arrow" onclick="changeMonth(1)">→</button>
+        </div>
+
+        <!-- Calendar Grid -->
+        <div class="calendar-wrapper">
+            <div class="calendar-header">
+                <span data-en="Sun" data-ru="Вс">Sun</span>
+                <span data-en="Mon" data-ru="Пн">Mon</span>
+                <span data-en="Tue" data-ru="Вт">Tue</span>
+                <span data-en="Wed" data-ru="Ср">Wed</span>
+                <span data-en="Thu" data-ru="Чт">Thu</span>
+                <span data-en="Fri" data-ru="Пт">Fri</span>
+                <span data-en="Sat" data-ru="Сб">Sat</span>
+            </div>
+            <div class="calendar-grid" id="calendarGrid">
+                <!-- Заполняется через JS -->
+            </div>
+        </div>
+
+        <!-- Event Panel -->
+        <div class="event-panel" id="eventPanel">
+            <div class="event-default" id="eventDefault">
+                <div class="event-icon">◆</div>
+                <p data-en="Select a date to view events" data-ru="Выберите дату для просмотра событий">Select a date to view events</p>
+            </div>
+            <div class="event-content" id="eventContent">
+                <!-- Заполняется через JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Events -->
+    <section class="upcoming-section">
+        <h2 data-en="Key Dates" data-ru="Ключевые даты">Key Dates</h2>
+        <div class="upcoming-grid">
+            <div class="upcoming-card">
+                <span class="upcoming-date">Jan 11</span>
+                <span class="upcoming-title" data-en="Spring Semester Begins" data-ru="Начало весеннего семестра">Spring Semester Begins</span>
+            </div>
+            <div class="upcoming-card">
+                <span class="upcoming-date">Feb 14</span>
+                <span class="upcoming-title" data-en="Winter Ball" data-ru="Зимний бал">Winter Ball</span>
+            </div>
+            <div class="upcoming-card">
+                <span class="upcoming-date">Mar 15</span>
+                <span class="upcoming-title" data-en="The Ides Gathering" data-ru="Собрание The Ides">The Ides Gathering</span>
+            </div>
+            <div class="upcoming-card">
+                <span class="upcoming-date">May 22</span>
+                <span class="upcoming-title" data-en="Commencement Ceremony" data-ru="Церемония выпуска">Commencement Ceremony</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Modal -->
+    <div class="event-modal" id="eventModal">
+        <div class="modal-overlay" onclick="closeEventModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeEventModal()">✕</button>
+            <div id="modalEventContent">
+                <!-- Заполняется через JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-logo" data-en="Aldridge University" data-ru="Университет Олдридж">Aldridge University</p>
+        <div class="footer-links">
+            <a href="ТВОЯ_ССЫЛКА_ТГ" target="_blank">Telegram</a>
+            <span>·</span>
+            <a href="ТВОЯ_ССЫЛКА_JANITOR" target="_blank">JanitorAI</a>
+        </div>
+        <p class="footer-copy">© 2024</p>
+    </footer>
+
+    <script>
+        // ===== СОБЫТИЯ КАЛЕНДАРЯ 2021 =====
+        const events = {
+            // ЯНВАРЬ 2021
+            '2021-01-01': [{ type: 'holiday', name: { en: 'New Year\'s Day', ru: 'Новый год' }, desc: { en: 'University closed. Residence halls open for remaining students.', ru: 'Университет закрыт. Общежития открыты для оставшихся студентов.' }}],
+            '2021-01-04': [{ type: 'academic', name: { en: 'Administrative Offices Reopen', ru: 'Открытие администрации' }, desc: { en: 'Staff returns. Students may collect updated schedules.', ru: 'Персонал возвращается. Студенты могут получить обновлённые расписания.' }}],
+            '2021-01-11': [{ type: 'academic', name: { en: 'Spring Semester Begins', ru: 'Начало весеннего семестра' }, desc: { en: 'Classes commence at 8:00 AM. Full attendance expected.', ru: 'Занятия начинаются в 8:00. Ожидается полная посещаемость.' }}],
+            '2021-01-15': [{ type: 'club', name: { en: 'Investment Society: Portfolio Review', ru: 'Инвестиционное общество: Обзор портфеля' }, desc: { en: 'Q4 performance analysis. New members welcome to observe.', ru: 'Анализ результатов Q4. Новые члены могут наблюдать.' }}],
+            '2021-01-18': [{ type: 'holiday', name: { en: 'Martin Luther King Jr. Day', ru: 'День Мартина Лютера Кинга' }, desc: { en: 'No classes. University remains open.', ru: 'Занятий нет. Университет открыт.' }}],
+            '2021-01-23': [{ type: 'sport', name: { en: 'Indoor Polo Match', ru: 'Матч по поло в помещении' }, desc: { en: 'Aldridge vs. Yale. Founders\' House residents receive priority seating.', ru: 'Олдридж против Йеля. Резиденты Дома Основателей имеют приоритетные места.' }}],
+            '2021-01-30': [{ type: 'club', name: { en: 'Boxing Society: Winter Tournament', ru: 'Боксёрское общество: Зимний турнир' }, desc: { en: 'Internal competition. Spectators by invitation only.', ru: 'Внутреннее соревнование. Зрители только по приглашению.' }}],
+
+            // ФЕВРАЛЬ 2021
+            '2021-02-01': [{ type: 'academic', name: { en: 'Add/Drop Deadline', ru: 'Дедлайн добавления/отказа от курсов' }, desc: { en: 'Last day to modify course selections without penalty.', ru: 'Последний день для изменения выбора курсов без штрафа.' }}],
+            '2021-02-06': [{ type: 'club', name: { en: 'Fine Arts Collective: Auction Preview', ru: 'Коллектив искусств: Превью аукциона' }, desc: { en: 'Private viewing at Christie\'s New York. Transport provided.', ru: 'Закрытый просмотр в Christie\'s Нью-Йорк. Транспорт предоставляется.' }}],
+            '2021-02-14': [{ type: 'social', name: { en: 'Winter Ball', ru: 'Зимний бал' }, desc: { en: 'Annual formal event in the Great Hall. Black tie required. Partners must be pre-registered.', ru: 'Ежегодное формальное мероприятие в Большом Зале. Требуется смокинг. Партнёры должны быть предварительно зарегистрированы.' }}],
+            '2021-02-15': [{ type: 'holiday', name: { en: 'Presidents\' Day', ru: 'День президентов' }, desc: { en: 'No classes.', ru: 'Занятий нет.' }}],
+            '2021-02-20': [{ type: 'sport', name: { en: 'Marksman Society: Competition', ru: 'Общество стрелков: Соревнование' }, desc: { en: 'Annual precision rifle competition. Harcourt Range.', ru: 'Ежегодное соревнование по точной стрельбе. Тир Харкорт.' }}],
+            '2021-02-27': [{ type: 'club', name: { en: 'Hunt Club: Preparation Meeting', ru: 'Охотничий клуб: Подготовительное собрание' }, desc: { en: 'Spring hunt logistics. Members only.', ru: 'Логистика весенней охоты. Только для членов.' }}],
+
+            // МАРТ 2021
+            '2021-03-01': [{ type: 'academic', name: { en: 'Midterm Examinations Begin', ru: 'Начало промежуточных экзаменов' }, desc: { en: 'Two-week examination period. Library hours extended to 24/7.', ru: 'Двухнедельный период экзаменов. Библиотека работает 24/7.' }}],
+            '2021-03-06': [{ type: 'social', name: { en: 'Philanthropy Gala', ru: 'Благотворительный гала-вечер' }, desc: { en: 'Annual fundraising event. Minimum donation: $5,000 per seat.', ru: 'Ежегодное мероприятие по сбору средств. Минимальное пожертвование: $5,000 за место.' }}],
+            '2021-03-12': [{ type: 'academic', name: { en: 'Midterm Examinations End', ru: 'Окончание промежуточных экзаменов' }, desc: { en: 'Results posted within 5 business days.', ru: 'Результаты публикуются в течение 5 рабочих дней.' }}],
+            '2021-03-15': [{ type: 'restricted', name: { en: 'The Ides', ru: 'The Ides' }, desc: { en: 'Annual gathering. Location disclosed to members only. "Beware the Ides of March."', ru: 'Ежегодное собрание. Место раскрывается только членам. "Бойся мартовских ид."' }}],
+            '2021-03-20': [{ type: 'holiday', name: { en: 'Spring Break Begins', ru: 'Начало весенних каникул' }, desc: { en: 'Classes resume March 29. Residence halls remain open.', ru: 'Занятия возобновляются 29 марта. Общежития остаются открытыми.' }}],
+            '2021-03-29': [{ type: 'academic', name: { en: 'Classes Resume', ru: 'Возобновление занятий' }, desc: { en: 'Full attendance expected.', ru: 'Ожидается полная посещаемость.' }}],
+
+            // АПРЕЛЬ 2021
+            '2021-04-02': [{ type: 'holiday', name: { en: 'Good Friday', ru: 'Страстная пятница' }, desc: { en: 'No classes. Chapel service at 3:00 PM.', ru: 'Занятий нет. Служба в часовне в 15:00.' }}],
+            '2021-04-04': [{ type: 'holiday', name: { en: 'Easter Sunday', ru: 'Пасха' }, desc: { en: 'Chapel service at 10:00 AM. Formal brunch in Dining Hall.', ru: 'Служба в часовне в 10:00. Формальный бранч в Столовой.' }}],
+            '2021-04-10': [{ type: 'sport', name: { en: 'Spring Polo Tournament', ru: 'Весенний турнир по поло' }, desc: { en: 'Inter-university competition. Aldridge Stables.', ru: 'Межуниверситетское соревнование. Конюшни Олдриджа.' }}],
+            '2021-04-15': [{ type: 'club', name: { en: 'Investment Society: Guest Speaker', ru: 'Инвестиционное общество: Приглашённый спикер' }, desc: { en: 'Speaker identity confidential until event. NDA required.', ru: 'Личность спикера конфиденциальна до мероприятия. Требуется NDA.' }}],
+            '2021-04-17': [{ type: 'social', name: { en: 'Spring Garden Party', ru: 'Весенний садовый приём' }, desc: { en: 'Formal Gardens. Afternoon tea and networking. Dress code: garden formal.', ru: 'Регулярные сады. Послеобеденный чай и нетворкинг. Дресс-код: садовый формальный.' }}],
+            '2021-04-22': [{ type: 'club', name: { en: 'Hunt Club: Spring Hunt', ru: 'Охотничий клуб: Весенняя охота' }, desc: { en: 'Wild turkey season. Forest Reserve. Dawn departure from Stables.', ru: 'Сезон дикой индейки. Лесной заповедник. Отправление на рассвете от Конюшен.' }}],
+            '2021-04-24': [{ type: 'academic', name: { en: 'Founder\'s Day', ru: 'День Основателя' }, desc: { en: 'University founding anniversary (1847). Ceremony in Great Hall. Attendance mandatory for all students.', ru: 'Годовщина основания университета (1847). Церемония в Большом Зале. Присутствие обязательно для всех студентов.' }}],
+            '2021-04-30': [{ type: 'academic', name: { en: 'Last Day of Classes', ru: 'Последний день занятий' }, desc: { en: 'Reading period begins May 1.', ru: 'Период подготовки начинается 1 мая.' }}],
+
+            // МАЙ 2021
+            '2021-05-01': [{ type: 'academic', name: { en: 'Reading Period Begins', ru: 'Начало периода подготовки' }, desc: { en: 'No classes. Library and study spaces available 24/7.', ru: 'Занятий нет. Библиотека и учебные пространства доступны 24/7.' }}],
+            '2021-05-03': [{ type: 'academic', name: { en: 'Final Examinations Begin', ru: 'Начало финальных экзаменов' }, desc: { en: 'Three-week examination period. Strict academic integrity policies in effect.', ru: 'Трёхнедельный период экзаменов. Строгая политика академической честности.' }}],
+            '2021-05-08': [{ type: 'sport', name: { en: 'Golf Club: Alumni Tournament', ru: 'Гольф-клуб: Турнир выпускников' }, desc: { en: 'Current members vs. alumni. Significant networking opportunity.', ru: 'Текущие члены против выпускников. Значительная возможность для нетворкинга.' }}],
+            '2021-05-15': [{ type: 'social', name: { en: 'Senior Dinner', ru: 'Ужин выпускников' }, desc: { en: 'Formal dinner for graduating class. Great Hall. By invitation.', ru: 'Формальный ужин для выпускного класса. Большой Зал. По приглашению.' }}],
+            '2021-05-21': [{ type: 'academic', name: { en: 'Final Examinations End', ru: 'Окончание финальных экзаменов' }, desc: { en: 'Grades due within 72 hours.', ru: 'Оценки в течение 72 часов.' }}],
+            '2021-05-22': [{ type: 'social', name: { en: 'Commencement Ceremony', ru: 'Церемония выпуска' }, desc: { en: 'Graduation ceremony in the Great Hall. Families of graduates welcome. Security clearance required for all guests.', ru: 'Церемония выпуска в Большом Зале. Семьи выпускников приглашаются. Требуется проверка безопасности для всех гостей.' }}],
+            '2021-05-23': [{ type: 'restricted', name: { en: 'Board Meeting', ru: 'Заседание Совета' }, desc: { en: 'Annual meeting of the Board of Trustees. Founding families in attendance. Closed session.', ru: 'Ежегодное заседание Совета попечителей. Присутствуют семьи-основатели. Закрытое заседание.' }}],
+            '2021-05-31': [{ type: 'holiday', name: { en: 'Memorial Day', ru: 'День памяти' }, desc: { en: 'University closed.', ru: 'Университет закрыт.' }}],
+
+            // ИЮНЬ 2021
+            '2021-06-01': [{ type: 'academic', name: { en: 'Summer Session I Begins', ru: 'Начало летней сессии I' }, desc: { en: 'Intensive courses available. Limited enrollment.', ru: 'Доступны интенсивные курсы. Ограниченный набор.' }}],
+            '2021-06-12': [{ type: 'sport', name: { en: 'Rowing Regatta', ru: 'Регата по гребле' }, desc: { en: 'Annual competition on Aldridge Lake. Reception at Boathouse.', ru: 'Ежегодное соревнование на озере Олдридж. Приём в Лодочной станции.' }}],
+            '2021-06-19': [{ type: 'social', name: { en: 'Summer Solstice Celebration', ru: 'Празднование летнего солнцестояния' }, desc: { en: 'Evening event in Formal Gardens. White attire requested.', ru: 'Вечернее мероприятие в Регулярных садах. Просьба быть в белом.' }}],
+            '2021-06-25': [{ type: 'academic', name: { en: 'Summer Session I Ends', ru: 'Окончание летней сессии I' }, desc: { en: 'Grades posted within 48 hours.', ru: 'Оценки в течение 48 часов.' }}],
+
+            // ИЮЛЬ 2021
+            '2021-07-04': [{ type: 'holiday', name: { en: 'Independence Day', ru: 'День независимости' }, desc: { en: 'University closed. Private fireworks display for remaining residents.', ru: 'Университет закрыт. Частный фейерверк для оставшихся резидентов.' }}],
+            '2021-07-05': [{ type: 'academic', name: { en: 'Summer Session II Begins', ru: 'Начало летней сессии II' }, desc: { en: 'Second intensive session.', ru: 'Вторая интенсивная сессия.' }}],
+            '2021-07-17': [{ type: 'club', name: { en: 'Equestrian Society: Summer Show', ru: 'Конное общество: Летнее шоу' }, desc: { en: 'Dressage and jumping exhibition. Open to families.', ru: 'Выставка выездки и конкура. Открыто для семей.' }}],
+            '2021-07-24': [{ type: 'sport', name: { en: 'Golf Club: Summer Classic', ru: 'Гольф-клуб: Летняя классика' }, desc: { en: 'Two-day tournament. Significant prizes.', ru: 'Двухдневный турнир. Значительные призы.' }}],
+            '2021-07-30': [{ type: 'academic', name: { en: 'Summer Session II Ends', ru: 'Окончание летней сессии II' }, desc: { en: 'Summer grades finalized.', ru: 'Финализация летних оценок.' }}],
+
+            // АВГУСТ 2021
+            '2021-08-14': [{ type: 'social', name: { en: 'Legacy Family Weekend', ru: 'Выходные для семей по наследству' }, desc: { en: 'Orientation for incoming Legacy students and their families. Private tours and introductions.', ru: 'Ориентация для поступающих студентов по наследству и их семей. Частные экскурсии и знакомства.' }}],
+            '2021-08-21': [{ type: 'academic', name: { en: 'New Student Orientation', ru: 'Ориентация новых студентов' }, desc: { en: 'All incoming students. Campus tours, administrative processing, social introductions.', ru: 'Все поступающие студенты. Экскурсии по кампусу, административные процедуры, социальные знакомства.' }}],
+            '2021-08-28': [{ type: 'social', name: { en: 'Welcome Gala', ru: 'Приветственный гала-вечер' }, desc: { en: 'Formal welcome for all students. Great Hall. First opportunity to establish social standing.', ru: 'Формальное приветствие всех студентов. Большой Зал. Первая возможность установить социальное положение.' }}],
+            '2021-08-30': [{ type: 'academic', name: { en: 'Fall Semester Begins', ru: 'Начало осеннего семестра' }, desc: { en: 'Classes commence. Academic year officially begins.', ru: 'Занятия начинаются. Учебный год официально начался.' }}],
+
+            // СЕНТЯБРЬ 2021
+            '2021-09-06': [{ type: 'holiday', name: { en: 'Labor Day', ru: 'День труда' }, desc: { en: 'No classes.', ru: 'Занятий нет.' }}],
+            '2021-09-10': [{ type: 'academic', name: { en: 'Add/Drop Deadline', ru: 'Дедлайн добавления/отказа от курсов' }, desc: { en: 'Final day to modify fall course selections.', ru: 'Последний день для изменения выбора осенних курсов.' }}],
+            '2021-09-15': [{ type: 'club', name: { en: 'Club Fair', ru: 'Ярмарка клубов' }, desc: { en: 'All clubs recruiting. Formal Gardens. Note: some clubs do not participate publicly.', ru: 'Все клубы набирают членов. Регулярные сады. Примечание: некоторые клубы не участвуют публично.' }}],
+            '2021-09-18': [{ type: 'sport', name: { en: 'Fall Polo Season Opens', ru: 'Открытие осеннего сезона поло' }, desc: { en: 'First match of the season. Aldridge vs. Princeton.', ru: 'Первый матч сезона. Олдридж против Принстона.' }}],
+            '2021-09-25': [{ type: 'social', name: { en: 'Harvest Ball', ru: 'Осенний бал' }, desc: { en: 'Autumn formal in the Great Hall. Traditional dances. Formal attire required.', ru: 'Осенний формальный вечер в Большом Зале. Традиционные танцы. Требуется формальная одежда.' }}],
+
+            // ОКТЯБРЬ 2021
+            '2021-10-02': [{ type: 'club', name: { en: 'Fine Arts Collective: Gallery Opening', ru: 'Коллектив искусств: Открытие галереи' }, desc: { en: 'New acquisitions revealed. St. John Gallery. Champagne reception.', ru: 'Представление новых приобретений. Галерея Сент-Джон. Шампанское.' }}],
+            '2021-10-09': [{ type: 'sport', name: { en: 'Equestrian Competition', ru: 'Конные соревнования' }, desc: { en: 'Regional championships. Aldridge Stables. Spectators welcome.', ru: 'Региональный чемпионат. Конюшни Олдриджа. Зрители приглашаются.' }}],
+            '2021-10-11': [{ type: 'holiday', name: { en: 'Columbus Day', ru: 'День Колумба' }, desc: { en: 'No classes.', ru: 'Занятий нет.' }}],
+            '2021-10-15': [{ type: 'academic', name: { en: 'Midterm Examinations Begin', ru: 'Начало промежуточных экзаменов' }, desc: { en: 'Two-week examination period.', ru: 'Двухнедельный период экзаменов.' }}],
+            '2021-10-23': [{ type: 'club', name: { en: 'Philanthropy Committee: Charity Auction', ru: 'Комитет филантропии: Благотворительный аукцион' }, desc: { en: 'Art and experiences. Proceeds to selected causes. Minimum bid: $1,000.', ru: 'Искусство и впечатления. Выручка на избранные цели. Минимальная ставка: $1,000.' }}],
+            '2021-10-29': [{ type: 'academic', name: { en: 'Midterm Examinations End', ru: 'Окончание промежуточных экзаменов' }, desc: { en: 'Results within one week.', ru: 'Результаты в течение недели.' }}],
+            '2021-10-31': [{ type: 'social', name: { en: 'All Hallows\' Eve Ball', ru: 'Бал в канун Дня всех святых' }, desc: { en: 'Masquerade in the Great Hall. Masks required. Identities... optional.', ru: 'Маскарад в Большом Зале. Маски обязательны. Личности... опционально.' }}],
+
+            // НОЯБРЬ 2021
+            '2021-11-06': [{ type: 'club', name: { en: 'Hunt Club: Autumn Hunt', ru: 'Охотничий клуб: Осенняя охота' }, desc: { en: 'Deer season. Full weekend in Forest Reserve. Members only.', ru: 'Сезон оленей. Полные выходные в Лесном заповеднике. Только для членов.' }}],
+            '2021-11-11': [{ type: 'holiday', name: { en: 'Veterans Day', ru: 'День ветеранов' }, desc: { en: 'No classes. Memorial service in Chapel.', ru: 'Занятий нет. Поминальная служба в Часовне.' }}],
+            '2021-11-13': [{ type: 'restricted', name: { en: 'The Ides: Autumn Convening', ru: 'The Ides: Осенний созыв' }, desc: { en: 'Secondary annual gathering. Details restricted.', ru: 'Вторичное ежегодное собрание. Детали ограничены.' }}],
+            '2021-11-20': [{ type: 'sport', name: { en: 'Boxing Society: Fall Championship', ru: 'Боксёрское общество: Осенний чемпионат' }, desc: { en: 'Internal ranking matches. Athletic Center, Lower Level.', ru: 'Внутренние рейтинговые матчи. Атлетический центр, Нижний уровень.' }}],
+            '2021-11-24': [{ type: 'holiday', name: { en: 'Thanksgiving Break Begins', ru: 'Начало каникул на День благодарения' }, desc: { en: 'Classes resume November 29. Most students depart.', ru: 'Занятия возобновляются 29 ноября. Большинство студентов уезжают.' }}],
+            '2021-11-25': [{ type: 'holiday', name: { en: 'Thanksgiving Day', ru: 'День благодарения' }, desc: { en: 'Formal dinner for remaining students. Dining Hall.', ru: 'Формальный ужин для оставшихся студентов. Столовая.' }}],
+            '2021-11-29': [{ type: 'academic', name: { en: 'Classes Resume', ru: 'Возобновление занятий' }, desc: { en: 'Final weeks of fall semester.', ru: 'Последние недели осеннего семестра.' }}],
+
+            // ДЕКАБРЬ 2021
+            '2021-12-04': [{ type: 'social', name: { en: 'Winter Formal', ru: 'Зимний формальный вечер' }, desc: { en: 'Pre-holiday celebration. Great Hall. Last major social event of semester.', ru: 'Предпраздничное празднование. Большой Зал. Последнее крупное светское событие семестра.' }}],
+            '2021-12-10': [{ type: 'academic', name: { en: 'Last Day of Classes', ru: 'Последний день занятий' }, desc: { en: 'Reading period begins December 11.', ru: 'Период подготовки начинается 11 декабря.' }}],
+            '2021-12-11': [{ type: 'academic', name: { en: 'Reading Period', ru: 'Период подготовки' }, desc: { en: 'No classes. Prepare for final examinations.', ru: 'Занятий нет. Подготовка к финальным экзаменам.' }}],
+            '2021-12-13': [{ type: 'academic', name: { en: 'Final Examinations Begin', ru: 'Начало финальных экзаменов' }, desc: { en: 'Two-week examination period.', ru: 'Двухнедельный период экзаменов.' }}],
+            '2021-12-18': [{ type: 'club', name: { en: 'Hunt Club: Winter Hunt', ru: 'Охотничий клуб: Зимняя охота' }, desc: { en: 'The Annual Winter Hunt. The most anticipated event. What happens in the forest stays in the forest.', ru: 'Ежегодная Зимняя Охота. Самое ожидаемое событие. Что происходит в лесу, остаётся в лесу.' }}],
+            '2021-12-22': [{ type: 'academic', name: { en: 'Final Examinations End', ru: 'Окончание финальных экзаменов' }, desc: { en: 'Fall semester concludes. Grades due within 72 hours.', ru: 'Осенний семестр завершается. Оценки в течение 72 часов.' }}],
+            '2021-12-23': [{ type: 'holiday', name: { en: 'Winter Break Begins', ru: 'Начало зимних каникул' }, desc: { en: 'University closes December 24. Reopens January 3, 2022.', ru: 'Университет закрывается 24 декабря. Открывается 3 января 2022.' }}],
+            '2021-12-25': [{ type: 'holiday', name: { en: 'Christmas Day', ru: 'Рождество' }, desc: { en: 'University closed. Private celebration for Founders\' House residents.', ru: 'Университет закрыт. Частное празднование для резидентов Дома Основателей.' }}],
+            '2021-12-31': [{ type: 'social', name: { en: 'New Year\'s Eve Gala', ru: 'Гала-вечер в канун Нового года' }, desc: { en: 'By invitation only. Founders\' House. The year ends as it began — among the elite.', ru: 'Только по приглашению. Дом Основателей. Год заканчивается так же, как начался — среди элиты.' }}]
+        };
+
+        const monthNames = {
+            en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            ru: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
+        };
+
+        const typeNames = {
+            academic: { en: 'Academic', ru: 'Учебное' },
+            social: { en: 'Social Event', ru: 'Светское событие' },
+            sport: { en: 'Athletic', ru: 'Спортивное' },
+            club: { en: 'Club Event', ru: 'Событие клуба' },
+            holiday: { en: 'Holiday', ru: 'Праздник/Каникулы' },
+            restricted: { en: 'Restricted', ru: 'Закрытое' }
+        };
+
+        let currentLang = 'en';
+        let currentYear = 2021;
+        let currentMonth = 0; // January
+
+        // ===== ЯЗЫК =====
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-en]').forEach(el => {
+                el.textContent = el.getAttribute('data-' + lang);
+            });
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-ru').classList.toggle('active', lang === 'ru');
+            localStorage.setItem('language', lang);
+            renderCalendar();
+            resetEventPanel();
+        }
+
+        // ===== МЕНЮ =====
+        function toggleMenu() {
+            document.getElementById('menuList').classList.toggle('open');
+        }
+
+        // ===== РЕНДЕР КАЛЕНДАРЯ =====
+        function renderCalendar() {
+            const grid = document.getElementById('calendarGrid');
+            const monthLabel = document.getElementById('currentMonth');
+
+            // Обновить заголовок месяца
+            monthLabel.textContent = `${monthNames[currentLang][currentMonth]} ${currentYear}`;
+
+            // Первый день месяца
+            const firstDay = new Date(currentYear, currentMonth, 1);
+            const lastDay = new Date(currentYear, currentMonth + 1, 0);
+            const startingDay = firstDay.getDay(); // 0 = Sunday
+            const totalDays = lastDay.getDate();
+
+            let html = '';
+
+            // Пустые ячейки до первого дня
+            for (let i = 0; i < startingDay; i++) {
+                html += '<div class="calendar-day empty"></div>';
+            }
+
+            // Дни месяца
+            for (let day = 1; day <= totalDays; day++) {
+                const dateStr = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const dayEvents = events[dateStr] || [];
+                const hasEvents = dayEvents.length > 0;
+
+                let eventDots = '';
+                if (hasEvents) {
+                    const types = [...new Set(dayEvents.map(e => e.type))];
+                    eventDots = types.map(t => `<span class="event-dot ${t}"></span>`).join('');
+                }
+
+                html += `
+                    <div class="calendar-day ${hasEvents ? 'has-events' : ''}" onclick="selectDate('${dateStr}')">
+                        <span class="day-number">${day}</span>
+                        ${hasEvents ? `<div class="event-dots">${eventDots}</div>` : ''}
+                    </div>
+                `;
+            }
+
+            grid.innerHTML = html;
+        }
+
+        // ===== НАВИГАЦИЯ ПО МЕСЯЦАМ =====
+        function changeMonth(delta) {
+            currentMonth += delta;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            } else if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            renderCalendar();
+            resetEventPanel();
+        }
+
+        // ===== ВЫБОР ДАТЫ =====
+        function selectDate(dateStr) {
+            const dayEvents = events[dateStr];
+
+            // Подсветить выбранный день
+            document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+
+            if (!dayEvents || dayEvents.length === 0) {
+                showNoEvents(dateStr);
+                return;
+            }
+
+            showEvents(dateStr, dayEvents);
+        }
+
+        function showEvents(dateStr, dayEvents) {
+            const panel = document.getElementById('eventContent');
+            const defaultPanel = document.getElementById('eventDefault');
+
+            defaultPanel.style.display = 'none';
+            panel.style.display = 'block';
+
+            const date = new Date(dateStr);
+            const dateFormatted = `${monthNames[currentLang][date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+
+            let eventsHtml = dayEvents.map(evt => `
+                <div class="event-item ${evt.type}" onclick="openEventModal('${dateStr}', '${evt.name.en}')">
+                    <div class="event-type-badge ${evt.type}">${typeNames[evt.type][currentLang]}</div>
+                    <h4>${evt.name[currentLang]}</h4>
+                    <p>${evt.desc[currentLang]}</p>
+                </div>
+            `).join('');
+
+            panel.innerHTML = `
+                <div class="event-date">${dateFormatted}</div>
+                <div class="events-list">${eventsHtml}</div>
+            `;
+
+            panel.classList.add('fade-in');
+            setTimeout(() => panel.classList.remove('fade-in'), 300);
+        }
+
+        function showNoEvents(dateStr) {
+            const panel = document.getElementById('eventContent');
+            const defaultPanel = document.getElementById('eventDefault');
+
+            defaultPanel.style.display = 'none';
+            panel.style.display = 'block';
+
+            const date = new Date(dateStr);
+            const dateFormatted = `${monthNames[currentLang][date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+
+            panel.innerHTML = `
+                <div class="event-date">${dateFormatted}</div>
+                <div class="no-events">
+                    <p>${currentLang === 'en' ? 'No scheduled events' : 'Нет запланированных событий'}</p>
+                </div>
+            `;
+        }
+
+        function resetEventPanel() {
+            document.getElementById('eventDefault').style.display = 'block';
+            document.getElementById('eventContent').style.display = 'none';
+            document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+        }
+
+        // ===== МОДАЛЬНОЕ ОКНО =====
+        function openEventModal(dateStr, eventName) {
+            const dayEvents = events[dateStr];
+            const evt = dayEvents.find(e => e.name.en === eventName);
+            if (!evt) return;
+
+            const modal = document.getElementById('eventModal');
+            const content = document.getElementById('modalEventContent');
+
+            const date = new Date(dateStr);
+            const dateFormatted = `${monthNames[currentLang][date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+
+            content.innerHTML = `
+                <div class="modal-event-header">
+                    <div class="event-type-badge ${evt.type}">${typeNames[evt.type][currentLang]}</div>
+                    <h2>${evt.name[currentLang]}</h2>
+                    <span class="modal-event-date">${dateFormatted}</span>
+                </div>
+                <div class="modal-event-body">
+                    <p>${evt.desc[currentLang]}</p>
+                </div>
+            `;
+
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeEventModal() {
+            document.getElementById('eventModal').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // ===== СОБЫТИЯ =====
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.menu-container')) {
+                document.getElementById('menuList').classList.remove('open');
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeEventModal();
+        });
+
+        // Курсор
+        const cursor = document.querySelector('.cursor');
+        const follower = document.querySelector('.cursor-follower');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            setTimeout(() => {
+                follower.style.left = e.clientX + 'px';
+                follower.style.top = e.clientY + 'px';
+            }, 80);
+        });
+
+        document.querySelectorAll('a, button, .calendar-day.has-events, .event-item, .nav-arrow').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+                follower.classList.add('hover');
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+                follower.classList.remove('hover');
+            });
+        });
+
+        // Инициализация
+        window.onload = () => {
+            setLanguage(localStorage.getItem('language') || 'en');
+            renderCalendar();
+        };
+    </script>
+
+</body>
+</html>
