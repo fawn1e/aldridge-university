@@ -516,4 +516,230 @@ body {
     .about h2, .families h2 {
         font-size: 24px;
     }
+    /* ===== PAGE HEADER ===== */
+.page-header {
+    position: relative;
+    height: 50vh;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 80px;
+    overflow: hidden;
+}
+
+.page-header-bg {
+    position: absolute;
+    inset: 0;
+    background-position: center;
+    background-size: cover;
+    filter: blur(2px) brightness(0.35);
+    transform: scale(1.1);
+}
+
+.page-header-content {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+}
+
+.page-header h1 {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(36px, 6vw, 60px);
+    font-weight: 400;
+    color: var(--cream);
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.page-header p {
+    font-size: 13px;
+    color: var(--cream-dim);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+/* ===== HISTORY INTRO ===== */
+.history-intro {
+    padding: 100px 50px;
+    max-width: 850px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.history-intro p {
+    font-size: 18px;
+    line-height: 2;
+    color: var(--cream-dim);
+    font-style: italic;
+}
+
+/* ===== TIMELINE ===== */
+.timeline {
+    padding: 50px 50px 150px;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        var(--gold-dim) 10%,
+        var(--gold-dim) 90%,
+        transparent
+    );
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    display: flex;
+    gap: 60px;
+    margin-bottom: 80px;
+    position: relative;
+}
+
+.timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+.timeline-year {
+    flex-shrink: 0;
+    width: 100px;
+    font-family: 'EB Garamond', serif;
+    font-size: 24px;
+    color: var(--gold);
+    padding-top: 5px;
+    position: relative;
+}
+
+.timeline-item:nth-child(odd) .timeline-year::after,
+.timeline-item:nth-child(even) .timeline-year::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    width: 12px;
+    height: 12px;
+    background: var(--bg);
+    border: 2px solid var(--gold-dim);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:nth-child(odd) .timeline-year::after {
+    right: -36px;
+}
+
+.timeline-item:nth-child(even) .timeline-year::before {
+    left: -36px;
+}
+
+.timeline-item:hover .timeline-year::after,
+.timeline-item:hover .timeline-year::before {
+    background: var(--gold);
+    border-color: var(--gold);
+    box-shadow: 0 0 20px rgba(201, 162, 39, 0.4);
+}
+
+.timeline-content {
+    flex: 1;
+    padding-bottom: 20px;
+}
+
+.timeline-content h3 {
+    font-family: 'EB Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.timeline-content p {
+    font-size: 15px;
+    line-height: 2;
+    color: var(--cream-dim);
+    margin-bottom: 15px;
+}
+
+.timeline-quote {
+    font-style: italic;
+    color: var(--gold-dim);
+    border-left: 2px solid var(--gold-dim);
+    padding-left: 20px;
+    margin-top: 25px;
+}
+
+.timeline-item:nth-child(even) .timeline-quote {
+    border-left: none;
+    border-right: 2px solid var(--gold-dim);
+    padding-left: 0;
+    padding-right: 20px;
+}
+
+.timeline-motto {
+    font-family: 'EB Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--gold);
+    margin-top: 25px;
+}
+
+.timeline-dark .timeline-content h3 {
+    color: var(--gold-dim);
+}
+
+.timeline-present .timeline-year {
+    font-size: 20px;
+    letter-spacing: 3px;
+}
+
+/* Timeline Responsive */
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(even) {
+        flex-direction: column;
+        text-align: left;
+        padding-left: 50px;
+        gap: 15px;
+    }
+
+    .timeline-year {
+        width: auto;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-year::after,
+    .timeline-item:nth-child(even) .timeline-year::before {
+        left: -38px;
+        right: auto;
+    }
+
+    .timeline-item:nth-child(even) .timeline-quote {
+        border-right: none;
+        border-left: 2px solid var(--gold-dim);
+        padding-right: 0;
+        padding-left: 20px;
+    }
+
+    .history-intro {
+        padding: 60px 25px;
+    }
+
+    .timeline {
+        padding: 30px 25px 100px;
+    }
 }
