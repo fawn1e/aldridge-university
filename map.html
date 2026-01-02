@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Map — Aldridge University</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+
+    <!-- Кастомный курсор -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Навигация -->
+    <nav class="navbar">
+        <a href="index.html" class="logo" data-en="Aldridge University" data-ru="Университет Олдридж">Aldridge University</a>
+
+        <div class="nav-right">
+            <div class="menu-container">
+                <button class="menu-btn" onclick="toggleMenu()">
+                    <span data-en="Menu" data-ru="Меню">Menu</span>
+                </button>
+                <ul class="menu-list" id="menuList">
+                    <li><a href="index.html" data-en="Home" data-ru="Главная">Home</a></li>
+                    <li><a href="history.html" data-en="History" data-ru="История">History</a></li>
+                    <li><a href="admissions.html" data-en="Admissions" data-ru="Приём">Admissions</a></li>
+                    <li><a href="faculties.html" data-en="Faculties" data-ru="Факультеты">Faculties</a></li>
+                    <li><a href="clubs.html" data-en="Clubs" data-ru="Клубы">Clubs</a></li>
+                    <li><a href="staff.html" data-en="Staff" data-ru="Преподаватели">Staff</a></li>
+                    <li><a href="students.html" data-en="Students" data-ru="Студенты">Students</a></li>
+                    <li><a href="families.html" data-en="Families" data-ru="Семьи">Families</a></li>
+                    <li><a href="map.html" data-en="Map" data-ru="Карта">Map</a></li>
+                    <li><a href="forum.html" data-en="Forum" data-ru="Форум">Forum</a></li>
+                    <li><a href="calendar.html" data-en="Calendar" data-ru="Календарь">Calendar</a></li>
+                </ul>
+            </div>
+
+            <div class="lang-switch">
+                <button onclick="setLanguage('en')" id="btn-en" class="active">EN</button>
+                <span>/</span>
+                <button onclick="setLanguage('ru')" id="btn-ru">RU</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header page-header-small">
+        <div class="page-header-content">
+            <h1 data-en="Campus Map" data-ru="Карта Кампуса">Campus Map</h1>
+            <p data-en="Greenwich, Connecticut — 847 acres of private grounds" data-ru="Гринвич, Коннектикут — 343 гектара частной территории">Greenwich, Connecticut — 847 acres of private grounds</p>
+        </div>
+    </header>
+
+    <!-- Map Legend -->
+    <section class="map-legend">
+        <div class="legend-items">
+            <button class="legend-item active" data-filter="all">
+                <span class="legend-dot all"></span>
+                <span data-en="All" data-ru="Все">All</span>
+            </button>
+            <button class="legend-item" data-filter="academic">
+                <span class="legend-dot academic"></span>
+                <span data-en="Academic" data-ru="Учебные">Academic</span>
+            </button>
+            <button class="legend-item" data-filter="residential">
+                <span class="legend-dot residential"></span>
+                <span data-en="Residential" data-ru="Жилые">Residential</span>
+            </button>
+            <button class="legend-item" data-filter="athletic">
+                <span class="legend-dot athletic"></span>
+                <span data-en="Athletic" data-ru="Спортивные">Athletic</span>
+            </button>
+            <button class="legend-item" data-filter="services">
+                <span class="legend-dot services"></span>
+                <span data-en="Services" data-ru="Сервисы">Services</span>
+            </button>
+            <button class="legend-item" data-filter="restricted">
+                <span class="legend-dot restricted"></span>
+                <span data-en="Restricted" data-ru="Закрытые">Restricted</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Map Container -->
+    <section class="map-wrapper">
+        <div id="map"></div>
+
+        <!-- Info Panel -->
+        <div class="map-info-panel" id="infoPanel">
+            <div class="panel-default" id="panelDefault">
+                <div class="panel-icon">◎</div>
+                <h3 data-en="Select a Location" data-ru="Выберите локацию">Select a Location</h3>
+                <p data-en="Click on any marker to learn more" data-ru="Нажмите на маркер, чтобы узнать больше">Click on any marker to learn more</p>
+            </div>
+            <div class="panel-content" id="panelContent">
+                <!-- Заполняется через JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Campus Boundary Note -->
+    <section class="map-note">
+        <p data-en="The golden boundary indicates private university grounds. Trespassing is prosecuted."
+           data-ru="Золотая граница обозначает частную территорию университета. Нарушение преследуется по закону.">
+            The golden boundary indicates private university grounds. Trespassing is prosecuted.
+        </p>
+    </section>
+
+    <!-- Map Stats -->
+    <section class="map-stats">
+        <div class="stat-item">
+            <span class="stat-number">847</span>
+            <span class="stat-text" data-en="Acres" data-ru="Акров">Acres</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">32</span>
+            <span class="stat-text" data-en="Buildings" data-ru="Зданий">Buildings</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">1847</span>
+            <span class="stat-text" data-en="Established" data-ru="Основан">Established</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">12,000</span>
+            <span class="stat-text" data-en="Forest Acres" data-ru="Акров леса">Forest Acres</span>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-logo" data-en="Aldridge University" data-ru="Университет Олдридж">Aldridge University</p>
+        <div class="footer-links">
+            <a href="ТВОЯ_ССЫЛКА_ТГ" target="_blank">Telegram</a>
+            <span>·</span>
+            <a href="ТВОЯ_ССЫЛКА_JANITOR" target="_blank">JanitorAI</a>
+        </div>
+        <p class="footer-copy">© 2024</p>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        // ===== ДАННЫЕ ЛОКАЦИЙ =====
+        const locations = [
+            // ACADEMIC
+            {
+                id: 'main-hall',
+                name: { en: 'Aldridge Hall', ru: 'Олдридж Холл' },
+                type: 'academic',
+                coords: [41.0534, -73.6245],
+                typeLabel: { en: 'Main Academic Building', ru: 'Главный учебный корпус' },
+                built: '1847',
+                description: {
+                    en: 'The heart of Aldridge University. The original building constructed by Edmund Aldridge himself, now housing administrative offices, the Great Hall for ceremonies, and the Board Room where the founding families still convene.',
+                    ru: 'Сердце Университета Олдридж. Оригинальное здание, построенное самим Эдмундом Олдриджем, теперь вмещает административные офисы, Большой Зал для церемоний и Зал Совета, где семьи-основатели всё ещё собираются.'
+                },
+                access: { en: 'Open to all students', ru: 'Открыт для всех студентов' },
+                hours: { en: '6:00 AM - 11:00 PM', ru: '6:00 - 23:00' }
+            },
+            {
+                id: 'winthrop',
+                name: { en: 'Winthrop Hall', ru: 'Уинтроп Холл' },
+                type: 'academic',
+                coords: [41.0542, -73.6268],
+                typeLabel: { en: 'Law & Political Science', ru: 'Право и Политология' },
+                built: '1893',
+                description: {
+                    en: 'Named after the Winthrop family. Houses the School of Law and Political Science. Features a mock courtroom and the Winthrop Collection of historical legal documents — some never made public.',
+                    ru: 'Назван в честь семьи Уинтроп. Здесь располагаются Школа Права и Политологии. Включает учебный зал суда и Коллекцию Уинтроп исторических юридических документов.'
+                },
+                access: { en: 'Law & Political Science students', ru: 'Студенты Права и Политологии' },
+                hours: { en: '7:00 AM - 10:00 PM', ru: '7:00 - 22:00' }
+            },
+            {
+                id: 'stjohn',
+                name: { en: 'St. John Hall', ru: 'Сент-Джон Холл' },
+                type: 'academic',
+                coords: [41.0538, -73.6218],
+                typeLabel: { en: 'Arts & Philosophy', ru: 'Искусство и Философия' },
+                built: '1893',
+                description: {
+                    en: 'The aesthetic jewel of campus, funded by the St. John family. Houses Fine Arts and Philosophy departments. Secret passages reportedly built into the original design.',
+                    ru: 'Эстетическая жемчужина кампуса, финансируемая семьёй Сент-Джон. Здесь располагаются факультеты Искусств и Философии. Тайные проходы предположительно встроены в оригинальный дизайн.'
+                },
+                access: { en: 'Arts & Philosophy students', ru: 'Студенты Искусств и Философии' },
+                hours: { en: '7:00 AM - 12:00 AM', ru: '7:00 - 00:00' }
+            },
+            {
+                id: 'harcourt',
+                name: { en: 'Harcourt Hall', ru: 'Харкорт Холл' },
+                type: 'academic',
+                coords: [41.0525, -73.6252],
+                typeLabel: { en: 'Business & Finance', ru: 'Бизнес и Финансы' },
+                built: '1893',
+                description: {
+                    en: 'The Harcourt family\'s contribution. Houses the School of Business & Finance. Features a real trading floor simulator and the Harcourt Vault — a climate-controlled archive of financial records.',
+                    ru: 'Вклад семьи Харкорт. Здесь располагается Школа Бизнеса и Финансов. Включает реальный симулятор торгового зала и Хранилище Харкорт.'
+                },
+                access: { en: 'Business & Finance students', ru: 'Студенты Бизнеса и Финансов' },
+                hours: { en: '6:00 AM - 11:00 PM', ru: '6:00 - 23:00' }
+            },
+            {
+                id: 'library',
+                name: { en: 'Grand Library', ru: 'Большая Библиотека' },
+                type: 'academic',
+                coords: [41.0530, -73.6260],
+                typeLabel: { en: 'Library & Archives', ru: 'Библиотека и Архивы' },
+                built: '1871',
+                description: {
+                    en: 'One of the largest private academic libraries in the Northeast. Over 2 million volumes. The Restricted Section is accessible only with special permission. Underground levels extend three floors beneath.',
+                    ru: 'Одна из крупнейших частных академических библиотек на Северо-Востоке. Более 2 миллионов томов. Ограниченная Секция доступна только с особого разрешения. Подземные уровни простираются на три этажа.'
+                },
+                access: { en: 'All students (restricted sections require approval)', ru: 'Все студенты (закрытые секции требуют одобрения)' },
+                hours: { en: '24 hours', ru: '24 часа' }
+            },
+            {
+                id: 'medical',
+                name: { en: 'Medical Wing', ru: 'Медицинское Крыло' },
+                type: 'academic',
+                coords: [41.0515, -73.6280],
+                typeLabel: { en: 'School of Medicine', ru: 'Школа Медицины' },
+                built: '1871',
+                description: {
+                    en: 'The oldest medical facility in Connecticut still in operation. Houses the School of Medicine, hospital wing, research laboratories, and morgue. Operates with unusual autonomy from state oversight.',
+                    ru: 'Старейшее медицинское учреждение в Коннектикуте. Здесь располагается Школа Медицины, больничное крыло, исследовательские лаборатории и морг. Работает с необычной автономией от государственного надзора.'
+                },
+                access: { en: 'Medical students & authorized personnel', ru: 'Студенты-медики и авторизованный персонал' },
+                hours: { en: '24 hours', ru: '24 часа' }
+            },
+
+            // RESIDENTIAL
+            {
+                id: 'founders-house',
+                name: { en: 'Founders\' House', ru: 'Дом Основателей' },
+                type: 'residential',
+                coords: [41.0548, -73.6242],
+                typeLabel: { en: 'Premium Residence', ru: 'Премиум резиденция' },
+                built: '1847',
+                description: {
+                    en: 'The most prestigious dormitory, reserved exclusively for direct heirs of the founding families. Each suite is individually designed. Residents have access to private dining and a personal concierge.',
+                    ru: 'Самое престижное общежитие, зарезервированное исключительно для прямых наследников семей-основателей. Каждый номер индивидуально оформлен. Резиденты имеют доступ к приватной столовой и личному консьержу.'
+                },
+                access: { en: 'Founding family heirs only', ru: 'Только наследники семей-основателей' },
+                hours: { en: 'Residents only', ru: 'Только для резидентов' }
+            },
+            {
+                id: 'north-residence',
+                name: { en: 'North Residence', ru: 'Северная Резиденция' },
+                type: 'residential',
+                coords: [41.0555, -73.6265],
+                typeLabel: { en: 'Legacy Student Housing', ru: 'Жильё для студентов по наследству' },
+                built: '1920',
+                description: {
+                    en: 'Housing for Legacy Admission students — those with family connections to Aldridge but not direct founding family lineage. Private rooms, shared common areas.',
+                    ru: 'Жильё для студентов, поступивших по наследству — тех, кто имеет семейные связи с Олдриджем, но не прямую линию от семей-основателей.'
+                },
+                access: { en: 'Legacy students', ru: 'Студенты по наследству' },
+                hours: { en: 'Residents only', ru: 'Только для резидентов' }
+            },
+            {
+                id: 'east-residence',
+                name: { en: 'East Residence', ru: 'Восточная Резиденция' },
+                type: 'residential',
+                coords: [41.0545, -73.6205],
+                typeLabel: { en: 'Legacy Student Housing', ru: 'Жильё для студентов по наследству' },
+                built: '1920',
+                description: {
+                    en: 'Sister building to North Residence. Known for its proximity to St. John Hall and the Gallery, popular among arts-focused students.',
+                    ru: 'Сестринское здание Северной Резиденции. Известно близостью к Сент-Джон Холлу и Галерее, популярно среди студентов искусств.'
+                },
+                access: { en: 'Legacy students', ru: 'Студенты по наследству' },
+                hours: { en: 'Residents only', ru: 'Только для резидентов' }
+            },
+            {
+                id: 'west-residence',
+                name: { en: 'West Residence', ru: 'Западная Резиденция' },
+                type: 'residential',
+                coords: [41.0528, -73.6295],
+                typeLabel: { en: 'Referral Student Housing', ru: 'Жильё для студентов по рекомендации' },
+                built: '1935',
+                description: {
+                    en: 'Housing for Referral Admission students. Comfortable but notably less luxurious than the northern residences. A reminder of one\'s place in the social order.',
+                    ru: 'Жильё для студентов, поступивших по рекомендации. Комфортно, но заметно менее роскошно, чем северные резиденции.'
+                },
+                access: { en: 'Referral students', ru: 'Студенты по рекомендации' },
+                hours: { en: 'Residents only', ru: 'Только для резидентов' }
+            },
+            {
+                id: 'merit-house',
+                name: { en: 'Merit House', ru: 'Дом Заслуг' },
+                type: 'residential',
+                coords: [41.0510, -73.6210],
+                typeLabel: { en: 'Merit Student Housing', ru: 'Жильё для студентов по заслугам' },
+                built: '1952',
+                description: {
+                    en: 'The most distant residence hall, for Merit Admission students. Functional, modest, and deliberately separated from main social centers. Their presence is tolerated, not celebrated.',
+                    ru: 'Наиболее удалённое общежитие для студентов, поступивших по заслугам. Функциональное, скромное и намеренно отделённое от главных социальных центров.'
+                },
+                access: { en: 'Merit students', ru: 'Студенты по заслугам' },
+                hours: { en: 'Residents only', ru: 'Только для резидентов' }
+            },
+
+            // ATHLETIC
+            {
+                id: 'stables',
+                name: { en: 'Aldridge Stables', ru: 'Конюшни Олдриджа' },
+                type: 'athletic',
+                coords: [41.0565, -73.6290],
+                typeLabel: { en: 'Equestrian Facility', ru: 'Конный комплекс' },
+                built: '1851',
+                description: {
+                    en: 'Home to 24 thoroughbred horses and the Equestrian Society. Indoor and outdoor arenas, private stalls. The annual Hunt begins and ends here.',
+                    ru: 'Дом для 24 чистокровных лошадей и Конного Общества. Крытый и открытый манежи, приватные стойла. Ежегодная Охота начинается и заканчивается здесь.'
+                },
+                access: { en: 'Equestrian Society members', ru: 'Члены Конного Общества' },
+                hours: { en: '5:00 AM - 9:00 PM', ru: '5:00 - 21:00' }
+            },
+            {
+                id: 'golf',
+                name: { en: 'Golf Course', ru: 'Поле для Гольфа' },
+                type: 'athletic',
+                coords: [41.0490, -73.6320],
+                typeLabel: { en: '18-Hole Championship Course', ru: '18-луночное чемпионское поле' },
+                built: '1923',
+                description: {
+                    en: 'Private 18-hole course designed by A.W. Tillinghast. Closed to the public since construction. More deals closed here than in any boardroom.',
+                    ru: 'Частное 18-луночное поле, спроектированное А.У. Тиллингхастом. Закрыто для публики с момента строительства. Здесь заключается больше сделок, чем в любом зале заседаний.'
+                },
+                access: { en: 'Golf Club members & guests', ru: 'Члены Гольф-клуба и гости' },
+                hours: { en: 'Sunrise to sunset', ru: 'От рассвета до заката' }
+            },
+            {
+                id: 'athletic-center',
+                name: { en: 'Athletic Center', ru: 'Атлетический Центр' },
+                type: 'athletic',
+                coords: [41.0505, -73.6235],
+                typeLabel: { en: 'Sports Complex', ru: 'Спортивный комплекс' },
+                built: '1934',
+                description: {
+                    en: 'Gymnasium, swimming pool, squash courts, and the Boxing Society\'s private training area in the lower level. Private locker rooms for founding family members.',
+                    ru: 'Спортзал, бассейн, корты для сквоша и приватная тренировочная зона Боксёрского Общества на нижнем уровне. Приватные раздевалки для членов семей-основателей.'
+                },
+                access: { en: 'All students', ru: 'Все студенты' },
+                hours: { en: '5:00 AM - 11:00 PM', ru: '5:00 - 23:00' }
+            },
+            {
+                id: 'boathouse',
+                name: { en: 'Boathouse', ru: 'Лодочная Станция' },
+                type: 'athletic',
+                coords: [41.0485, -73.6225],
+                typeLabel: { en: 'Rowing & Water Sports', ru: 'Гребля и водные виды спорта' },
+                built: '1898',
+                description: {
+                    en: 'On the shore of Aldridge Lake. Houses rowing shells and watercraft. The dock extends into waters deeper than they appear.',
+                    ru: 'На берегу озера Олдридж. Здесь хранятся гребные лодки и суда. Причал уходит в воды, которые глубже, чем кажутся.'
+                },
+                access: { en: 'All students', ru: 'Все студенты' },
+                hours: { en: '6:00 AM - 8:00 PM', ru: '6:00 - 20:00' }
+            },
+
+            // SERVICES
+            {
+                id: 'dining',
+                name: { en: 'Dining Hall', ru: 'Столовая' },
+                type: 'services',
+                coords: [41.0528, -73.6230],
+                typeLabel: { en: 'Main Dining Facility', ru: 'Главная столовая' },
+                built: '1871',
+                description: {
+                    en: 'Grand hall with cathedral ceilings and oak tables. Seating is technically open, but unspoken rules govern who sits where. Private dining rooms upstairs require invitation.',
+                    ru: 'Величественный зал с соборными потолками и дубовыми столами. Рассадка технически свободная, но негласные правила определяют, кто где сидит.'
+                },
+                access: { en: 'All students', ru: 'Все студенты' },
+                hours: { en: '6:30 AM - 10:00 PM', ru: '6:30 - 22:00' }
+            },
+            {
+                id: 'chapel',
+                name: { en: 'Chapel', ru: 'Часовня' },
+                type: 'services',
+                coords: [41.0545, -73.6230],
+                typeLabel: { en: 'Non-denominational Chapel', ru: 'Внеконфессиональная часовня' },
+                built: '1852',
+                description: {
+                    en: 'Stone chapel for weddings and memorials. Stained glass depicts Aldridge history, not biblical scenes. The crypt beneath contains remains of Edmund Aldridge.',
+                    ru: 'Каменная часовня для свадеб и поминальных служб. Витражи изображают историю Олдриджа, а не библейские сцены. Крипта внизу содержит останки Эдмунда Олдриджа.'
+                },
+                access: { en: 'Open to all', ru: 'Открыта для всех' },
+                hours: { en: '7:00 AM - 9:00 PM', ru: '7:00 - 21:00' }
+            },
+            {
+                id: 'gallery',
+                name: { en: 'St. John Gallery', ru: 'Галерея Сент-Джон' },
+                type: 'services',
+                coords: [41.0535, -73.6200],
+                typeLabel: { en: 'Art Museum', ru: 'Художественный музей' },
+                built: '1889',
+                description: {
+                    en: 'One of the finest private art collections on the East Coast. The private collection contains pieces whose provenance is... complicated.',
+                    ru: 'Одна из лучших частных художественных коллекций на Восточном побережье. Частная коллекция содержит произведения, чей провенанс... сложен.'
+                },
+                access: { en: 'Public galleries: all. Private: by invitation', ru: 'Публичные галереи: все. Частная: по приглашению' },
+                hours: { en: '10:00 AM - 6:00 PM', ru: '10:00 - 18:00' }
+            },
+            {
+                id: 'lake',
+                name: { en: 'Aldridge Lake', ru: 'Озеро Олдридж' },
+                type: 'services',
+                coords: [41.0480, -73.6240],
+                typeLabel: { en: 'Private Lake', ru: 'Частное озеро' },
+                built: '—',
+                description: {
+                    en: 'A 45-acre spring-fed lake. Unusually deep — over 60 feet at center. Local legends speak of things that sunk to the bottom and were never recovered.',
+                    ru: 'Озеро площадью 18 гектаров. Необычно глубокое — более 18 метров в центре. Легенды говорят о вещах, которые затонули и никогда не были подняты.'
+                },
+                access: { en: 'Open to all students', ru: 'Открыто для всех студентов' },
+                hours: { en: 'Dawn to dusk', ru: 'От рассвета до заката' }
+            },
+            {
+                id: 'gardens',
+                name: { en: 'Formal Gardens', ru: 'Регулярные Сады' },
+                type: 'services',
+                coords: [41.0552, -73.6220],
+                typeLabel: { en: 'Historic Gardens', ru: 'Исторические сады' },
+                built: '1852',
+                description: {
+                    en: 'English-style gardens with rare specimens, marble statuary, and a hedge maze larger than it appears. Beautiful in daylight. Do not walk alone after dark.',
+                    ru: 'Сады в английском стиле с редкими образцами, мраморными статуями и лабиринтом, который больше, чем кажется. Прекрасны при свете дня. Не гуляйте в одиночку после темноты.'
+                },
+                access: { en: 'Open to all', ru: 'Открыты для всех' },
+                hours: { en: '6:00 AM - 10:00 PM', ru: '6:00 - 22:00' }
+            },
+
+            // RESTRICTED
+            {
+                id: 'range',
+                name: { en: 'Harcourt Range', ru: 'Тир Харкорт' },
+                type: 'restricted',
+                coords: [41.0512, -73.6248],
+                typeLabel: { en: 'Underground Shooting Facility', ru: 'Подземный стрелковый комплекс' },
+                built: '1901',
+                description: {
+                    en: '50-meter underground range beneath Athletic Center. Private armory with historical and modern firearms. Ventilation ensures no sound reaches the surface.',
+                    ru: 'Подземный 50-метровый тир под Атлетическим Центром. Частная оружейная с историческим и современным оружием. Система вентиляции гарантирует, что звук не достигнет поверхности.'
+                },
+                access: { en: 'Marksman Society members only', ru: 'Только члены Общества Стрелков' },
+                hours: { en: 'By reservation', ru: 'По бронированию' }
+            },
+            {
+                id: 'archives',
+                name: { en: 'The Archives', ru: 'Архивы' },
+                type: 'restricted',
+                coords: [41.0528, -73.6265],
+                typeLabel: { en: 'Restricted Records', ru: 'Закрытые записи' },
+                built: '1871',
+                description: {
+                    en: 'Basement levels of Grand Library. Records dating to 1847. Some sections require Board clearance. Some sections are not listed. Some officially do not exist.',
+                    ru: 'Подвальные уровни Большой Библиотеки. Записи с 1847 года. Некоторые секции требуют допуска Совета. Некоторые не указаны в каталогах. Некоторые официально не существуют.'
+                },
+                access: { en: 'Board approval required', ru: 'Требуется одобрение Совета' },
+                hours: { en: 'By appointment', ru: 'По записи' }
+            },
+            {
+                id: 'tunnels',
+                name: { en: 'Tunnel Access', ru: 'Доступ в Туннели' },
+                type: 'restricted',
+                coords: [41.0522, -73.6255],
+                typeLabel: { en: 'Underground Passages', ru: 'Подземные проходы' },
+                built: '1871',
+                description: {
+                    en: 'Network of passages connecting major buildings. Officially for maintenance. The tunnels see traffic at hours when no maintenance is scheduled. Some passages lead to rooms on no blueprint.',
+                    ru: 'Сеть проходов, соединяющих главные здания. Официально — для обслуживания. Туннели видят движение в часы, когда обслуживание не запланировано. Некоторые проходы ведут в комнаты, которых нет на чертежах.'
+                },
+                access: { en: 'Restricted', ru: 'Ограничен' },
+                hours: { en: 'N/A', ru: 'Н/Д' }
+            },
+            {
+                id: 'forest',
+                name: { en: 'Forest Reserve', ru: 'Лесной Заповедник' },
+                type: 'restricted',
+                coords: [41.0580, -73.6180],
+                typeLabel: { en: 'Private Hunting Grounds', ru: 'Частные охотничьи угодья' },
+                built: '—',
+                description: {
+                    en: '12,000 acres of private forest. Exclusive domain of the Hunt Club. Closed during hunting season. What happens during the Annual Winter Hunt is known only to participants.',
+                    ru: '4,800 гектаров частного леса. Исключительные владения Охотничьего Клуба. Закрыт в сезон охоты. Что происходит во время Ежегодной Зимней Охоты, известно только участникам.'
+                },
+                access: { en: 'Hunt Club members only', ru: 'Только члены Охотничьего Клуба' },
+                hours: { en: 'Seasonal', ru: 'Сезонно' }
+            },
+            {
+                id: 'ides',
+                name: { en: '???', ru: '???' },
+                type: 'restricted',
+                coords: [41.0536, -73.6248],
+                typeLabel: { en: 'Unknown', ru: 'Неизвестно' },
+                built: '???',
+                description: {
+                    en: 'This location does not appear on official maps. Inquiries will not be answered. If you do not know what this is, you are not meant to know.',
+                    ru: 'Эта локация не отображается на официальных картах. На запросы ответов не будет. Если вы не знаете, что это — вам знать не положено.'
+                },
+                access: { en: 'You do not have access', ru: 'У вас нет доступа' },
+                hours: { en: '—', ru: '—' }
+            }
+        ];
+
+        // Цвета маркеров
+        const markerColors = {
+            academic: '#c9a227',
+            residential: '#7eb8da',
+            athletic: '#8bc48a',
+            services: '#d4a574',
+            restricted: '#c75050'
+        };
+
+        let currentLang = 'en';
+        let map;
+        let markers = [];
+        let campusBoundary;
+
+        // ===== ИНИЦИАЛИЗАЦИЯ КАРТЫ =====
+        function initMap() {
+            // Центр кампуса (Greenwich, CT)
+            const campusCenter = [41.0530, -73.6245];
+
+            // Создаём карту
+            map = L.map('map', {
+                center: campusCenter,
+                zoom: 16,
+                minZoom: 14,
+                maxZoom: 18,
+                zoomControl: true
+            });
+
+            // Тёмный стиль карты (CartoDB Dark Matter)
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                attribution: '©OpenStreetMap, ©CartoDB',
+                subdomains: 'abcd',
+                maxZoom: 19
+            }).addTo(map);
+
+            // Граница кампуса (полигон)
+            const boundaryCoords = [
+                [41.0600, -73.6350],
+                [41.0600, -73.6150],
+                [41.0460, -73.6150],
+                [41.0460, -73.6350]
+            ];
+
+            campusBoundary = L.polygon(boundaryCoords, {
+                color: '#c9a227',
+                weight: 2,
+                opacity: 0.6,
+                fillColor: '#c9a227',
+                fillOpacity: 0.05,
+                dashArray: '10, 10'
+            }).addTo(map);
+
+            // Добавляем маркеры
+            locations.forEach(loc => {
+                const marker = createMarker(loc);
+                markers.push({ marker, data: loc });
+            });
+        }
+
+        // ===== СОЗДАНИЕ МАРКЕРА =====
+        function createMarker(loc) {
+            const color = markerColors[loc.type];
+
+            // Кастомная иконка
+            const icon = L.divIcon({
+                className: `custom-marker ${loc.type}`,
+                html: `
+                    <div class="marker-inner" style="background: ${color}; box-shadow: 0 0 15px ${color}80;">
+                        <div class="marker-pulse" style="background: ${color};"></div>
+                    </div>
+                `,
+                iconSize: [20, 20],
+                iconAnchor: [10, 10]
+            });
+
+            const marker = L.marker(loc.coords, { icon }).addTo(map);
+
+            // Tooltip
+            marker.bindTooltip(loc.name[currentLang], {
+                permanent: false,
+                direction: 'top',
+                className: 'custom-tooltip',
+                offset: [0, -10]
+            });
+
+            // Клик
+            marker.on('click', () => {
+                showLocationInfo(loc);
+                // Подсветить активный маркер
+                document.querySelectorAll('.custom-marker').forEach(m => m.classList.remove('active'));
+                marker.getElement().classList.add('active');
+            });
+
+            marker.locationData = loc;
+            return marker;
+        }
+
+        // ===== ПОКАЗАТЬ ИНФОРМАЦИЮ =====
+        function showLocationInfo(loc) {
+            const panelDefault = document.getElementById('panelDefault');
+            const panelContent = document.getElementById('panelContent');
+
+            panelDefault.style.display = 'none';
+            panelContent.style.display = 'block';
+
+            panelContent.innerHTML = `
+                <button class="panel-close" onclick="closePanel()">✕</button>
+                <h3>${loc.name[currentLang]}</h3>
+                <span class="panel-type">${loc.typeLabel[currentLang]}</span>
+                ${loc.built !== '—' && loc.built !== '???' ? `<span class="panel-built">${currentLang === 'en' ? 'Built' : 'Построено'} ${loc.built}</span>` : ''}
+                <p class="panel-description">${loc.description[currentLang]}</p>
+                <div class="panel-details">
+                    <div class="panel-detail">
+                        <span class="detail-label">${currentLang === 'en' ? 'Access' : 'Доступ'}</span>
+                        <span class="detail-value">${loc.access[currentLang]}</span>
+                    </div>
+                    <div class="panel-detail">
+                        <span class="detail-label">${currentLang === 'en' ? 'Hours' : 'Часы'}</span>
+                        <span class="detail-value">${loc.hours[currentLang]}</span>
+                    </div>
+                </div>
+            `;
+
+            panelContent.classList.add('fade-in');
+            setTimeout(() => panelContent.classList.remove('fade-in'), 300);
+        }
+
+        function closePanel() {
+            document.getElementById('panelDefault').style.display = 'block';
+            document.getElementById('panelContent').style.display = 'none';
+            document.querySelectorAll('.custom-marker').forEach(m => m.classList.remove('active'));
+        }
+
+        // ===== ФИЛЬТР =====
+        function filterMarkers(type) {
+            markers.forEach(({ marker, data }) => {
+                if (type === 'all' || data.type === type) {
+                    marker.addTo(map);
+                } else {
+                    map.removeLayer(marker);
+                }
+            });
+            closePanel();
+        }
+
+        // ===== ЯЗЫК =====
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-en]').forEach(el => {
+                el.textContent = el.getAttribute('data-' + lang);
+            });
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-ru').classList.toggle('active', lang === 'ru');
+            localStorage.setItem('language', lang);
+
+            // Обновить tooltip'ы
+            markers.forEach(({ marker, data }) => {
+                marker.setTooltipContent(data.name[lang]);
+            });
+
+            closePanel();
+        }
+
+        // ===== МЕНЮ =====
+        function toggleMenu() {
+            document.getElementById('menuList').classList.toggle('open');
+        }
+
+        // ===== СОБЫТИЯ =====
+        document.addEventListener('DOMContentLoaded', () => {
+            initMap();
+
+            // Фильтры
+            document.querySelectorAll('.legend-item').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.legend-item').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    filterMarkers(btn.dataset.filter);
+                });
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.menu-container')) {
+                document.getElementById('menuList').classList.remove('open');
+            }
+        });
+
+        // Курсор
+        const cursor = document.querySelector('.cursor');
+        const follower = document.querySelector('.cursor-follower');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            setTimeout(() => {
+                follower.style.left = e.clientX + 'px';
+                follower.style.top = e.clientY + 'px';
+            }, 80);
+        });
+
+        document.querySelectorAll('a, button, .legend-item').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+                follower.classList.add('hover');
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+                follower.classList.remove('hover');
+            });
+        });
+
+        window.onload = () => setLanguage(localStorage.getItem('language') || 'en');
+    </script>
+
+</body>
+</html>
